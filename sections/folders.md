@@ -35,6 +35,23 @@ Get Folders
 ]
 ```
 
+Get Root Folder
+
+* `GET /folders/root.json` will return the root of all the folders for this user. This folder isn't visible in the UI, calling children on this folder is the equivalent of
+calling `GET /folders.json`
+
+```json
+{
+  "created_on":"2008-06-23T20:29:10Z",
+  "id":6527,
+  "metagroup_id":null,
+  "name":"0",
+  "parent_id":null,
+  "updated_on":"2012-04-11T15:23:32Z",
+  "user_id":0
+}
+```
+
 Get Folder
 ----------
 
