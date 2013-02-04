@@ -20,7 +20,7 @@ curl -u username:password \
   -H 'Content-Type: application/json' \
   -H 'User-Agent: MyApp (yourname@example.com)' \
   -d '{ "name": "New Catalog" }' \
-  https://api.imagerelay.com/api/v2/folders/555/new_child.json
+  https://api.imagerelay.com/api/v2/folders/555/children.json
 ```
 Authentication
 --------------
@@ -53,7 +53,6 @@ APIs (this list will be updated as we add more features to our API)
 -------------------------------------------------------------------
 
 * [Folders] (https://github.com/imagerelay/api/blob/master/sections/folders.md)
-* [File Types] (https://github.com/imagerelay/api/blob/master/sections/file_types.md)
 
 Thanks
 ------
