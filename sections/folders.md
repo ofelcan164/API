@@ -49,6 +49,7 @@ Get Folder
   "updated_on":"2012-07-23T15:39:16Z",
   "user_id":405
 }
+```
 
 Create Folder
 -------------
