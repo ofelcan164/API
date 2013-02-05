@@ -53,6 +53,7 @@ APIs (this list will be updated as we add more features to our API)
 -------------------------------------------------------------------
 
 * [Folders] (https://github.com/imagerelay/api/blob/master/sections/folders.md)
+* [File Types] (https://github.com/imagerelay/api/blob/master/sections/file_types.md)
 
 Thanks
 ------
