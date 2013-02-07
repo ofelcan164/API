@@ -7,7 +7,7 @@ Get Folders
 -----------
 
 * `GET /folders.json` will return all top-level folders viewable by the user
-* `GET /folders/555/children will return all the child folders of the specified parent folder.
+* `GET /folders/555/children` will return all the child folders of the specified parent folder.
 
 ```json
 [
