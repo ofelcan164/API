@@ -29,7 +29,7 @@ If no jpg is provided a preview will still be generated from the file if it is p
                 "size":"12231796"
             }
         ]
-    terms:
+    "terms":
         [
             {
                 "term_id":"888",
@@ -46,5 +46,16 @@ If no jpg is provided a preview will still be generated from the file if it is p
 This will return `201 Created` if successful, as well as a json representation of the upload job:
 
 ```json
-
+{
+    "id":384,
+    "created_at":"2013-02-07T21:07:36Z",
+    "files":
+        [
+            {
+                "id":395,
+                "name":"test.jpg",
+                "size":12231976
+            }
+        ]
+}
 ```
