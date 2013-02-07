@@ -53,7 +53,12 @@ This will return `201 Created` if successful, as well as a json representation o
         [
             {
                 "id":395,
-                "name":"test.jpg",
+                "name":"my_file.dng",
+                "size":1234567890
+            },
+            {
+                "id":396,
+                "name":"my_file.jpg",
                 "size":12231976
             }
         ]
