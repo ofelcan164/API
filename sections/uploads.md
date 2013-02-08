@@ -1,8 +1,6 @@
 Uploads
 =======
 
-*THIS IS INCOMPLETE DO NOT USE IT YET*
-
 The upload API is how you can add files to Image Relay. Files are uploaded to Image Relay through the creation of
 upload jobs. And files are sent up in chunks.
 
@@ -68,7 +66,9 @@ This will return `201 Created` if successful, as well as a json representation o
 Create a File Chunk
 -------------------
 
-* `post /upload_jobs/384/files/395/chunks/1.json` uploads a file chunk. The request body should be the binary data of
+* `post /upload_jobs/384/files/395/chunks/1.json` uploads a file chunk. The last number is the chunk number. This is used,
+to determine the order to reassemble the chunks on the server. So the next chunk would be `post /upload_jobs/384/files/395/chunks/2.json`.
+The request body should be the binary data of
 the chunk. Make sure to set the Content-Length header. The Content-Type header should be `application/octet-stream`
 Chunk size is up to you, up to 5 MB in size. If you attempt to upload a chunk larger than 5 MB you'll receive an error.
 
