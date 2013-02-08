@@ -64,3 +64,25 @@ This will return `201 Created` if successful, as well as a json representation o
         ]
 }
 ```
+
+Create a File Chunk
+-------------------
+
+* `post /upload_jobs/384/files/395/chunks/1.json` uploads a file chunk. The request body should be the binary data of
+the chunk. Make sure to set the Content-Length header. The Content-Type header should be `application/octet-stream`
+Chunk size is up to you, up to 5 MB in size. If you attempt to upload a chunk larger than 5 MB you'll receive an error.
+
+If the chunk upload is successful, the call will return `201 Created` The application will use the file sizes to determine
+when all the chunks for each file have been uploaded. Once all files for an upload job have been uploaded, an asset will
+be created automatically on Image Relay.
+
+With `curl`, here is an example:
+
+```shell
+curl --data-binary @chunk.bin \
+       -u user:pass \
+       -H 'Content-Type: application/octet-stream' \
+       -H 'User-Agent: IR (buffy@imagerelay.com)' \
+       https://api.imagerelay.com/api/v2/upload_job/384/files/395/chunks/1.json
+```
+
