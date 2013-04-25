@@ -6,7 +6,7 @@ The Image Relay API allows IR users to access many Image Relay features through 
 Making a Request
 ----------------
 
-All requests start with https://api.imagerelay.com/api/v2/
+All requests start with https://[company url].imagerelay.com/api/v2/
 
 In curl a request would look like this:
 
