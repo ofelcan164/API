@@ -52,6 +52,7 @@ You can perform up to 500 requests per 10 second period from the same IP address
 APIs (this list will be updated as we add more features to our API)
 -------------------------------------------------------------------
 
+* [Files] (https://github.com/imagerelay/api/blob/master/sections/files.md)
 * [Folders] (https://github.com/imagerelay/api/blob/master/sections/folders.md)
 * [File Types] (https://github.com/imagerelay/api/blob/master/sections/file_types.md)
 * [Uploads] (https://github.com/imagerelay/api/blob/master/sections/uploads.md)
