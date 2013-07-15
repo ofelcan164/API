@@ -20,7 +20,7 @@ OAuth 2
 
 1. Register your application with Image Relay. You need an Image Relay account to do this. Once logged in to IR, click on "My Account" in the upper right corner. Select "Developers" from the menu on the left. You'll need to provide your application name and a callback URI.
 
-2. Redirect the user ot our authorization endpoint, https://launch.imagerelay.com/oauth/authorize
+2. Redirect the user to our authorization endpoint, https://launch.imagerelay.com/oauth/authorize
 
         https://launch.imagerelay.com/oauth/authorize?response_type=code&client_id=tl0qsa4bywailemgtcxi7t4aw7ev7pk&redirect_uri=http%3A%2F%2Fdev.lvh.me%3A3001%2Fauth%2Fimagerelay%2Fcallback&state=75eb9a69287f8e2d7836fe1755d719216d02a9a44843dcb7
 
@@ -43,14 +43,10 @@ End Points
 ----------
 
 * `GET https://launch.imagerelay.com/oauth/authorization`
-* `GET https://launch.imagerelay.com/oauth/tokens`
+* `POST https://launch.imagerelay.com/oauth/token`
 
 Implementations
 ---------------
 If you are developing your app using ruby, Image Relay has released an omniauth strategy for the IR API. You can find it here: https://github.com/imagerelay/omniauth-imagerelay
 
-We know OAuth2 can be a bit tricky when you are getting started, if you have questions, please e-email support@imagerelay.com, please include your IR URL in your request.
-
-
-
-
+We know OAuth2 can be a bit tricky when you are getting started, if you have questions, please e-mail support@imagerelay.com; include your IR URL in your request.
