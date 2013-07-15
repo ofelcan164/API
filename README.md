@@ -25,12 +25,7 @@ curl -u username:password \
 Authentication
 --------------
 
-To test things out and get started, you can use http basic authentication with the IR API. In production, you should use the supported oauth2 authentication. That way you don't have to worry about
-<<<<<<< HEAD
-storing Image Relay usernames' and passwords' in your own application. Click [here] (https://github.com/imagerelay/API/sections/authentication.md) for more detailed information regarding oauth authentication.
-=======
-storing Image Relay usernames' and passwords' in your own application. Click [here] (#) for more detailed information regarding oauth2 authentication.
->>>>>>> 32c9504e4659bcba54f63275b66d7c082b547dbf
+To test things out and get started, you can use http basic authentication with the IR API. In production, you should use the supported oauth2 authentication. That way you don't have to worry about storing Image Relay usernames' and passwords' in your own application. Click [here] (https://github.com/imagerelay/API/sections/authentication.md) for more detailed information regarding oauth authentication.
 
 
 Identify your app
