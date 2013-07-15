@@ -26,7 +26,7 @@ Authentication
 --------------
 
 To test things out and get started, you can use http basic authenitication with the IR API. In production, you should use the supported oauth2 authentication. That way you don't have to worry about
-storing Image Relay usernames' and passwords' in your own application. Click [here] (#) for more detailed information regarding oauth authentication.
+storing Image Relay usernames' and passwords' in your own application. Click [here] (https://github.com/imagerelay/API/sections/authentication.md) for more detailed information regarding oauth authentication.
 
 
 Identify your app
@@ -61,4 +61,8 @@ Thanks
 ------
 
 These API documents have been modeled closely after those provided by [37signals] (http://37signals.com) for their [API] (https://github.com/37signals/bcx-api/blob/master/README.md). A big thank you to them for doing what they do.
+
+Errors
+------
+If you find a typo or an error in the documentation, we welcome pull requests.
 
