@@ -26,7 +26,7 @@ Authentication
 --------------
 
 To test things out and get started, you can use http basic authenitication with the IR API. In production, you should use the supported oauth2 authentication. That way you don't have to worry about
-storing Image Relay usernames' and passwords' in your own application. Click [here] (#) for more detailed information regarding oauth authentication.
+storing Image Relay usernames' and passwords' in your own application. Click [here] (#) for more detailed information regarding oauth2 authentication.
 
 
 Identify your app
@@ -38,11 +38,6 @@ we can get in touch in case you're doing something wrongor something great. Here
     User-Agent: Freshbooks (http://freshbooks.com)
 
 If you don't supply this header, you will get a `400 Bad Request`.
-
-Use HTTP caching
-----------------
-
-You must make use of the HTTP freshness headers to lessen the load on our servers (and increase the speed of your application!). Most requests we return will include an `ETag` or `Last-Modified` header. When you first request a resource, store this value, and then submit them back to us on subsequent requests as `If-None-Match` and `If-Modified-Since`. If the resource hasn't changed, you'll see a `304 Not Modified` response, which saves you the time and bandwidth of sending something you already have.
 
 Rate limiting
 -------------
