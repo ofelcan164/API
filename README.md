@@ -48,13 +48,14 @@ APIs (this list will be updated as we add more features to our API)
 
 * [Files] (https://github.com/imagerelay/api/blob/master/sections/files.md)
 * [Folders] (https://github.com/imagerelay/api/blob/master/sections/folders.md)
+* [Quick Links] (https://github.com/imagerelay/api/blob/master/sections/quick_links.md)
 * [File Types] (https://github.com/imagerelay/api/blob/master/sections/file_types.md)
 * [Uploads] (https://github.com/imagerelay/api/blob/master/sections/uploads.md)
 
 Thanks
 ------
 
-These API documents have been modeled closely after those provided by [37signals] (http://37signals.com) for their [API] (https://github.com/37signals/bcx-api/blob/master/README.md). A big thank you to them for doing what they do.
+These API documents have been modeled closely after those provided by [37signals] (http://37signals.com) for their [API] (https://github.com/37signals/bcx-api/blob/master/README.md).
 
 Errors
 ------
