@@ -83,6 +83,6 @@ curl --data-binary @chunk.bin \
        -u user:pass \
        -H 'Content-Type: application/octet-stream' \
        -H 'User-Agent: IR (buffy@imagerelay.com)' \
-       https://api.imagerelay.com/api/v2/upload_job/384/files/395/chunks/1.json
+       https://api.imagerelay.com/api/v2/upload_jobs/384/files/395/chunks/1.json
 ```
 
