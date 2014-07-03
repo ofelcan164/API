@@ -6,9 +6,9 @@ Files - the reason you're using Image Relay. Here's how you get at them via the 
 Get Files
 ---------
 
-* `GET /folders/555/files` returns all the files in the specified folder
+* `GET /folders/555/files.json` returns all the files in the specified folder
 
-We will return 100 files per page. If the result set has 100 files, it's your responsibility to check the next page to see if there are any more files -- you do this by adding &page=2 to the query, then &page=3 and so on.
+We will return 100 files per page. If the result set has 100 files, it's your responsibility to check the next page to see if there are any more files -- you do this by adding &page=2 to the query, then &page=3 and so on. The 555 in the example above should be replaced with the folder ID number.
 
 ```json
 [
