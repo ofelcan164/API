@@ -10,6 +10,11 @@ Get Files
 
 We will return 100 files per page. If the result set has 100 files, it's your responsibility to check the next page to see if there are any more files -- you do this by adding &page=2 to the query, then &page=3 and so on. The 555 in the example above should be replaced with the folder ID number.
 
+Additionally, there is a filter you can add as a parameter, upload_after, which will filter the files returned to only those tht have been uploaded after that date. The format of the parameter should be: "YYYY-MM-DD HH:MM:SS GMT+00:00". You can leave off the timezone information if you are using UTC time, you can leave off time if you want it filtered from the beginning of the day specified (e.g. YYYY-MM-DD).
+
+Example (url encoded):
+`GET /folders/555/file.json?uploaded_after=2014-06-10%2001:00:00%20GML%2B00:00`
+
 ```json
 [
   {
