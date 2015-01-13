@@ -51,6 +51,7 @@ APIs (this list will be updated as we add more features to our API)
 * [Quick Links] (https://github.com/imagerelay/api/blob/master/sections/quick_links.md)
 * [File Types] (https://github.com/imagerelay/api/blob/master/sections/file_types.md)
 * [Uploads] (https://github.com/imagerelay/api/blob/master/sections/uploads.md)
+* [Users] (https://github.com/imagerelay/api/blob/master/sections/users.md)
 
 Thanks
 ------
