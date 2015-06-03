@@ -130,3 +130,71 @@ Get File
   }
 ```
 
+Upload File From URL
+-----------
+
+* `POST /files` returns 200 OK if the file was uploaded successfully. 
+
+We will respond with information about the file uploaded in the response body.  A filename, a folder_id for the folder the file will be uploaded to, a file_type_id, terms, and a url where the file will be downloaded from are required.  Metadata terms should be in the form of a hash, with a term_id and a value.  If you don't want to set any metadata on upload term_id and value can be left blank.
+
+Example POST:
+```json
+{
+  "filename":"Example.jpg",
+  "folder_id":"12397",
+  "file_type_id":"149",
+  "terms":{"term_id":"", "value":""},
+  "url":"http://www.imagerelay.com/test_image.jpg"
+}
+```
+
+Example Response:
+```json
+{
+  "id": 242802,
+  "filename": "test.jpg",
+  "created_at": "2015-06-03T12:58:43Z",
+  "updated_on": "2015-06-03T12:58:43Z",
+  "size": 0,
+  "width": null,
+  "height": null,
+  "content_type": "image/jpeg",
+  "user_id": 405,
+  "deleted": null,
+  "deletion_date": null,
+  "delete_user_id": null,
+  "expires_on": null,
+  "expiring_user_id": null,
+  "file_type_id": 149,
+  "short_lived_thumbnail": "/static/processing.png",
+  "terms": [
+    {
+      "term_id": 75206,
+      "value": ""
+    },
+    {
+      "term_id": 75207,
+      "value": ""
+    },
+    {
+      "term_id": 75208,
+      "value": ""
+    },
+    {
+      "term_id": 75209,
+      "value": ""
+    },
+    {
+      "term_id": 75210,
+      "value": ""
+    },
+    {
+      "term_id": 75211,
+      "value": ""
+    }
+  ]
+}
+```
+
+
+
