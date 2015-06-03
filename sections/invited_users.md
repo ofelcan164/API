@@ -1,7 +1,7 @@
 Invited Users
 ===========
 
-Allows you to retrieve information about users that have been invited to your Image Relay account.
+Allows you to retrieve information about users that have been invited to your Image Relay account, or invite a new user.
 
 Get Invited Users 
 ---------------
