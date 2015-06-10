@@ -40,6 +40,7 @@ Get Users
 	    "custom_field_four": null
 	}
 ]
+```
 
 Get User
 ---------
