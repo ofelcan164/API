@@ -133,11 +133,10 @@ Get File
 Upload File From URL
 -----------
 
-* `POST /files` returns 200 OK if the file was uploaded successfully. 
+* `POST /files` returns `200 OK` if the file was uploaded successfully. 
 
-We will respond with information about the file uploaded in the response body.  A filename, a folder_id for the folder the file will be uploaded to, a file_type_id, terms, and a url where the file will be downloaded from are required.  Metadata terms should be in the form of a hash, with a term_id and a value.  If you don't want to set any metadata on upload term_id and value can be left blank.
+We will respond with information about the file uploaded in the response body.  A filename, a folder_id for the folder the file will be uploaded to, a file_type_id, terms, and a url where the file will be downloaded from are required.  Metadata terms should be in the form of a hash, with a term_id and a value.  If you don't want to set any metadata on upload terms can be nil.
 
-Example POST:
 ```json
 {
   "filename":"Example.jpg",
@@ -147,8 +146,8 @@ Example POST:
   "url":"http://www.imagerelay.com/test_image.jpg"
 }
 ```
+We will return a representation of the uploaded file.
 
-Example Response:
 ```json
 {
   "id": 242802,

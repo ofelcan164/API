@@ -8,7 +8,7 @@ your company's bandwidth account limits.
 Get Quick Links
 ---------------
 
-* `GET /quick_links.json` will return the API user's list of quick links
+* `GET /quick_links.json` will return `200 OK` and the API user's list of quick links
 
 We will return 100 files per page. If the result set has 100 files, it's your responsibility to check the next page to see if there are any more files -- you do this by adding &page=2 to the query, then &page=3 and so on.
 
@@ -50,7 +50,7 @@ We will return 100 files per page. If the result set has 100 files, it's your re
 Get Quick Link
 --------------
 
-* `GET /quick_links/97.json` will return the specified quick link.
+* `GET /quick_links/97.json` will return `200 OK` and the specified quick link.
 
 ```json
 {

@@ -46,18 +46,21 @@ You can perform up to 500 requests per 10 second period from the same IP address
 APIs (this list will be updated as we add more features to our API)
 -------------------------------------------------------------------
 
-* [Files] (https://github.com/imagerelay/api/blob/master/sections/files.md)
-* [Folders] (https://github.com/imagerelay/api/blob/master/sections/folders.md)
-* [Quick Links] (https://github.com/imagerelay/api/blob/master/sections/quick_links.md)
-* [File Types] (https://github.com/imagerelay/api/blob/master/sections/file_types.md)
-* [Uploads] (https://github.com/imagerelay/api/blob/master/sections/uploads.md)
-* [Users] (https://github.com/imagerelay/api/blob/master/sections/users.md)
+* [Files](https://github.com/imagerelay/api/blob/master/sections/files.md)
+* [Folders](https://github.com/imagerelay/api/blob/master/sections/folders.md)
+* [Folder Links](https://github.com/imagerelay/api/blob/master/sections/folder_links.md)
+* [Quick Links](https://github.com/imagerelay/api/blob/master/sections/quick_links.md)
+* [File Types](https://github.com/imagerelay/api/blob/master/sections/file_types.md)
+* [Uploads](https://github.com/imagerelay/api/blob/master/sections/uploads.md)
+* [Users](https://github.com/imagerelay/api/blob/master/sections/users.md)
 * [Invited Users](https://github.com/imagerelay/api/blob/master/sections/invited_users.md)
+* [Permissions](https://github.com/imagerelay/api/blob/master/sections/permissions.md)
+* [Upload Links](https://github.com/imagerelay/api/blob/master/sections/upload_links.md)
 
 Thanks
 ------
 
-These API documents have been modeled closely after those provided by [37signals] (http://37signals.com) for their [API] (https://github.com/37signals/bcx-api/blob/master/README.md).
+These API documents have been modeled closely after those provided by [37signals](http://37signals.com) for their [API](https://github.com/37signals/bcx-api/blob/master/README.md).
 
 Errors
 ------
