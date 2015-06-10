@@ -54,9 +54,8 @@ Example Response:
 ```json
 {
 	"id": 100,
-	"client_id": 23,
 	"user_id": 405,
-	"role_id": 167,
+	"permission_id": 167,
 	"first_name": "Travis",
 	"last_name": "Mathis",
 	"email": "travis@imagerelay.com",
