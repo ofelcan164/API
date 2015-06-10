@@ -1,7 +1,7 @@
 Upload Links
 ===========
 
-Upload links allow you to quickly share an easy way for someone to upload files to Image Relay.
+Upload links allow you to quickly share an easy way for someone to upload files to your Image Relay account.
 
 Get Upload Links
 ---------------
