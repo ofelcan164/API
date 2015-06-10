@@ -1,7 +1,7 @@
 Permissions
 ==========
 
-Each user in Image Relay is assigned a permission group. Different permission groups have different admin levels assigned to them.  We wil
+Allow you to retrieve information about different permissions groups.
 
 Get Permissions
 --------------
