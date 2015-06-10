@@ -83,7 +83,7 @@ If the invite is successful, the call will return `201 CREATED`.
 }
 ```
 
-We will return a response with json data on the created folder link and a url to the folder link will be provided.
+We will return a representation of the folder link.
 
 ```json
 {

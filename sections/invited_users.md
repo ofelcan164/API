@@ -1,7 +1,7 @@
 Invited Users
 ===========
 
-Allows you to retrieve information about users that have been invited to your Image Relay account, or invite a new user.
+Allows you to retrieve information about users that have been invited to your Image Relay account, invite a new user, or delete a invited user.
 
 Get Invited Users 
 ---------------
@@ -111,6 +111,14 @@ We will return a response with json data on the new invited user and the user wi
 	"sub_domain_id": 23
 }
 ```
+
+Delete Invited User
+--------------------
+
+* `DELETE /invited_users/97.json` will delete a invited user.
+
+This will return `204 No Content`, if successful.
+
 
 
 
