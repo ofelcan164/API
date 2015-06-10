@@ -67,7 +67,7 @@ Get User
 Get Users Quick Links
 ---------------
 
-* `GET users/:id/quick_links.json` will return the user's list of quick links where :id is the id of the user whos quick links you want to retrieve.
+* `GET users/:id/quick_links.json` will return the user's list of quick links where :id is the id of the user who's quick links you want to retrieve.
 
 We will return 100 files per page. If the result set has 100 files, it's your responsibility to check the next page to see if there are any more files -- you do this by adding &page=2 to the query, then &page=3 and so on.
 
