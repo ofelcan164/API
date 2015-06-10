@@ -85,10 +85,6 @@ This will return `201 Created`, if successful, as well as a representation of th
 }
 ```
 
-Required parameters are purpose and asset_id. All other parameters are optional. If the quick link "processing" flag is
-true, then then the image hasn't finished resizing yet. It will not be ready to download until "processing" is false. You can
-poll every few seconds (we recommend every 5 seconds), to see if the quick link is ready for viewing yet.
-
 
 Delete Upload Link
 -----------------
