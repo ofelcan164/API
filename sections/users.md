@@ -1,7 +1,7 @@
 Users
 ===========
 
-Allows you to retrieve information users.
+Allows you to retrieve users.
 
 Get Users
 ----------
