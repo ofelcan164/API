@@ -63,6 +63,3 @@ Get User
     "custom_field_four": null
 },
 ```
-
-
-
