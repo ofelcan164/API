@@ -56,6 +56,7 @@ APIs (this list will be updated as we add more features to our API)
 * [Invited Users](https://github.com/imagerelay/api/blob/master/sections/invited_users.md)
 * [Permissions](https://github.com/imagerelay/api/blob/master/sections/permissions.md)
 * [Upload Links](https://github.com/imagerelay/api/blob/master/sections/upload_links.md)
+* [Keywording](https://github.com/imagerelay/api/blob/master/sections/keywording.md)
 
 Thanks
 ------
