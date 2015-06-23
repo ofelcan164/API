@@ -6,7 +6,7 @@ Allows you to retrieve information about users that have been invited to your Im
 Get Invited Users 
 ---------------
 
-* `GET /invited_users` will return a list of invited users to your account.  The invited users will be ordered by the most recently created.
+* `GET /invited_users.json` will return a list of invited users to your account.  The invited users will be ordered by the most recently created.
 
 We will return 100 files per page. If the result set has more than 100 invited users, it's your responsibility to check the next page to see if there are any more invited users -- you do this by adding &page=2 to the query, then &page=3 and so on.
 
@@ -74,7 +74,7 @@ We will return 100 files per page. If the result set has more than 100 invited u
 Invite New User
 ---------------
 
-* `POST invited_users` will create a new invited user.
+* `POST /invited_users.json` will create a new invited user.
 
 The Content-Type header should be `application/json`
 

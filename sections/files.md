@@ -91,7 +91,7 @@ Example (url encoded):
 Get File
 --------
 
-* `GET /files/1234` returns the specified file.
+* `GET /files/1234.json` returns the specified file, where 1234 is the unique of the file.
 
 ```json
   {
@@ -133,7 +133,7 @@ Get File
 Upload File From URL
 -----------
 
-* `POST /files` returns `200 OK` if the file was uploaded successfully. 
+* `POST /files.json` returns `201 OK` if the file was uploaded successfully. 
 
 We will respond with information about the file uploaded in the response body.  A filename, a folder_id for the folder the file will be uploaded to, a file_type_id, terms, and a url where the file will be downloaded from are required.  Metadata terms should be in the form of a hash, with a term_id and a value.  If you don't want to set any metadata on upload terms can be nil.
 

@@ -46,7 +46,7 @@ We will return 100 files per page. If the result set has more than 100 folder li
 Get Folder Link
 ---------------
 
-* `GET folder_links/555.json` will return a folder link.  555 represents the id of the folder_link you want to return.
+* `GET folder_links/555.json` will return a folder link. 555 represents the id of the folder_link you want to return.
 
 ```json
 {

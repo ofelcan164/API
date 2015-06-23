@@ -5,7 +5,7 @@ Allows you to retrieve users.
 
 Get Users
 ----------
-* `GET /users` will return `200 OK` and a list of users belonging to your account.
+* `GET /users.json` will return `200 OK` and a list of users belonging to your account.
 
 ```json
 [
