@@ -128,7 +128,6 @@ All Webhook POSTs will contain the following information in JSON format:
 
 ```json
 {
-{
     "event": {
             "resource":"file",
             "action":"added_to_folder",
@@ -136,7 +135,7 @@ All Webhook POSTs will contain the following information in JSON format:
             "actor_id":405,
             "recipient_id":11285
     },
-    "data": { ...data about the resource being monitoring... }
+    "data": { "id":1234 }
 }
 ```
 
