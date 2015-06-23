@@ -1,7 +1,7 @@
 The Image Relay API
 ===================
 
-The Image Relay API allows IR users to access many Image Relay features through a JSON RESTful web interface.
+The [Image Relay](https://imagerelay.com) API allows IR users to access many Image Relay features through a JSON RESTful web interface.
 
 Making a Request
 ----------------
@@ -34,7 +34,7 @@ Identify your app
 You must include a `User-Agent` header with the name of your application and a link to it or your email address so 
 we can get in touch in case you're doing something wrongor something great. Here's an example:
 
-    User-Agent: Freshbooks (http://freshbooks.com)
+    User-Agent: MyCompany (http://www.mycompany.com)
 
 If you don't supply this header, you will get a `400 Bad Request`.
 
@@ -46,24 +46,29 @@ You can perform up to 500 requests per 10 second period from the same IP address
 APIs (this list will be updated as we add more features to our API)
 -------------------------------------------------------------------
 
-* [Files](https://github.com/imagerelay/api/blob/master/sections/files.md)
-* [Folders](https://github.com/imagerelay/api/blob/master/sections/folders.md)
-* [Folder Links](https://github.com/imagerelay/api/blob/master/sections/folder_links.md)
-* [Quick Links](https://github.com/imagerelay/api/blob/master/sections/quick_links.md)
 * [File Types](https://github.com/imagerelay/api/blob/master/sections/file_types.md)
-* [Uploads](https://github.com/imagerelay/api/blob/master/sections/uploads.md)
-* [Users](https://github.com/imagerelay/api/blob/master/sections/users.md)
+* [Files](https://github.com/imagerelay/api/blob/master/sections/files.md)
+* [Folder Links](https://github.com/imagerelay/api/blob/master/sections/folder_links.md)
+* [Folders](https://github.com/imagerelay/api/blob/master/sections/folders.md)
 * [Invited Users](https://github.com/imagerelay/api/blob/master/sections/invited_users.md)
+* [Keyword Sets/Keywords](https://github.com/imagerelay/api/blob/master/sections/keywording.md)
 * [Permissions](https://github.com/imagerelay/api/blob/master/sections/permissions.md)
+* [Quick Links](https://github.com/imagerelay/api/blob/master/sections/quick_links.md)
+* [Uploads](https://github.com/imagerelay/api/blob/master/sections/uploads.md)
 * [Upload Links](https://github.com/imagerelay/api/blob/master/sections/upload_links.md)
-* [Keywording](https://github.com/imagerelay/api/blob/master/sections/keywording.md)
-
-Thanks
-------
-
-These API documents have been modeled closely after those provided by [37signals](http://37signals.com) for their [API](https://github.com/37signals/bcx-api/blob/master/README.md).
+* [Users](https://github.com/imagerelay/api/blob/master/sections/users.md)
+* [Webhooks](https://github.com/imagerelay/api/blob/master/sections/webhooks.md)
 
 Errors
 ------
+The actions you can access in the API are dependant upon the permission levels assigned to your Image Relay account.
+For instance, not all users are permitted to upload files or create folders, or see a list of users. If you find yourself
+receiving "401 Unauthorized" errors, please confirm your permission level with your Image Relay Administrator.
+ 
 If you find a typo or an error in the documentation, we welcome pull requests.
+
+If you have questions or trouble implementing the API, you can reach out to support@imagerelay.com and we'll help you out.
+Need general help with Image Relay? Checkout our [online support center](http://support.imagerelay.com).
+
+
 
