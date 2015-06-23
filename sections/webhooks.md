@@ -41,8 +41,8 @@ the event details back to you at the URL specified in the webhook.
 ```json
 {
   "resource": "file",
-  "action": 'created',
-  "url": 'https://example.com'
+  "action": "created",
+  "url": "https://example.com"
 }
 ```
 
