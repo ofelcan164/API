@@ -43,7 +43,7 @@ Rate limiting
 
 You can perform up to 500 requests per 10 second period from the same IP address for the same account. If you exceed this limit, you'll get a [429 Too Many Requests](http://tools.ietf.org/html/draft-nottingham-http-new-status-02#section-4) response for subsequent requests. Check the `Retry-After` header to see how many seconds to wait before retrying the request.
 
-APIs (this list will be updated as we add more features to our API)
+APIs
 -------------------------------------------------------------------
 
 * [File Types](https://github.com/imagerelay/api/blob/master/sections/file_types.md)
@@ -58,6 +58,10 @@ APIs (this list will be updated as we add more features to our API)
 * [Upload Links](https://github.com/imagerelay/api/blob/master/sections/upload_links.md)
 * [Users](https://github.com/imagerelay/api/blob/master/sections/users.md)
 * [Webhooks](https://github.com/imagerelay/api/blob/master/sections/webhooks.md)
+
+Libraries
+---------
+* [Image Relay PHP Library](https://github.com/imagerelay/imagerelay-php) 
 
 Errors
 ------
