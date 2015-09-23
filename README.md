@@ -76,7 +76,7 @@ Need general help with Image Relay? Checkout our [online support center](http://
 
 Want to Chat?
 -------------
-Need help? Check out our developers slack channel.  <script async defer src="https://slack.yourdomain.com/slackin.js"></script>
+Need help, have questions? Check out our developers [slack channel](https://imagerelay-dev-slackin.herokuapp.com/).
 
 
 
