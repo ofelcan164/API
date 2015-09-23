@@ -74,5 +74,9 @@ If you find a typo or an error in the documentation, we welcome pull requests.
 If you have questions or trouble implementing the API, you can reach out to support@imagerelay.com and we'll help you out.
 Need general help with Image Relay? Checkout our [online support center](http://support.imagerelay.com).
 
+Want to Chat?
+-------------
+Need help? Check out our developers slack channel.  <script async defer src="https://slack.yourdomain.com/slackin.js"></script>
+
 
 
