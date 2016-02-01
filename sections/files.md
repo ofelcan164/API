@@ -201,5 +201,27 @@ We will return a representation of the uploaded file.
 }
 ```
 
+Move File
+-------------
+
+* `POST /files/555/move` will move the file to the specified folder ids, removing it from any other folders.
+
+```json
+{
+  "folder_ids": [ 123456, 8877899 ]
+}
+```
+
+Copy File
+-------------
+
+* `POST /files/555/copy` will copy the file to the specified folder ids, leaving it in any existing folders.
+
+```json
+{
+  "folder_ids": [ 123456, 8877899 ]
+}
+```
+
 
 
