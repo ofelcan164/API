@@ -99,4 +99,6 @@ Delete Folder
 
 * `DELETE /folders/555.json` will delete the folder with the id passed in the URL.
 
+This will return `204 No Content` if successful.
+
 
