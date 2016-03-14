@@ -84,7 +84,7 @@ This will return `201 Created`, if successful.
 Update Folder
 -------------
 
-* `PUT /folders/555.json` will update the project from the parameters passed in.
+* `PUT /folders/555.json` will update the folder from the parameters passed in.
 
 ```json
 {
@@ -93,4 +93,10 @@ Update Folder
 ```
 
 This will return `200 OK` if the update was successful, along with a JSON representation of the folder.
+
+Delete Folder
+-------------
+
+* `DELETE /folders/555.json` will delete the folder with the id passed in the URL.
+
 
