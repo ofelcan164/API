@@ -219,7 +219,7 @@ Parameters:
     },
     {
       "term_id": 5678,
-      "value", "All rights reserved"
+      "value": "All rights reserved"
       
     }
   ],
