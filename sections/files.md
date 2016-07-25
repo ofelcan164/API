@@ -55,6 +55,17 @@ Example (url encoded):
           "term_id":70500,
           "value":" "
         }
+      ],
+      "tags":
+      [
+        {
+          "tag_id":12645,
+          "value":"Sports"
+        },
+        {
+          "tag_id":765987,
+          "value":"Marketing"
+        }
       ]
   },
   {
@@ -88,6 +99,17 @@ Example (url encoded):
         {
           "term_id":70496,
           "value":" "
+        }
+      ],
+    "tags":
+      [
+        {
+          "tag_id":12645,
+          "value":"Sports"
+        },
+        {
+          "tag_id":765987,
+          "value":"Marketing"
         }
       ]
   }
@@ -132,7 +154,19 @@ Get File
           "term_id":70496,
           "value":" "
         }
+      ],
+    "tags":
+      [
+        {
+          "tag_id":12645,
+          "value":"Sports"
+        },
+        {
+          "tag_id":765987,
+          "value":"Marketing"
+        }
       ]
+      
   }
 ```
 
