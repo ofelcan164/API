@@ -41,7 +41,7 @@ If you don't supply this header, you will get a `400 Bad Request`.
 Rate limiting
 -------------
 
-You can perform up to 500 requests per 10 second period from the same IP address for the same account. If you exceed this limit, you'll get a [429 Too Many Requests](http://tools.ietf.org/html/draft-nottingham-http-new-status-02#section-4) response for subsequent requests. Check the `Retry-After` header to see how many seconds to wait before retrying the request.
+You can perform up to 5 request/second from the same IP address. If you exceed this limit, you'll get a [429 Too Many Requests](http://tools.ietf.org/html/draft-nottingham-http-new-status-02#section-4) response for subsequent requests.
 
 APIs
 -------------------------------------------------------------------
