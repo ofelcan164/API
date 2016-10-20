@@ -267,8 +267,7 @@ Update File Tags
 * `POST /files/555/tags` will update the metadata keyword terms of the file specified.
 
 Parameters:
-  terms - an array of term ids and values to update. 
-  overwrite - if true, it will overwrite the entire value for that term, if false, it will append the value to any existing metadata already present in that term field.
+  tags - contains a list of tag ids to both add and remove from the asset. 
 
 ```json
 {
