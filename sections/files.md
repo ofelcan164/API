@@ -261,6 +261,25 @@ Parameters:
 }
 ```
 
+Update File Tags
+-------------
+
+* `POST /files/555/tags` will update the metadata keyword terms of the file specified.
+
+Parameters:
+  terms - an array of term ids and values to update. 
+  overwrite - if true, it will overwrite the entire value for that term, if false, it will append the value to any existing metadata already present in that term field.
+
+```json
+{
+  "tags": 
+    { 
+      "add_ids": [ 1234, 4566 ],
+      "remove_ids": [ 65489, 78976 ]
+    }
+}
+```
+
 Delete File
 -------------
 
