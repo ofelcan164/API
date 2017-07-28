@@ -321,6 +321,6 @@ curl --data-binary @myfile.jpg \
        -u user:pass \
        -H 'Content-Type: application/octet-stream' \
        -H 'User-Agent: IR (example@imagerelay.com)' \
-       https://api.imagerelay.com/api/v2/files/555/versions.json
+       https://api.imagerelay.com/api/v2/files/555/version.json
 ```
 
