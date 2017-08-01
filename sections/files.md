@@ -308,3 +308,19 @@ Copy File
   "folder_ids": [ 123456, 8877899 ]
 }
 ```
+
+Update Version
+---------------
+* `POST /files/555/version` will update the underlying file for the file specified with the id (in example id=555).
+ The request body should be the binary data of the new file. Make sure to set the Content-Length header. The Content-Type header should be application/octet-stream, the maxium file size supported for this update is 1 GB. 
+ 
+ With `curl`, here is an example:
+
+```shell
+curl --data-binary @myfile.jpg \
+       -u user:pass \
+       -H 'Content-Type: application/octet-stream' \
+       -H 'User-Agent: IR (example@imagerelay.com)' \
+       https://api.imagerelay.com/api/v2/files/555/version.json
+```
+
