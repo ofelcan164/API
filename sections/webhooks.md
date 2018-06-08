@@ -48,6 +48,28 @@ the event details back to you at the URL specified in the webhook.
 
 This will return `201 Created`, if successful.
 
+Update Webhook
+--------------
+
+
+* `PUT /webhooks/19.json` will update a webhook.
+```json
+{
+	"state":"paused"
+}
+```
+
+Will return `200 OK` and a representation of the keyword set. Valid values for "state" are: normal, error, paused
+
+```json
+{
+  "resource": "file",
+  "action": "created",
+  "url": "https://example.com",
+  "state": "paused"
+}
+```
+
 Delete Webhook
 --------------
 
