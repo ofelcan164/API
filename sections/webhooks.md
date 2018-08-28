@@ -48,7 +48,8 @@ the event details back to you at the URL specified in the webhook.
 {
   "resource": "file",
   "action": "created",
-  "url": "https://example.com"
+  "url": "https://example.com",
+  "notification_emails": null
 }
 ```
 
