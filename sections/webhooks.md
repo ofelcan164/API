@@ -16,26 +16,24 @@ Get Webhooks
 
 ```json
 [
-    {
-        "user_id":405,
-        "resource":"file",
-        "action":"created",
-        "url":"http://example.com",
-        "created_at":"2015-06-18T19:18:35Z",
-        "state": "normal",
-        "notification_emails": [
-          "email@example.com"
-        ]
-    },
-    {
-        "user_id":405,
-        "resource":"file",
-        "action":"expiration_date_set",
-        "url":"http://example.com",
-        "created_at":"2015-06-18T19:18:35Z",
-	      "state": "paused",
-	      "notification_emails": null
-    }
+  {
+    "user_id":405,
+    "resource":"file",
+    "action":"created",
+    "url":"http://example.com",
+    "created_at":"2015-06-18T19:18:35Z",
+    "state": "normal",
+    "notification_emails": ["email@example.com"]
+  },
+  {
+    "user_id":405,
+    "resource":"file",
+    "action":"expiration_date_set",
+    "url":"http://example.com",
+    "created_at":"2015-06-18T19:18:35Z",
+    "state": "paused",
+    "notification_emails": null
+  }
 ]
 ```
 
