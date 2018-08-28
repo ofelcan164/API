@@ -72,7 +72,8 @@ Will return `200 OK` and a representation of the keyword set. Valid values for "
   "resource": "file",
   "action": "created",
   "url": "https://example.com",
-  "state": "paused"
+  "state": "paused",
+  "notification_emails": null
 }
 ```
 
