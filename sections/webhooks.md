@@ -4,6 +4,10 @@ Webhooks
 Webhooks allow you to receive notifications at an end-point of your choice for a myriad of events in Image Relay. 
 Get notified when a file is uploaded, a new user is added, a folder is deleted...
 
+When there is a problem with a webhook, Image Relay will send an email to the user that created the webhook.
+The API also supports optionally adding additional notification_emails to the webhook if you wish to 
+alert other email addresses if issues arise.
+
 Get Webhooks
 -----------
 
@@ -12,20 +16,24 @@ Get Webhooks
 
 ```json
 [
-    {
-        "user_id":405,
-        "resource":"file",
-        "action":"created",
-        "url":"http://example.com",
-        "created_at":"2015-06-18T19:18:35Z"
-    },
-    {
-        "user_id":405,
-        "resource":"file",
-        "action":"expiration_date_set",
-        "url":"http://example.com",
-        "created_at":"2015-06-18T19:18:35Z"
-    }
+  {
+    "user_id":405,
+    "resource":"file",
+    "action":"created",
+    "url":"http://example.com",
+    "created_at":"2015-06-18T19:18:35Z",
+    "state": "normal",
+    "notification_emails": ["email@example.com"]
+  },
+  {
+    "user_id":405,
+    "resource":"file",
+    "action":"expiration_date_set",
+    "url":"http://example.com",
+    "created_at":"2015-06-18T19:18:35Z",
+    "state": "paused",
+    "notification_emails": null
+  }
 ]
 ```
 
@@ -42,7 +50,11 @@ the event details back to you at the URL specified in the webhook.
 {
   "resource": "file",
   "action": "created",
-  "url": "https://example.com"
+  "url": "https://example.com",
+  "notification_emails": [
+    "email1@example.com",
+    "email2@example.com"
+  ]
 }
 ```
 
@@ -66,7 +78,8 @@ Will return `200 OK` and a representation of the keyword set. Valid values for "
   "resource": "file",
   "action": "created",
   "url": "https://example.com",
-  "state": "paused"
+  "state": "paused",
+  "notification_emails": null
 }
 ```
 
