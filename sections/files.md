@@ -322,6 +322,8 @@ Duplicate File
 
  You can choose to copy all metadata, tags/keywords, and IPTC fields or not. Here's an example JSON body
  
+ If you choose to not copy metadata (`"should_copy_metadata": false`) - the copied file will get the destination folder's default asset profile
+ 
  ```json
  {
 	"folder_id": 123456,
