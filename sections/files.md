@@ -301,7 +301,7 @@ Move File
 Synced File / Copy
 -------------
 
-* `POST /files/555/synced_file` or `POST /files/555/copy` will create a synced file to the specified folder ids, leaving it in any existing folders.
+* `POST /files/555/synced_file` or `POST /files/555/copy` will create a synced file within the specified folder ids, leaving it in any existing folders.
 
  Synced Files let you have the exact same file in multiple folders. When you make a change to any Synced File, that change applies to all instances of the Synced File.
  
@@ -328,7 +328,7 @@ Duplicate File
 	"should_copy_metadata": false
  }
  ```
- *Please note: there can only be a single destination `folder_id`*
+ *Please note: there can only be a single destination `folder_id`, not an array of ids*
 
 Update Version
 ---------------
