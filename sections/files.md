@@ -305,9 +305,9 @@ Synced File / Copy
 
  Synced Files let you have the exact same file in multiple folders. When you make a change to any Synced File, that change applies to all instances of the Synced File.
  
- We will soon be removing the copy endpoint so please start using /synced_file in your integrations.
+ We will be removing the `/files/555/copy` endpoint soon - please start using /synced_file in your integrations.
 
- JSON body should contain an array of folder ids
+ The JSON body should contain an array of folder ids
 
 ```json
 {
