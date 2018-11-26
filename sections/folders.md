@@ -52,6 +52,50 @@ calling `GET /folders.json`
 }
 ```
 
+Get a folder's children, paginated, 100 per page
+ 
+ * `GET /folders/555/children?page=1` will return a paginated set of children folders along with pagination information. 
+ 
+ **Please note the unpaginated version of this endpoint will be deprecated in the near future so please use this version if building a new integration**
+
+```json
+{
+    "folders": [
+      {
+        "asset_count":1,
+        "child_count":0,
+        "created_on":"2012-06-19T08:41:19Z",
+        "id":11136,"metagroup_id":null,
+        "name":"McCadam Logos",
+        "parent_id":6527,"
+        updated_on":"2012-07-23T15:39:16Z",
+        "user_id":405
+      },
+      {
+        "asset_count":47,
+        "child_count":1,"
+        created_on":"2012-10-09T12:09:25Z",
+        "id":11150,
+        "metagroup_id":null,
+        "name":"Product Photography",
+        "parent_id":6527,
+        "updated_on":"2012-10-09T12:09:25Z",
+        "user_id":405
+      }
+    ],
+    "pagination": {
+        "current": 1,
+        "previous": null,
+        "next": 2,
+        "per_page": 100,
+        "pages": 2,
+        "count": 155,
+        "prev_page_path": null,
+        "next_page_path": "/api/v2/folders/555/children?page=2"
+    }
+}
+```
+
 Get Folder
 ----------
 
