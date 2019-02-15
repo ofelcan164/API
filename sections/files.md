@@ -298,16 +298,39 @@ Move File
 }
 ```
 
-Copy File
+Synced File / Copy
 -------------
 
-* `POST /files/555/copy` will copy the file to the specified folder ids, leaving it in any existing folders.
+* `POST /files/555/synced_file` or `POST /files/555/copy` will create a synced file within the specified folder ids, leaving it in any existing folders.
+
+ Synced Files let you have the exact same file in multiple folders. When you make a change to any Synced File, that change applies to all instances of the Synced File.
+ 
+ We will be removing the `/files/555/copy` endpoint soon - please start using /synced_file in your integrations.
+
+ The JSON body should contain an array of folder ids
 
 ```json
 {
   "folder_ids": [ 123456, 8877899 ]
 }
 ```
+
+Duplicate File
+-------------
+
+* `POST /files/555/duplicate` will create a duplicate of the file in a single destination folder. This duplicate behaves as a completely new file and is completely separate from the original file.
+
+ You can choose to copy all metadata, tags/keywords, and IPTC fields or not. Here's an example JSON body
+ 
+ If you choose to not copy metadata (`"should_copy_metadata": false`) - the copied file will get the destination folder's default asset profile
+ 
+ ```json
+ {
+	"folder_id": 123456,
+	"should_copy_metadata": false
+ }
+ ```
+ *Please note: there can only be a single destination `folder_id`, not an array of ids*
 
 Update Version
 ---------------
