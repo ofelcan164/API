@@ -68,13 +68,17 @@ Create a File Chunk
 
 * `post /upload_jobs/384/files/395/chunks/1.json` uploads a file chunk. The last number is the chunk number. This is used,
 to determine the order to reassemble the chunks on the server. So the next chunk would be `post /upload_jobs/384/files/395/chunks/2.json`.
-The request body should be the binary data of
-the chunk. Make sure to set the Content-Length header. The Content-Type header should be `application/octet-stream`
+The request body should be the binary data of the chunk. Make sure to set the Content-Length header. The Content-Type header should be `application/octet-stream`
+
 Chunk size is up to you, up to 5 MB in size. If you attempt to upload a chunk larger than 5 MB you'll receive an error.
 
-If the chunk upload is successful, the call will return `201 Created` The application will use the file sizes to determine
-when all the chunks for each file have been uploaded. Once all files for an upload job have been uploaded, an asset will
-be created automatically on Image Relay.
+POST requests to the chunk endpoint will return the following response codes:
+
+* 204: File upload chunk processed successfully, waiting for more file chunks for the complete file upload.
+* 201: File upload chunk processed successfully and the file upload is complete
+* 422: File upload chunk failed, please ensure your file chunk is 5MB or less and retry.
+
+Once all files for an upload job have been uploaded, an asset will be created automatically on Image Relay.
 
 With `curl`, here is an example:
 
