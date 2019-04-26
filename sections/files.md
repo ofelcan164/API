@@ -34,7 +34,7 @@ Example urls (url encoded):
 
 `GET /folders/555/files.json?file_type_id=149`
 
-`GET /folders/555/files.json?file_type_id=149&update_after=2014-06-10`
+`GET /folders/555/files.json?file_type_id=149&updated_after=2014-06-10`
 
 ```json
 [
