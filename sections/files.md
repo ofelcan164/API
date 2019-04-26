@@ -16,10 +16,27 @@ You may limit files returned by keyword using a query parameter, for example:
 To search all the files in the archive by keyword via the API, obtain the root folder id of the archive via API (`GET /folders/root.json`), this ID will never change, then use this call:
 `/api/v2/folders/{{ replace with root folder id}}/files.json?query=dogs&recursive=true`
 
-Additionally, there is a filter you can add as a parameter, upload_after, which will filter the files returned to only those tht have been uploaded after that date. The format of the parameter should be: "YYYY-MM-DD HH:MM:SS GMT+00:00". You can leave off the timezone information if you are using UTC time, you can leave off time if you want it filtered from the beginning of the day specified (e.g. YYYY-MM-DD).
+Additionally, there is a filter you can add as a parameter, upload_after, which will filter the files returned to only those that have been uploaded after that date. The format of the parameter should be: "YYYY-MM-DD HH:MM:SS GMT+00:00". You can leave off the timezone information if you are using UTC time, you can leave off time if you want it filtered from the beginning of the day specified (e.g. YYYY-MM-DD).
 
-Example (url encoded):
+The following filters/query parameters can be used when requesting a file's folders:
+
+`upload_after` will filter the files returned to only those that have been *uploaded* after that date. The format of the parameter should be: "YYYY-MM-DD HH:MM:SS GMT+00:00". You can leave off the timezone information if you are using UTC time, you can leave off time if you want files filtered from the beginning of the day specified (e.g. YYYY-MM-DD)
+
+`updated_after` will filter the files returned to only those that have been updated/modified after that date. The date/time should be formatted the same as upload_after.
+
+`file_type_id` will filter the files returned to only those that have the asset profile/file type id of the supplied parameter
+
+*Note: The above filter parameters can be combined*
+
+Example urls (url encoded):
+
 `GET /folders/555/files.json?uploaded_after=2014-06-10%2001:00:00%20GML%2B00:00`
+
+`GET /folders/555/files.json?update_after=2014-06-10`
+
+`GET /folders/555/files.json?file_type_id=149`
+
+`GET /folders/555/files.json?file_type_id=149&update_after=2014-06-10`
 
 ```json
 [
