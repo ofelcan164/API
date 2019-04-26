@@ -18,7 +18,7 @@ To search all the files in the archive by keyword via the API, obtain the root f
 
 The following filters/query parameters can be used when requesting a file's folders:
 
-`upload_after` will filter the files returned to only those that have been *uploaded* after that date. The format of the parameter should be: "YYYY-MM-DD HH:MM:SS GMT+00:00". You can leave off the timezone information if you are using UTC time, you can leave off time if you want files filtered from the beginning of the day specified (e.g. YYYY-MM-DD)
+`uploaded_after` will filter the files returned to only those that have been *uploaded* after that date. The format of the parameter should be: "YYYY-MM-DD HH:MM:SS GMT+00:00". You can leave off the timezone information if you are using UTC time, you can leave off time if you want files filtered from the beginning of the day specified (e.g. YYYY-MM-DD)
 
 `updated_after` will filter the files returned to only those that have been updated/modified after that date. The date/time should be formatted the same as upload_after.
 
