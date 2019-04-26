@@ -30,7 +30,7 @@ Example urls (url encoded):
 
 `GET /folders/555/files.json?uploaded_after=2014-06-10%2001:00:00%20GML%2B00:00`
 
-`GET /folders/555/files.json?update_after=2014-06-10`
+`GET /folders/555/files.json?updated_after=2014-06-10`
 
 `GET /folders/555/files.json?file_type_id=149`
 
