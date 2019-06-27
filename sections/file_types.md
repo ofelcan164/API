@@ -23,6 +23,8 @@ Get File Types
           "position":1,
           "meta_name":"",
           "display_in_download":null,
+          "field_type": "text_field",
+          "metaterm_options": [],
           "created_on":"2012-06-08T12:44:38Z",
           "updated_on":"2012-06-08T12:44:38Z",
           "id":1378
@@ -32,6 +34,8 @@ Get File Types
            "position":2,
            "meta_name":"",
            "display_in_download":null,
+           "field_type": "text_field",
+           "metaterm_options": [],
            "created_on":"2012-06-08T12:44:38Z",
            "updated_on":"2012-06-08T12:44:38Z",
            "id":1379
@@ -51,6 +55,8 @@ Get File Types
           "position":1,
           "meta_name":"Title",
           "display_in_download":null,
+          "field_type": "text_field",
+          "metaterm_options": [],
           "created_on":"2009-05-06T10:48:00Z",
           "updated_on":"2009-05-06T10:48:00Z","id":1179
         }
@@ -78,6 +84,8 @@ Get File Type
        "position":1,
        "meta_name":"",
        "display_in_download":null,
+       "field_type": "text_field",
+       "metaterm_options": [],
        "created_on":"2012-06-08T12:44:38Z",
        "updated_on":"2012-06-08T12:44:38Z","id":1378
      },
@@ -85,10 +93,59 @@ Get File Type
        "name":"Copyright",
        "position":2,"meta_name":"",
        "display_in_download":null,
+       "field_type": "text_field",
+       "metaterm_options": [],
        "created_on":"2012-06-08T12:44:38Z",
        "updated_on":"2012-06-08T12:44:38Z",
        "id":1379
      }
    ]
+}
+```
+
+Field Types and Metaterm Options
+-------------
+
+The `field_type` attribute will be one of either "text_field" or "single_select_field". When it is set to "single_select_field" the `metaterm_options` array  will be populated with available choices. When it is set to "text_field" any input is acceptable and the `metaterm_options` array will be empty.
+
+```json
+{
+  "name": "Rock Stars",
+  "description": null,
+  "created_on": "2019-06-25T18:56:14.000Z",
+  "updated_on": "2019-06-26T21:40:26.000Z",
+  "id": 8,
+  "terms": [
+     {
+          "name": "Favorite Rolling Stones Member",
+          "position": 1,
+          "meta_name": "",
+          "display_in_download": null,
+          "field_type": "single_select_field",
+          "metaterm_options": [
+              {
+                  "id": 6,
+                  "metaterm_id": 48,
+                  "value": "Keith Richards",
+                  "position": 1,
+                  "created_at": "2019-06-25T18:57:44.000Z",
+                  "updated_at": "2019-06-25T18:57:44.000Z",
+                  "deleted_at": 0
+              },
+              {
+                  "id": 7,
+                  "metaterm_id": 49,
+                  "value": "Mick Jagger",
+                  "position": 2,
+                  "created_at": "2019-06-25T18:58:44.000Z",
+                  "updated_at": "2019-06-25T18:58:44.000Z",
+                  "deleted_at": 0
+              }
+          ],
+          "created_on": "2019-06-25T18:57:44.000Z",
+          "updated_on": "2019-06-25T19:33:45.000Z",
+          "id": 48
+      }
+    ]
 }
 ```
