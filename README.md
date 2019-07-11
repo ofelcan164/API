@@ -46,6 +46,7 @@ You can perform up to 5 request/second from the same IP address. If you exceed t
 APIs
 -------------------------------------------------------------------
 
+* [Collections](https://github.com/imagerelay/api/blob/master/sections/collections.md)
 * [File Types](https://github.com/imagerelay/api/blob/master/sections/file_types.md)
 * [Files](https://github.com/imagerelay/api/blob/master/sections/files.md)
 * [Folder Links](https://github.com/imagerelay/api/blob/master/sections/folder_links.md)
