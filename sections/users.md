@@ -109,3 +109,35 @@ Get a user's Quick Links
   {...}
 ]
 ```
+
+Create SSO User (if you have SSO setup)
+--------------
+
+* `POST /users/sso_user.json` will create a new SSO user.
+
+For SSO-enabled accounts, you may want to create SSO users in lieu of turning on JIT user creation. Make sure the email address in the JSON matches the user's email in your user database, otherwise they won't be able to login with SSO. The POST body JSON should be the following:
+
+```json
+{
+  "first_name": "FirstName",
+  "last_name": "LastName",
+  "email": "name@company.com",
+  "company": "Your Company",
+  "role_id": 42
+}
+```
+
+This will return `201 Created`, if successful.
+
+Update User's Role
+--------------
+
+
+* `PUT /users/42.json` will update a user's role.
+```json
+{
+	"role_id": "2187"
+}
+```
+
+Will return a `200 OK` response and a JSON representation of the user.
