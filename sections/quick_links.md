@@ -67,6 +67,7 @@ Get Quick Link
 
 Create Quick Link
 -----------------
+Quick links can be used to generate a url to download/embed an asset, or to download/embed a converted (and or resized) version of the asset in jpg or png format.
 
 * `POST /quick_links.json` will create a new quick link.
 
@@ -84,7 +85,17 @@ Create Quick Link
 }
 ```
 
-This will return `201 Created`, if successful, as well as a representation of the quick link.
+Required parameters are `purpose` and `asset_id`. All other parameters are optional. 
+
+If you are using the quick link URL to download the asset then do not include the `disposition` parameter in the post body.
+
+If you are using the quick link to render the image inline in a web browser or using it in an `<img>` tag, for example, then include `"disposition": "inline"` in the post body.
+
+If you want to downsize or convert the asset to a jpg or png then include the `max_width` and `max_height` parameters in addition to the `format` parameter in the post body. Accepted `formats` are `jpg` and `png`. 
+
+Note: we can only downsize images, if you post dimensions that are larger than the asset's dimensions - the quick link will be sized to the asset's dimensions.
+
+This endpoint returns `201 Created`, if successful, as well as a representation of the quick link.
 
 ```json
 {
@@ -99,10 +110,7 @@ This will return `201 Created`, if successful, as well as a representation of th
 }
 ```
 
-Required parameters are purpose and asset_id. All other parameters are optional. If the quick link "processing" flag is
-true, then then the image hasn't finished resizing yet. It will not be ready to download until "processing" is false. You can
-poll every few seconds (we recommend every 5 seconds), to see if the quick link is ready for viewing yet.
-
+If the quick link "processing" flag is true, then the image hasn't finished resizing or converting yet. It will not be ready to use until "processing" is false. You can poll every few seconds (we recommend every 5 seconds), to see if the quick link is ready for viewing yet.
 
 Delete Quick Link
 -----------------
