@@ -76,7 +76,6 @@ Need general help with Image Relay? Checkout our [online support center](http://
 
 Want to Chat?
 -------------
-Need help, have questions? Check out our developers [slack channel](https://ir-dev.slack.com/)
+Need help, have questions? Visit our API discussion Slack channel here: [slack channel](https://ir-dev.slack.com/)
 
-
-
+If you haven't already created an account, [you can do so via this link](https://imagerelay-dev-slackin.herokuapp.com/)
