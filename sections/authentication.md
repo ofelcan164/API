@@ -18,17 +18,17 @@ You're free to use your own username & password to access your own account and t
 OAuth 2
 -------
 
-1. Register your application with Image Relay. You need an Image Relay account to do this. Once logged in to IR, click on "My Account" in the upper right corner. Select "Developers" from the menu on the left. You'll need to provide your application name and a callback URI.
+1. Register your application with Image Relay. You need an Image Relay account to do this. Once logged in to IR, click on "My Account" in the upper right corner. Select "Developers" from the menu on the left. You'll need to provide your application name and a callback URI. Please note this is not available on Free Trials.
 
-2. Redirect the user to our authorization endpoint, https://launch.imagerelay.com/oauth/authorize
+2. To begin the OAuth process visit our authorization endpoint in a web browser, https://launch.imagerelay.com/oauth/authorize. An example of the full constructed URL is as follows
 
-        https://launch.imagerelay.com/oauth/authorize?response_type=code&client_id=tl0qsa4bywailemgtcxi7t4aw7ev7pk&redirect_uri=http%3A%2F%2Fdev.lvh.me%3A3001%2Fauth%2Fimagerelay%2Fcallback&state=75eb9a69287f8e2d7836fe1755d719216d02a9a44843dcb7
+        https://launch.imagerelay.com/oauth/authorize?response_type=code&client_id=your_client_id&redirect_uri=https://yourcallbackurl.com&state=randomstring
 
-3. We authenticate the user's Image Relay account, and ask if they want to grant your app access to their account.
+- Note: Your callback URL must be a webservice that is capable of recieving a request. This request will contain a code that you will need to exchange for an authorization token. 
 
-4. If the user says ok, we redirect the user back to your app with a verification code.
+3. Once you have logged in by using the URL in step 2 you will need to authorize your application. After you click the 'Yes give them access button' you will be redirected
 
-5. Your app then uses the verification code to request an access token. We authenticate your app with the verification code and send you back an access token.
+4. Your app then uses the verification code to request an access token. We authenticate your app with the verification code and send you back an access token.
 
         POST https://launch.imagerelay.com/oauth/token?client_id=your_client_id&redirect_uri=your_callback_uri&client_secret=your_client_secret&code=code_you_received_in_prior_request
 
