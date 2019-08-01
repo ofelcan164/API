@@ -34,7 +34,7 @@ OAuth 2
 
         POST https://launch.imagerelay.com/oauth/token?client_id=your_client_id&redirect_uri=your_callback_uri&client_secret=your_client_secret&code=code_you_received_in_prior_request&grant_type=authorization_code
 
-6. Your app can then use the access token you get back from the call in step 5 to authorize requests to the Image Relay API. You use the access token in the request by setting the Authorization request header:
+6. Your app can now use the access token you got back from the `POST` request in step 5 to make authorized requests to the Image Relay API. You use the access token in the request by setting the Authorization request header:
 
         Authorization: OAuth THE_ACCESS_TOKEN
 
