@@ -18,7 +18,7 @@ You're free to use your own username & password to access your own account and t
 OAuth 2
 -------
 
-1. Register your application with Image Relay. You need an Image Relay account to do this. Once logged in to IR, click on "My Account" in the upper right corner. Select "Developers" from the menu on the left. You'll need to provide your application name and a callback URI.
+1. Register your application with Image Relay. You need an Image Relay account to do this. Once logged in to IR, expand your user profile menu in the top right corner, then select "Account Settings". Select "Developers" from the menu on the left. You'll need to provide your application name and a callback URI.
 
 2. Redirect the user to our authorization endpoint, https://launch.imagerelay.com/oauth/authorize
 
@@ -36,7 +36,9 @@ OAuth 2
 
         Authorization: OAuth THE_ACCESS_TOKEN
 
-Once you get an access token, try it out, you can make a request to get information about the user that just authorized you, by making an authenticated request to `GET https:\\[your company].imagerelay.com\api\v2\users\me.json`
+7. Once you get an access token, try it out, you can make a request to get information about the user that just authorized you, by making an authenticated request to 
+
+		GET https://api.imagerelay.com/api/v2/users/me.json
 
 
 End Points
