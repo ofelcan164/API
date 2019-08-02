@@ -103,12 +103,13 @@ Get Folder
 
 ```json
 {
-  "created_on":"2012-06-19T08:41:19Z",
-  "id":11136,"metagroup_id":null,
+  "id":555,
+  "metagroup_id":null,
   "name":"McCadam Logos",
   "parent_id":6527,
-  "updated_on":"2012-07-23T15:39:16Z",
   "user_id":405
+  "created_on":"2012-06-19T08:41:19Z",
+  "updated_on":"2012-07-23T15:39:16Z",
 }
 ```
 

@@ -48,7 +48,7 @@ Get User
 
 ```json
 {
-    "id": 405,
+    "id": 20,
     "login": "login",
     "first_name": "First Name",
     "last_name": "Last Name",

@@ -20,7 +20,7 @@ OAuth 2
 
 1. Register your application with Image Relay. You need an Image Relay account to do this. Once logged in to IR, click on "My Account" in the upper right corner. Select "Developers" from the menu on the left. You'll need to provide your application name and a callback URI. Please note - you need a __paid__ Image Relay account to do this.
 
- - The callback URI specified in the configuration must point to a web service or something that is capable of receiving a web request. The request will contain a code that you will use to exchange for an authorization token. https://webhook.site/ is a nice alternative if you are setting this up for the first time.
+ - The callback URI specified in the configuration must point to a web service or something that is capable of receiving a web request. The request will contain a code that you will use to exchange for an authorization token. https://webhook.site/ is a nice alternative if you are setting this up for the first time. **NOTE** If you use the webhook site, make sure to copy the URL from the page, _not your address bar_. 
 
 2. To begin the process of obtaining an OAuth token, visit the authorization endpoint in a web browser - https://<YOUR_IR_SUBDOMAIN>.imagerelay.com/oauth/authorize...... Below is an example of the full constructed URL.
 
@@ -28,7 +28,7 @@ OAuth 2
 
 3. Upon visiting that URL you will need to login. Once you are logged in, Click the 'Yes give them access button' to grant access and then you will be redirected to the redirect uri that you specified when configuring the application (it should match the redirect_uri param in the url from step 2)
 
-4. Your web service will have received a request with a `code` parameter and value. 
+4. Your web service will have received a request with a `code` parameter and value. If you're using webhook.site, this will be the first request made on the left hand panel. Select that, then get the ID Token value from the request body.
 
 5. Now use the code that your web service received in step 4 to obtain an access token. You can use CURL to perform this request or some other API testing tool of your choosing.
 
