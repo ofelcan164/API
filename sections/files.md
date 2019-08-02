@@ -197,7 +197,12 @@ We will respond with information about the file uploaded in the response body.  
   "filename":"Example.jpg",
   "folder_id":"12397",
   "file_type_id":"149",
-  "terms":{"term_id":"", "value":""},
+  "terms": [
+    {
+      "term_id": "75206", 
+      "value": "hello world"
+    }
+  ],
   "url":"http://www.imagerelay.com/test_image.jpg"
 }
 ```
@@ -224,7 +229,7 @@ We will return a representation of the uploaded file.
   "terms": [
     {
       "term_id": 75206,
-      "value": ""
+      "value": "hello world"
     },
     {
       "term_id": 75207,
