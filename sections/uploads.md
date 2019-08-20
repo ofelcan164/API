@@ -1,8 +1,8 @@
+
 Uploads
 =======
 
-The upload API is how you can add files to Image Relay. Files are uploaded to Image Relay through the creation of
-upload jobs. And files are sent up in chunks.
+The upload API is how you can add files to Image Relay. Files are uploaded to Image Relay through the creation of upload jobs. And files are sent up in chunks.
 
 Create Upload Job
 -----------------
@@ -91,3 +91,24 @@ curl --data-binary @chunk.bin \
        https://api.imagerelay.com/api/v2/upload_jobs/384/files/395/chunks/1.json
 ```
 
+
+# Additional Asset Meta Data
+
+You may include the optional `expires_on` and `keyword_ids` attributes in the JSON payload when posting to the `/api/v2/upload_jobs.json` endpoint.
+
+The `expires_on` attribute must be a valid date time, otherwise posting chunks will fail. This attribute is used for setting the expiration date of an asset.
+
+The `keyword_ids` attribute must contain an array of valid keyword ids from your account, otherwise posting chunks will fail. This attribute is used for attaching existing keywords to an asset.
+
+*Note: You do not need to include the keyword set id, just the id of the keyword.*
+
+You may create keywords from the API, however, you must have the correct permissions to do so. You may retrieve keyword ids from the API as well. See the Keywording section for more information.
+
+Here is an example curl request that uses the above metadata attributes to create an upload job.
+
+```json
+curl -XPOST -u "yourUsername:yourPassword" "https://api.imagerelay.com/api/v2/upload_jobs.json" \
+  -H 'Content-Type: application/json' \
+  -H 'User-Agent: MyApp (yourName@example.com)' \
+  -d '{ "expires_on": "September 31, 2020", "keyword_ids": [1, 2, 3], "prefix": "", "folder_id":"23","file_type_id":"4", "terms":[], "files": [ {"name": "logo.png", "size": "7387" } ] }'
+```
