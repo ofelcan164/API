@@ -9,7 +9,7 @@ Get Collections
 
 ```json
 [
-	{
+  {
     "id": 12345,
     "name": "My Collection",
     "description": null,
@@ -28,10 +28,10 @@ Get Collections
       "public_views": 1
     },
     "modified_at": "2019-08-14T13:42:18.000Z"
-	},
-	{
+  },
+  {
     ...
-	}
+  }
 ]
 ```
 
@@ -74,6 +74,7 @@ Get collection files
 ---------
 * `GET /collections/12345/files.json` will return `200 OK` with a list of files associated with the collection, 100 per page (`?page=X`).
 
+```json
 [
   {
     "id":2222,
