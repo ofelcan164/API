@@ -41,7 +41,7 @@ If you don't supply this header, you will get a `400 Bad Request`.
 Rate limiting
 -------------
 
-You can perform up to 5 request/second from the same IP address. If you exceed this limit, you'll get a [429 Too Many Requests](http://tools.ietf.org/html/draft-nottingham-http-new-status-02#section-4) response for subsequent requests.
+You can perform up to 5 request/second from the same IP address. If you exceed this limit, you'll get a [429 Too Many Requests](http://tools.ietf.org/html/draft-nottingham-http-new-status-02#section-4) response for subsequent requests. API usage is limited Pro and Enterprise plans, and up to 250,000 requests per month. For increased usage please contact sales@imagerelay.com.
 
 APIs
 -------------------------------------------------------------------
