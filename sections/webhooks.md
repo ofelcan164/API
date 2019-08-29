@@ -40,7 +40,6 @@ Get Webhooks
 Create Webhook
 --------------
 
-
 * `POST /webhooks.json` will create a new webhook.
 
 When you create a webhook, when the event occurs that is specified in the webhook, Image Relay will POST
@@ -71,7 +70,7 @@ Update Webhook
 }
 ```
 
-Will return `200 OK` and a representation of the keyword set. Valid values for "state" are: normal, error, paused
+Will return `200 OK` and a representation of the webhook. Valid values for "state" are: normal, error, paused
 
 ```json
 {
