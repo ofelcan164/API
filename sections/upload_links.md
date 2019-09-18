@@ -59,7 +59,7 @@ Get Upload Link
 Create Upload Link
 -----------------
 
-* `POST /quick_links.json` will create a new upload link.
+* `POST /upload_links.json` will create a new upload link.
 
 ```json
 {
@@ -69,7 +69,7 @@ Create Upload Link
 }
 ```
 
-This will return `201 Created`, if successful, as well as a representation of the quick link.
+This will return `201 Created`, if successful, as well as a representation of the upload link.
 
 ```json
 {
