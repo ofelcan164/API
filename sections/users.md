@@ -67,6 +67,30 @@ Get Users
 ]
 ```
 
+Search Users
+----------
+* `GET /search.json?q=Dorm` will return `200 OK` and a list of users belonging to your account that match the search term ("Dorm" in this example), 100 users per page (`?page=X`). Searches are performed against the fields `first_name`, `last_name`, and `email`.
+
+```json
+[
+	{
+	    "id": 1,
+	    "login": "mldorm",
+	    "first_name": "Michael",
+	    "last_name": "Dorm",
+	    "email": "michael@dorm.com",
+	    "company": "",
+	    "created_on": null,
+	    "updated_on": "2008-04-22T11:54:57Z",
+	    "permission_id": 1,
+	    "custom_field_one": null,
+	    "custom_field_two": null,
+	    "custom_field_three": null,
+	    "custom_field_four": null
+	}
+]
+```
+
 Get User
 ---------
 * `GET /users/20.json` will return `200 OK` and a representation of the specified user.
