@@ -1,7 +1,7 @@
 The Image Relay API
 ===================
 
-The [Image Relay](https://imagerelay.com) API allows IR users to access many Image Relay features through a JSON RESTful web interface.
+The [Image Relay](https://imagerelay.com) API allows IR users to access many Image Relay features through a JSON RESTful web interface. Not all plans have access to the API, please see https://www.imagerelay.com/pricing for details and contact sales@imagerelay.com if you'd like to learn more about adding API access to your plan.
 
 Making a Request
 ----------------
