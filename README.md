@@ -79,4 +79,4 @@ Want to Chat?
 -------------
 Need help, have questions? Visit our API discussion Slack channel here: [slack channel](https://ir-dev.slack.com/)
 
-If you haven't already created an account, [you can do so via this link](https://imagerelay-dev-slackin.herokuapp.com/)
+If you haven't already created an account, [you can do so via this link](https://ir-dev.slack.com/join/shared_invite/zt-dfefct07-S3ZEege2vZmJXbDG1GqS7A)
