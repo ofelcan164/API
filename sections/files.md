@@ -190,7 +190,13 @@ Upload File From URL
 
 * `POST /files.json` returns `201 OK` if the file was uploaded successfully. 
 
-We will respond with information about the file uploaded in the response body.  A filename, a folder_id for the folder the file will be uploaded to, a file_type_id, terms, and a url where the file will be downloaded from are required.  Metadata terms should be in the form of a hash, with a term_id and a value.  If you don't want to set any metadata on upload terms can be nil.
+We will respond with information about the file uploaded in the response body. 
+
+A filename, a folder_id for the folder the file will be uploaded to, a file_type_id, terms, and a url where the file will be downloaded from are required.  
+
+Metadata terms should be in the form of a hash, with a term_id and a value.  If you don't want to set any metadata on upload, terms can be nil. 
+
+Keyword ids are optional and should be an array if included.
 
 ```json
 {
@@ -203,6 +209,7 @@ We will respond with information about the file uploaded in the response body.  
       "value": "hello world"
     }
   ],
+  "keyword_ids": ["1"],
   "url":"http://www.imagerelay.com/test_image.jpg"
 }
 ```
@@ -250,6 +257,12 @@ We will return a representation of the uploaded file.
     {
       "term_id": 75211,
       "value": ""
+    }
+  ],
+  "tags": [
+    {
+      "tag_id": "1",
+      "tag_value": "A Tag"
     }
   ]
 }
