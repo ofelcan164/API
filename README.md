@@ -77,12 +77,13 @@ Need general help with Image Relay? Checkout our [online support center](http://
 
 Status Code Explanations
 -------
-401: Invalid or unauthorized API user – verify your API user is valid and authorized to access the API. Contact support if you'd like assistance.
-403: Missing User-Agent header - all API requests require an User-Agent header, please identify yourself appropriately
-405: Unknown HTTP method - we only support standard HTTP requests, please double-check your request verb
-429: Too many requests (throttling) – slow down your request frequency
-502: Under heavy load – slow down your request frequency
-5xx: Server error - please double-check your JSON payload for formatting errors, data integrity, etc. 
+
+* 401: Invalid or unauthorized API user – verify your API user is valid and authorized to access the API. Contact support if you'd like assistance.
+* 403: Missing User-Agent header - all API requests require an User-Agent header, please identify yourself appropriately
+* 405: Unknown HTTP method - we only support standard HTTP requests, please double-check your request verb
+* 429: Too many requests (throttling) – slow down your request frequency
+* 502: Under heavy load – slow down your request frequency
+* 5xx: Server error - please double-check your JSON payload for formatting errors, data integrity, etc. 
 
 Want to Chat?
 -------------
