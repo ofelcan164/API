@@ -36,7 +36,7 @@ we can get in touch in case you're doing something wrong or something great. Her
 
     User-Agent: MyCompany (http://www.mycompany.com)
 
-If you don't supply this header, you will get a `400 Bad Request`.
+If you don't supply this header, you will get a `403 Forbidden`.
 
 Rate limiting
 -------------
@@ -62,7 +62,7 @@ APIs
 
 Libraries
 ---------
-* [Image Relay PHP Library](https://github.com/imagerelay/imagerelay-php) 
+* [Image Relay PHP Library](https://github.com/imagerelay/imagerelay-php) (deprecated)
 
 Errors
 ------
@@ -70,13 +70,24 @@ The actions you can access in the API are dependant upon the permission levels a
 For instance, not all users are permitted to upload files or create folders, or see a list of users. If you find yourself
 receiving "401 Unauthorized" errors, please confirm your permission level with your Image Relay Administrator.
  
-If you find a typo or an error in the documentation, we welcome pull requests.
+If you find a typo or an error in the documentation, we welcome pull requests. You can also [submit an issue](https://github.com/imagerelay/API/issues) (will require a github account) and we will look into it.
 
 If you have questions or trouble implementing the API, you can reach out to support@imagerelay.com and we'll help you out.
 Need general help with Image Relay? Checkout our [online support center](http://support.imagerelay.com).
 
+Status Code Explanations
+-------
+401: Invalid or unauthorized API user – verify your API user is valid and authorized to access the API. Contact support if you'd like assistance.
+403: Missing User-Agent header - all API requests require an User-Agent header, please identify yourself appropriately
+405: Unknown HTTP method - we only support standard HTTP requests, please double-check your request verb
+429: Too many requests (throttling) – slow down your request frequency
+502: Under heavy load – slow down your request frequency
+5xx: Server error - please double-check your JSON payload for formatting errors, data integrity, etc. 
+
 Want to Chat?
 -------------
-Need help, have questions? Visit our API discussion Slack channel here: [slack channel](https://ir-dev.slack.com/)
+Have you found a bug? Do you have an API feature request? [Submit an issue](https://github.com/imagerelay/API/issues) (requires a github account)
+
+You can also visit our public Slack channel for API assistance? [Visit our API discussion Slack channel here](https://ir-dev.slack.com/) (requires registration, see below)
 
 If you haven't already created an account, [you can do so via this link](https://ir-dev.slack.com/join/shared_invite/zt-dfefct07-S3ZEege2vZmJXbDG1GqS7A)
