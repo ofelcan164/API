@@ -365,8 +365,11 @@ Duplicate File
  ```
  *Please note: there can only be a single destination `folder_id`, not an array of ids*
 
-Update Version
+(DEPRECATED) Update Version 
 ---------------
+
+This endpoint has been deprecated. Use the "Chunked Update Versions" endpoint instead. 
+
 * `POST /files/555/version` will update the underlying file for the file specified with the id (in example id=555).
  The request body should be the binary data of the new file. Make sure to set the Content-Length header. The Content-Type header should be application/octet-stream, the maxium file size supported for this update is 1 GB. 
  
@@ -380,3 +383,92 @@ curl --data-binary @myfile.jpg \
        https://api.imagerelay.com/api/v2/files/555/version.json
 ```
 
+
+Chunked Update Versions
+---------------
+
+To update an asset you will need to upload your file in chunks. Each chunk must be under 5Mb. 
+
+File chunks are grouped together using a v4 UUID. 
+
+### Obtaining a v4 UUID
+
+
+`POST /api/v2/files/555/versions` will return a JSON response with a valid v4 UUID. Use this when when uploading chunks. 
+
+* `{"uuid": "A v4 uuid will be here" }`
+
+_Please note that "versions" is pluralized in the path_
+
+### Uploading Chunks
+
+* `POST /api/v2/files/555/versions/[v4 uuid]/chunk/[chunk number]` to upload a chunk. 
+
+The request body should be the binary data of the file chunk and the Content-Type should be `application/octet-stream`. 
+
+The chunk number in the path is used for ordering chunks when assembling the final file.
+
+You will receive a `204 no content`, http status code when the chunk has uploaded successfully.
+
+### Completing the Upload
+
+After all chunks have uploaded successfully you will have to tell the API that the file is ready for processing. 
+
+* `POST /api/v2/files/555/versions/[v4 uuid]/complete` will queue your file for processing. 
+
+This endpoint requires a JSON object in the request body with the Content-Type set to `application/json`. 
+
+The JSON body you post must contain two attributes, a `file_name` and `chunk_count`. 
+
+```json
+{
+"file_name": "image.png",
+"chunk_count": 2
+}
+```
+
+The `file_name` used here will replace the name of the asset. Also make sure that the `file_name` has an extension. 
+
+You will receive a `201 created`, http status code on success. 
+
+### Example 
+
+Here is an example using curl to create a new version of an asset.
+
+Step 1: Request a valid v4 UUID from the API
+
+```
+curl -u "user:pass" \
+  -X POST \
+  -H 'User-Agent: MyApp (you@example.com)' \
+  "https://api.imagerelay.com/api/v2/files/555/versions"
+```
+
+Step 2: Start uploading chunks. _Please note the chunk number at the end of the path corresponds to the chunk being uploaded_
+
+```
+# chunk 1
+curl -u "user:pass" \
+  -X POST \
+  -H 'Content-Type: application/octet-stream'  \
+  --data-binary "@chunk1" \
+  "https://api.imagerelay.com/api/v2/files/555/versions/abc-def-ghi/chunk/1" 
+
+# chunk 2
+curl -u "user:pass" \
+  -X POST \
+  -H 'Content-Type: application/octet-stream' \
+  --data-binary "@chunk2" \
+  "https://api.imagerelay.com/api/v2/files/555/versions/abc-def-ghi/chunk/2" 
+```
+
+After all chunks have uploaded you may now hit the complete endpoint to start processing the file.
+
+```
+curl -u "user:pass" \
+  -X POST \
+  -H 'Content-Type: application/json' \
+  -d '{"file_name":"image.png", "chunk_count":2}' \
+  "https://api.imagerelay.com/api/v2/files/555/versions/abc-def-ghi/complete"
+
+```
