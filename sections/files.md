@@ -376,12 +376,14 @@ A `file_name` parameter is required in the query string. Make sure the `file_nam
 
 Here is an example curl request that illustrates how to use the API. 
 
+```shell
 curl -u "user:pass" \
   -X "POST" \
   -H "User-Agent: MyApp (you@example.com)" \
   -H "Content-Type: application/octet-stream" \
   --data-binary "@image.png" \
  https://api.imagerelay.com/api/v2/files/555/thumbnail?file_name=image.png
+```
  
 
 (DEPRECATED) Update Version 
