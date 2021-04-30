@@ -364,6 +364,25 @@ Duplicate File
  }
  ```
  *Please note: there can only be a single destination `folder_id`, not an array of ids*
+ 
+Asset Thumbnail
+-------------
+
+* `POST /files/555/thumbnail?file_name=image.png` will update the asset thumbnail.
+
+Make sure that the header `Content-Type: application/octet-stream` is present and the request body is the binary file data. The total file size must be 5Mb or less. Only JPG and PNG image types are supported. 
+
+A `file_name` parameter is required in the query string. Make sure the `file_name` includes an extension otherwise you will receive an error. 
+
+Here is an example curl request that illustrates how to use the API. 
+
+curl -u "user:pass" \
+  -X "POST" \
+  -H "User-Agent: MyApp (you@example.com)" \
+  -H "Content-Type: application/octet-stream" \
+  --data-binary "@image.png" \
+ https://api.imagerelay.com/api/v2/files/555/thumbnail?file_name=image.png
+ 
 
 (DEPRECATED) Update Version 
 ---------------
