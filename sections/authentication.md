@@ -15,6 +15,18 @@ _You should not be asking other users for usernames and passwords_
 
 You're free to use your own username & password to access your own account and to get started with the API. For deployed applications that require you to authenticate other users, you must use OAuth2 instead of basic authentication.
 
+API Key Auth
+-------
+1. Create a new API Key inside of Image Relay. You need a paid Image Relay account to do this. Once logged in to IR, click on "My Account" in the upper right corner. Select API Keys from the menu on the left. From here you can create, delete, disable and re-enable all of your API Keys.
+
+2. Note: You cannot retrieve the API Key again after its generated. If you lose it you can regenerate another one and disable/delete the lost key. Keep this in mind when managing your keys.
+
+3. Once you've generated an API key and copied it somewhere safe, you can use that key to authenticate with the Image Relay API by including an Authorization header with your API requests like this:
+
+```
+Authorization: Bearer [your api key]
+```
+
 OAuth 2
 -------
 
