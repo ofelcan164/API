@@ -1,22 +1,43 @@
 Image Relay API Authentication
 ==============================
 
-Image Relay uses the OAuth2 protocol to authorize requests to the Image Relay API. We conform to the [draft-10](http://tools.ietf.org/html/draft-ietf-oauth-v2-10) standard.
+API Key Auth
+-------
+Most integrations should use an API Key to authenticate with the Image Relay API. Please be aware that API Keys are scoped to the user that created it, and not the organization. This means that the ability to read certain data and perform certain actions is determined by the API Key creator's permission and access level within Image Relay.
+
+##### Generating an API Key
+
+1. You can create API Keys inside of Image Relay. You need a paid Image Relay account to do this. Once you are logged in to IR, click on "My Account" in the upper right corner. Select "API Keys" from the menu on the left. From here you can create, delete, disable and enable API Keys.
+
+2. Note: You cannot retrieve the API Key again once it is generated for security purposes. If you lose it, however, you can generate another one and disable/delete the lost key. Keep this in mind when managing your keys.
+
+##### Making requests with an API Key
+
+Once you've generated an API key and copied it somewhere safe, you can use that key to authenticate with the Image Relay API by including an __Authorization__ header with your API requests like this:
+
+```
+Authorization: Bearer [your api key]
+```
 
 Basic Auth
 ----------
 
-To get started with Image Relay's API, you can use HTTP Basic authentication with your own username and password:
+To just get started and play with Image Relay's API, you can use HTTP Basic authentication with your own username and password:
 
 ```shell
 curl -u username:password -H 'User-Agent: MyApp (yourname@example.com)' https://[your_company].imagerelay.com/api/v2/folders.json
 ```
-_You should not be asking other users for usernames and passwords_
-
-You're free to use your own username & password to access your own account and to get started with the API. For deployed applications that require you to authenticate other users, you must use OAuth2 instead of basic authentication.
+- _Do not use Basic Auth in Production environments_
+- _You should never ask other users for Image Relay usernames and passwords or store them anywhere_
+- _For deployed applications that **require you to authenticate other IR users in your organization**, you should use OAuth2 instead of API Key or Basic authentication. More info on OAuth2 can be found below_
 
 OAuth 2
 -------
+If you are integrating the Image Relay API into a web application that will authenticate IR users, and make requests on their behalf, you should implement an OAuth Flow.
+
+*Image Relay uses the OAuth2 protocol to authorize requests to the Image Relay API. We conform to the [draft-10](http://tools.ietf.org/html/draft-ietf-oauth-v2-10) standard.*
+
+##### How to Setup OAuth2
 
 1. Register your application with Image Relay. You need an Image Relay account to do this. Once logged in to IR, click on "My Account" in the upper right corner. Select "Developers" from the menu on the left. You'll need to provide your application name and a callback URI. Please note - you need a __paid__ Image Relay account to do this.
 
