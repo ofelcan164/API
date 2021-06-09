@@ -10,11 +10,11 @@ Get Collections
 ```json
 [
   {
-    "id": <collection_id>,
+    "id": "<collection_id>",
     "name": "My Collection",
     "description": null,
-    "client_id": <client_id>,
-    "user_id": <user_id>,
+    "client_id": "<client_id>",
+    "user_id": "<user_id>",
     "created_on": "2017-11-14T16:02:04.000Z",
     "updated_on": "2019-08-14T13:43:19.000Z",
     "lowres_uid": null,
@@ -41,7 +41,7 @@ Get collection
 
 ```json
 {
-  "id": <collection_id>,
+  "id": "<collection_id>",
   "name": "My Collection",
   "created_on": "2017-11-14T16:02:04.000Z",
   "updated_on": "2019-08-14T13:43:19.000Z",
@@ -77,7 +77,7 @@ Get collection files
 ```json
 [
   {
-    "id":<file_id>,
+    "id":"<file_id>",
     "filename":"basic_perm_icon.png",
     "created_at":"2013-05-20T12:58:07Z",
     "updated_on":"2013-05-20T13:03:36Z",
@@ -89,34 +89,34 @@ Get collection files
     "deleted":null,
     "deletion_date":null,
     "delete_user_id":null,
-    "file_type_id":<file_type_id>,
+    "file_type_id":"<file_type_id>",
     "terms":
       [
         {
-          "term_id":<term_id>,
+          "term_id":"<term_id>",
           "value":" "
         },
         {
-          "term_id":<term_id>,
+          "term_id":"<term_id>",
           "value":" "
         },
         {
-          "term_id":<term_id>,
+          "term_id":"<term_id>",
           "value":" "
         },
         {
-          "term_id":<term_id>,
+          "term_id":"<term_id>",
           "value":" "
         }
       ],
       "tags":
       [
         {
-          "tag_id":<tag_id>,
+          "tag_id":"<tag_id>",
           "value":"Sports"
         },
         {
-          "tag_id":<tag_id>,
+          "tag_id":"<tag_id>",
           "value":"Marketing"
         }
       ]
@@ -130,7 +130,7 @@ Get collection files
 Create collection
 --------------
 
-* `POST /collections.json` will create a new collection. `name` is required, `asset_ids` is an optional comma separated list of IDs of assets (files) to be added to the new collection.
+* `POST /collections.json` will create a new collection. `name` is required and `asset_ids` is an optional comma separated list of IDs of assets (files) to be added to the new collection.
 
 ```json
 {
@@ -144,7 +144,7 @@ This will return `201 Created`, if successful.
 Update collection
 --------------
 
-* `PUT /collections/<collection_id>.json` will update an existing collection. `name` is required, `asset_ids` is an optional comma separated list of IDs of assets (files) to be added to the new collection.
+* `PUT /collections/<collection_id>.json` will update an existing collection. `name` is required and `asset_ids` is an optional comma separated list of IDs of assets (files) to be added to the new collection.
 
 ```json
 {
