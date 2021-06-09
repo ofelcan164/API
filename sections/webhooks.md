@@ -1,35 +1,35 @@
 Webhooks
 =========
 
-Webhooks allow you to receive notifications at an end-point of your choice for a myriad of events in Image Relay. 
+Webhooks allow you to receive notifications at an end-point of your choice for a myriad of events in Image Relay.
 Get notified when a file is uploaded, a new user is added, a folder is deleted...
 
 When there is a problem with a webhook, Image Relay will send an email to the user that created the webhook.
-The API also supports optionally adding additional notification_emails to the webhook if you wish to 
+The API also supports optionally adding additional notification_emails to the webhook if you wish to
 alert other email addresses if issues arise.
 
 Get Webhooks
 -----------
 
 * `GET /webhooks.json` returns a list of all of your webhooks
-* `GET /webhooks/51.json` returns details about the webhook with id 51.
+* `GET /webhooks/<webhook_id>.json` returns details about the specified webhook.
 
 ```json
 [
   {
-    "user_id":405,
+    "user_id":"<user_id>",
     "resource":"file",
     "action":"created",
-    "url":"http://example.com",
+    "url":"<url_to_post_to>",
     "created_at":"2015-06-18T19:18:35Z",
     "state": "normal",
     "notification_emails": ["email@example.com"]
   },
   {
-    "user_id":405,
+    "user_id":"<user_id>",
     "resource":"file",
     "action":"expiration_date_set",
-    "url":"http://example.com",
+    "url":"<url_to_post_to>",
     "created_at":"2015-06-18T19:18:35Z",
     "state": "paused",
     "notification_emails": null
@@ -42,14 +42,14 @@ Create Webhook
 
 * `POST /webhooks.json` will create a new webhook.
 
-When you create a webhook, when the event occurs that is specified in the webhook, Image Relay will POST
+After you create a webhook, when the event occurs that is specified in the webhook, Image Relay will POST
 the event details back to you at the URL specified in the webhook.
 
 ```json
 {
   "resource": "file",
   "action": "created",
-  "url": "https://example.com",
+  "url": "<url_to_post_to>",
   "notification_emails": [
     "email1@example.com",
     "email2@example.com"
@@ -63,20 +63,21 @@ Update Webhook
 --------------
 
 
-* `PUT /webhooks/19.json` will update a webhook.
+* `PUT /webhooks/<webhook_id>.json` will update a webhook's `state`.
+
 ```json
 {
 	"state":"paused"
 }
 ```
 
-Will return `200 OK` and a representation of the webhook. Valid values for "state" are: normal, error, paused
+Will return `200 OK` and a representation of the webhook. Valid values for `state` are: normal, error, paused
 
 ```json
 {
   "resource": "file",
   "action": "created",
-  "url": "https://example.com",
+  "url": "<url_to_post_to>",
   "state": "paused",
   "notification_emails": null
 }
@@ -85,7 +86,7 @@ Will return `200 OK` and a representation of the webhook. Valid values for "stat
 Delete Webhook
 --------------
 
-* `DELETE /webhooks/51.json` will delete the webhook where 51 represents the id of the webhook you wish to delete.
+* `DELETE /webhooks/<webhook_id>.json` will delete the specified webhook.
 
 This will return `204 No Content` if successful.
 
@@ -175,7 +176,7 @@ All Webhook POSTs will contain the following information in JSON format:
 
 In the "event" section, resource is the type of resource triggering the event (e.g. file, folder...), action is the
 type of action that occurred (e.g. created, updated...), resource_id is the unique id in Image Relay for the resource
-that triggered this event. actor_id is the unique id of the user who caused the event to happen (i.e. uploaded the file, 
+that triggered this event. actor_id is the unique id of the user who caused the event to happen (i.e. uploaded the file,
 created the folder), and recipient_id is optionally present when necessary. For instance, in the case of a "File added to
 Folder" triggered, recipient_id would be the unique folder id of the folder to which the file was added.
 
@@ -301,18 +302,3 @@ for all webhook calls.
     }
 }
 ```
-
-
-
-
-
-
-
-
-
-
-        
-        
-        
-        
-        
