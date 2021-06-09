@@ -163,7 +163,7 @@ We will return `201 CREATED` and a representation of the new keyword
 
 Update Keyword
 --------------
-* `PUT /keyword_sets/"<keyword_set_id>"/keywords/"<keyword_id>".json` will update a keyword.
+* `PUT /keyword_sets/<keyword_set_id>/keywords/<keyword_id>.json` will update a keyword.
 
 ```json
 {
