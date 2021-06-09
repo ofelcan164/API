@@ -134,7 +134,7 @@ Example urls (url encoded):
 Get File
 --------
 
-* `GET /files/"<file_id>".json` returns the specified file.
+* `GET /files/<file_id>.json` returns the specified file.
 
 ```json
 {
@@ -273,8 +273,8 @@ Update File Keywords
 * `POST /files/<file_id>/terms` will update the metadata keyword terms of the file specified.
 
 Parameters:
-  `terms` - an array of term ids and values to update.
-  `overwrite` - if true, it will overwrite the entire value for that term, if false, it will append the value to any existing metadata already present in that term field.
+   `terms` - an array of term ids and values to update.
+   `overwrite` - if true, it will overwrite the entire value for that term, if false, it will append the value to any existing metadata already present in that term field.
 
 ```json
 {
@@ -448,7 +448,7 @@ The JSON body you post must contain two attributes, a `file_name` and `chunk_cou
 ```json
 {
 "file_name": "image.png",
-"chunk_count": <number_of_chunks>
+"chunk_count": "<number_of_chunks>"
 }
 ```
 
