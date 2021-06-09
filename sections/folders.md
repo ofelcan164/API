@@ -101,7 +101,7 @@ Get Folder
 Get Folder Files
 ----------------
 * `GET /folders/<folder_id>/files.json` returns all the files in the specified folder.
-For more about finding files within folders, see [Files](https://github.com/imagerelay/api/blob/master/sections/files.md).
+For more information regarding files within folders, see [Files](https://github.com/imagerelay/api/blob/master/sections/files.md).
 ```json
 [
   {
@@ -201,8 +201,8 @@ Get Root Folder
 ---------------
 
 * `GET /folders/root.json` will return the root of all the folders for this user. This folder isn't visible in the UI, calling children on this folder is the equivalent of
-calling `GET /folders.json`
-_Note: The usage of this is for top-level folder manipulation_
+calling `GET /folders.json`.
+_Note: This is mainly for top-level folder manipulation._
 
 ```json
 {
