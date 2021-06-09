@@ -69,7 +69,7 @@ Get Users
 
 Search Users
 ----------
-* `GET /search.json?<query_param>=Dorm` will return `200 OK` and a list of users belonging to your account that match the search term ("Dorm" in this example), 100 users per page (`?page=X`). Searches are performed against the fields `first_name`, `last_name`, and `email` which replace `<quesry_param>` above.
+* `GET /search.json?<query_param>=Dorm` will return `200 OK` and a list of users belonging to your account that match the search term ("Dorm" in this example), 100 users per page (`?page=X`). Searches are performed against the fields `first_name`, `last_name`, and `email` which replace `<query_param>` above.
 
 ```json
 [
@@ -153,14 +153,14 @@ For SSO-enabled accounts, you may want to create SSO users in lieu of turning on
 
 This will return `201 Created`, if successful.
 
-Update User's Role/Permission Group
+Update User's Role/Permissions Group
 --------------
 
 
 * `PUT /users/<user_id>.json` will update a user's role.
 ```json
 {
-	"role_id": "<permission_group_id"
+	"role_id": "<permission_group_id>"
 }
 ```
 
