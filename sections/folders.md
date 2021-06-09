@@ -202,6 +202,7 @@ Get Root Folder
 
 * `GET /folders/root.json` will return the root of all the folders for this user. This folder isn't visible in the UI, calling children on this folder is the equivalent of
 calling `GET /folders.json`.
+
 _Note: This is mainly for top-level folder manipulation._
 
 ```json
