@@ -81,7 +81,24 @@ Get a folder's children, paginated, 100 per page
 }
 ```
 
-Get Folder files
+Get Folder
+----------
+
+* `GET /folders/<folder_id>.json` will return the specified folder.
+
+```json
+{
+  "id":"<folder_id>",
+  "metagroup_id":null,
+  "name":"McCadam Logos",
+  "parent_id":6527,
+  "user_id":"<user_id>",
+  "created_on":"2012-06-19T08:41:19Z",
+  "updated_on":"2012-07-23T15:39:16Z",
+}
+```
+
+Get Folder Files
 ----------------
 * `GET /folders/<folder_id>/files.json` returns all the files in the specified folder.
 For more about finding files within folders, see [Files](https://github.com/imagerelay/api/blob/master/sections/files.md).
@@ -180,28 +197,12 @@ For more about finding files within folders, see [Files](https://github.com/imag
 ]
 ```
 
-Get Folder
-----------
-
-* `GET /folders/<folder_id>.json` will return the specified folder.
-
-```json
-{
-  "id":"<folder_id>",
-  "metagroup_id":null,
-  "name":"McCadam Logos",
-  "parent_id":6527,
-  "user_id":"<user_id>",
-  "created_on":"2012-06-19T08:41:19Z",
-  "updated_on":"2012-07-23T15:39:16Z",
-}
-```
-
 Get Root Folder
 ---------------
 
 * `GET /folders/root.json` will return the root of all the folders for this user. This folder isn't visible in the UI, calling children on this folder is the equivalent of
 calling `GET /folders.json`
+_Note: The usage of this is for top-level folder manipulation_
 
 ```json
 {
@@ -212,7 +213,7 @@ calling `GET /folders.json`
 Create Folder
 -------------
 
-* `POST /folders/<root_folder_id>/children` will create a new top level folder.
+* `POST /folders/<root_folder_id>/children` will create a new top-level folder.
 
 ```json
 {
