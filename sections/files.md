@@ -191,7 +191,7 @@ Upload File From URL
 
 We will respond with information about the file uploaded in the response body.
 
-A `filename`, a `folder_id` for the folder the file will be uploaded to, a `file_type_id`, `terms`, and a `url` where the file will be downloaded from are required.  
+A `filename`, a `folder_id` for the folder the file will be uploaded to, a `file_type_id`, `terms`, and a `url` where the file will be downloaded from, and uploaded, are required.  
 
 Metadata terms should be in the form of a hash, with a `term_id` and a `value`.  If you don't want to set any metadata on upload, terms can be nil.
 
@@ -208,8 +208,8 @@ Keyword ids are optional and should be an array if included.
       "value": "hello world"
     }
   ],
-  "keyword_ids": ["<keyword_id_1>"],
-  "url":"http://www.imagerelay.com/test_image.jpg"
+  "keyword_ids": ["<keyword_id1>"],
+  "url":"<url_to_download_from>"
 }
 ```
 We will return a representation of the uploaded file.

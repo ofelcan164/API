@@ -24,7 +24,7 @@ We will return 100 files per page. If the result set has more than 100 folder li
     "created_at": "2015-06-04T20:06:07Z",
     "updated_at": "2015-06-04T20:06:07Z",
     "show_tracking": true,
-    "folder_link_url": "http://yoururl.imagerelay.com:3000/fl/93527abc0258448885d5b388f70cd654",
+    "folder_link_url": "<folder_link_url>",
     "folder_id": "<folder_id>"
   },
   {
@@ -38,7 +38,7 @@ We will return 100 files per page. If the result set has more than 100 folder li
     "created_at": "2015-06-04T20:05:27Z",
     "updated_at": "2015-06-04T20:05:27Z",
     "show_tracking": true,
-    "folder_link_url": "http://yoururl.imagerelay.com/fl/b9d1a51601624f67a055f663c5852f24",
+    "folder_link_url": "<folder_link_url>",
     "folder_id": "<folder_id>"
   },
 ]
@@ -61,7 +61,7 @@ Get Folder Link
   "created_at": "2015-06-04T20:05:27Z",
   "updated_at": "2015-06-04T20:05:27Z",
   "show_tracking": true,
-  "folder_link_url": "http://yoururl.imagerelay.com/fl/b9d1a51601624f67a055f663c5852f24",
+  "folder_link_url": "<folder_link_url>",
   "folder_id": "<folder_id>"
 },
 ```
@@ -98,7 +98,7 @@ We will return a representation of the folder link.
   "created_at": "2015-06-04T20:05:27Z",
   "updated_at": "2015-06-04T20:05:27Z",
   "show_tracking": true,
-  "folder_link_url": "http://yoururl.imagerelay.com/fl/b9d1a51601624f67a055f663c5852f24",
+  "folder_link_url": "<folder_link_url>",
   "folder_id": "<folder_id>"
 }
 ```
