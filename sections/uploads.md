@@ -8,7 +8,7 @@ Create Upload Job
 -----------------
 
 * `post /upload_jobs.json` will start an upload job. You'll need the this upload id to your upload file. Each upload job will create a *single* asset.
-Include `prefix` if you would like your uploaded asset to be placed in a new folder created as a child of the specified folder. `size` is required and is in bytes.
+Include a value for `prefix` if you would like your uploaded asset to be placed in a new folder created as a child of the specified folder. `size` is required and is in bytes.
 
 ```json
 {
