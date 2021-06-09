@@ -7,16 +7,17 @@ The upload API is how you can add files to Image Relay. Files are uploaded to Im
 Create Upload Job
 -----------------
 
-* `post /upload_jobs.json` will start an upload job. You'll need the id from this to upload files. Each upload job will
-create *one* asset. Each file specified within the "files" array will be part of this asset. Files will be nested together.
+* `POST /upload_jobs.json` will start an upload job. You'll need the id from this to upload files. Each upload job will
+create *one* asset. Each file specified within the "files" array will be grouped as a part of this asset.
 If a jpg is supplied as one of the nested files, that will always be used to create the thumbnail preview for the asset.
 If no jpg is provided a preview will still be generated from the file if it is possible.
+Include a value for `prefix` if you would like your uploaded, nested asset to be placed in a new folder created as a child of the specified folder. `size`, for each file to be uploaded to the nested asset is required and is in bytes.
 
 ```json
 {
-    "folder_id":"555",
-    "file_type_id":"123",
-    "prefix":"/create/new/sub_folder"
+    "folder_id":"<folder_id>",
+    "file_type_id":"<file_type_id>",
+    "prefix":"<new_folder_name>"
     "files":
         [   {
                 "name":"my_file.dng",
@@ -30,11 +31,11 @@ If no jpg is provided a preview will still be generated from the file if it is p
     "terms":
         [
             {
-                "term_id":"888",
+                "term_id":"<term_id1>",
                 "value":"Copyright 2013"
             },
             {
-                "term_id":"889",
+                "term_id":"<term_id2>",
                 "value":"sunset over Lake Champlain"
             }
         ]
@@ -45,17 +46,17 @@ This will return `201 Created` if successful, as well as a json representation o
 
 ```json
 {
-    "id":384,
+    "id":"<upload_id>",
     "created_at":"2013-02-07T21:07:36Z",
     "files":
         [
             {
-                "id":395,
+                "id":"<asset_id1>",
                 "name":"my_file.dng",
                 "size":1234567890
             },
             {
-                "id":396,
+                "id":"<asset_id2>",
                 "name":"my_file.jpg",
                 "size":12231976
             }
@@ -66,9 +67,9 @@ This will return `201 Created` if successful, as well as a json representation o
 Create a File Chunk
 -------------------
 
-* `post /upload_jobs/384/files/395/chunks/1.json` uploads a file chunk. The last number is the chunk number. This is used,
-to determine the order to reassemble the chunks on the server. So the next chunk would be `post /upload_jobs/384/files/395/chunks/2.json`.
-The request body should be the binary data of the chunk. Make sure to set the Content-Length header. The Content-Type header should be `application/octet-stream`
+* `POST /upload_jobs/<upload_id>/files/<asset_id>/chunks/1.json` uploads a file chunk. The last number is the chunk number. This is used,
+to determine the order to reassemble the chunks on the server. So the next chunk would be `PSOT /upload_jobs/<upload_id>/files/<asset_id>/chunks/2.json`.
+The request body should be the binary data of the chunk. Make sure to set the Content-Length header. The Content-Type header should be `application/octet-stream`. Remember to change the `<asset_id>` when uploading chunks for different files included in the nested asset.
 
 Chunk size is up to you, up to 5 MB in size. If you attempt to upload a chunk larger than 5 MB you'll receive an error.
 
@@ -110,5 +111,5 @@ Here is an example curl request that uses the above metadata attributes to creat
 curl -XPOST -u "yourUsername:yourPassword" "https://api.imagerelay.com/api/v2/upload_jobs.json" \
   -H 'Content-Type: application/json' \
   -H 'User-Agent: MyApp (yourName@example.com)' \
-  -d '{ "expires_on": "September 31, 2020", "keyword_ids": [1, 2, 3], "prefix": "", "folder_id":"23","file_type_id":"4", "terms":[], "files": [ {"name": "logo.png", "size": "7387" } ] }'
+  -d '{ "expires_on": "September 31, 2020", "keyword_ids": ["<keyword_id1", "<keyword_id2", "<keyword_id3"], "prefix": "", "folder_id":"<folder_id>","file_type_id":"<file_type_id>", "terms":[], "files": [ {"name": "<filename1>", "size": "7387" }, {"name": "<filename2>", "size": "7387" }  ] }'
 ```
