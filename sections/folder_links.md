@@ -2,8 +2,7 @@ Folder Links
 ===========
 
 Allows you to retrieve information about, create, or destroy folder links.
-Folder links provide a portable and easy view experience of your folders. Allowing someone to upload to a folder requires an upload link.
-https://github.com/imagerelay/api/blob/master/sections/upload_links.md
+Folder links provide a portable and easy view experience of your folders. Allowing someone to upload to a folder requires an [upload link](https://github.com/imagerelay/api/blob/master/sections/upload_links.md).
 
 Get Folder Links
 ---------------
