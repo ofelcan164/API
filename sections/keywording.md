@@ -94,6 +94,7 @@ Will return `200 OK` and a representation of the keyword set.
 Delete Keyword Set
 -------------------
 * `DELETE /keyword_sets/<keyword_set_id>.json` will delete a keyword set and return `204 NO-CONTENT`. All associated keywords will also be deleted.
+
 _Note: If identical keywords exists in multiple keyword sets, only the keyword in the deleted set will be deleted._
 
 Keywords
