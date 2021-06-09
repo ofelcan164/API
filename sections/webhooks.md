@@ -43,7 +43,11 @@ Create Webhook
 * `POST /webhooks.json` will create a new webhook.
 
 After you create a webhook, when the event occurs that is specified in the webhook, Image Relay will POST
-the event details back to you at the URL specified in the webhook.
+the event details back to you at the URL specified in the webhook. Valid `state` values are:
+* `normal`: normal functionality.
+* `paused`: user-initiated paused state, webhook will not be invoked
+* `error`: Image Relay encountered too many HTTP errors when invoking the webhook callback URL, callbacks have been temporarily suspended until the next day when it will be auto-resumed. If you’d like to resume your webhook sooner, [Update Webook](#Update-Webhook) and change its state.
+
 
 ```json
 {
@@ -71,7 +75,7 @@ Update Webhook
 }
 ```
 
-Will return `200 OK` and a representation of the webhook. Valid values for `state` are: normal, error, paused
+Will return `200 OK` and a representation of the webhook.
 
 ```json
 {
