@@ -197,6 +197,8 @@ For more information regarding files within folders, see [Files](https://github.
 ]
 ```
 
+Allowing others to download files is down via [Quicklinks](https://github.com/imagerelay/api/blob/master/sections/quick_links.md).
+
 Get Root Folder
 ---------------
 
