@@ -7,7 +7,7 @@ The upload API is how you can add files to Image Relay. Files are uploaded to Im
 Create Upload Job
 -----------------
 
-* `post /upload_jobs.json` will start an upload job. You'll need the this upload id to your upload file. Each upload job will create a *single* asset.
+* `POST /upload_jobs.json` will start an upload job. You'll need the this upload id to your upload file. Each upload job will create a *single* asset.
 Include a value for `prefix` if you would like your uploaded asset to be placed in a new folder created as a child of the specified folder. `size` is required and is in bytes.
 
 ```json
@@ -58,8 +58,8 @@ Create a File Chunk
 
 First, split your file into 5 MB or less chunks. Then:
 
-* `post /upload_jobs/<upload_id>/files/<asset_id>/chunks/1.json` uploads a file chunk. The last number is the chunk number. This is used,
-to determine the order to reassemble the chunks on the server. So the next chunk would be `post /upload_jobs/<upload_id>/files/<asset_id>/chunks/2.json`.
+* `POST /upload_jobs/<upload_id>/files/<asset_id>/chunks/1.json` uploads a file chunk. The last number is the chunk number. This is used,
+to determine the order to reassemble the chunks on the server. So the next chunk would be `POST /upload_jobs/<upload_id>/files/<asset_id>/chunks/2.json`.
 The request body should be the binary data of the chunk. Make sure to set the Content-Length header. The Content-Type header should be `application/octet-stream`
 
 Chunk size is up to you, up to 5 MB in size. If you attempt to upload a chunk larger than 5 MB you'll receive an error.
