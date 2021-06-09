@@ -157,7 +157,7 @@ Update User's Role/Permissions Group
 --------------
 
 
-* `PUT /users/<user_id>.json` will update a user's role. Permissions groups can be obtained [here](https://github.com/imagerelay/api/blob/master/sections/permissions.md #Get Permissions).
+* `PUT /users/<user_id>.json` will update a user's role. Permissions groups can be obtained [here](https://github.com/imagerelay/api/blob/master/sections/permissions.md).
 ```json
 {
 	"role_id": "<permission_group_id>"
