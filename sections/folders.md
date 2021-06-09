@@ -49,22 +49,23 @@ Get a folder's children, paginated, 100 per page
         "asset_count":1,
         "child_count":0,
         "created_on":"2012-06-19T08:41:19Z",
-        "id":11136,"metagroup_id":null,
+        "id":"<folder_id>",
+        "metagroup_id":null,
         "name":"McCadam Logos",
         "parent_id":6527,"
         updated_on":"2012-07-23T15:39:16Z",
-        "user_id":405
+        "user_id":"<user_id>"
       },
       {
         "asset_count":47,
         "child_count":1,"
         created_on":"2012-10-09T12:09:25Z",
-        "id":11150,
+        "id":"<folder_id>",
         "metagroup_id":null,
         "name":"Product Photography",
         "parent_id":6527,
         "updated_on":"2012-10-09T12:09:25Z",
-        "user_id":405
+        "user_id":"<user_id>"
       }
     ],
     "pagination": {
