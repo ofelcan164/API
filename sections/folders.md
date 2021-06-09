@@ -38,7 +38,7 @@ Get Folders
 
 Get a folder's children, paginated, 100 per page
 
- * `GET /folders/555/children?page=1` will return a paginated set of children folders along with pagination information.
+ * `GET /folders/<folder_id>/children?page=1` will return a paginated set of children folders along with pagination information.
 
  **Please note the unpaginated version of this endpoint will be deprecated in the near future so please use this version if building a new integration**
 
