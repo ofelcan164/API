@@ -210,7 +210,7 @@ calling `GET /folders.json`.
   "root_id":"<root_folder_id>"
 }
 ```
-_Note: This is mainly for top-level folder manipulation._
+_**Note:** This is mainly for top-level folder manipulation._
 
 Create Folder
 -------------

@@ -93,7 +93,7 @@ If you are using the quick link to render the image inline in a web browser or u
 
 If you want to downsize or convert the asset to a jpg or png then include the `max_width` and `max_height` parameters in addition to the `format` parameter in the post body. Accepted `formats` are `jpg` and `png`.
 
-Note: we can only downsize images, if you post dimensions that are larger than the asset's dimensions - the quick link will be sized to the asset's dimensions.
+_**Note:** we can only downsize images, if you post dimensions that are larger than the asset's dimensions - the quick link will be sized to the asset's dimensions._
 
 This endpoint returns `201 Created`, if successful, as well as a representation of the quick link.
 

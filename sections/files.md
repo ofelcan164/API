@@ -24,7 +24,7 @@ The following filters/query parameters (<query_param>) can be used when requesti
 
 `file_type_id` will filter the files returned to only those that have the asset profile/file type id of the supplied parameter
 
-*Note: The above filter parameters can be combined*
+* **Note:** The above filter parameters can be combined*
 
 Example urls (url encoded):
 

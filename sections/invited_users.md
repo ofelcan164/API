@@ -110,7 +110,7 @@ We will return a response with json data on the new invited user and the user wi
 }
 ```
 
-_Note: <invited_user_id> is distinct from <user_id>._
+_**Note:** <invited_user_id> is distinct from <user_id>._
 
 If the invite is successful, the call will return `201 CREATED`.  Otherwise you will receive `400 Bad Request`.
 

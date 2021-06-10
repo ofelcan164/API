@@ -101,7 +101,7 @@ The `expires_on` attribute must be a valid date time, otherwise posting chunks w
 
 The `keyword_ids` attribute must contain an array of valid keyword ids from your account, otherwise posting chunks will fail. This attribute is used for attaching existing keywords to an asset.
 
-*Note: You do not need to include the keyword set id, just the id of the keyword.*
+* **Note:** You do not need to include the keyword set id, just the id of the keyword.*
 
 You may create keywords from the API, however, you must have the correct permissions to do so. You may retrieve keyword ids from the API as well. See the Keywording section for more information.
 
