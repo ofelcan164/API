@@ -270,10 +270,10 @@ _**Note:** Keywords and tags are the same thing in the request and response bodi
 }
 ```
 
-Update File Keywords
+Update File Metadata Terms
 -------------
 
-* `POST /files/<file_id>/terms` will update the metadata keyword terms of the file specified.
+* `POST /files/<file_id>/terms` will update the metadata terms of the file specified.
 
 Required parameters:
   * `terms` - an array of term ids and values to update.
@@ -299,7 +299,7 @@ Required parameters:
 Update File Tags
 -------------
 
-* `POST /files/<file_id>/tags` will update the tags of the file specified.
+* `POST /files/<file_id>/tags` will update the tags/keywords of the file specified.
 
 Required parameters:
   * `tags` - contains a list of tag ids to both add and remove from the asset.
