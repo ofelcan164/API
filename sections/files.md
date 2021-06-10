@@ -6,35 +6,9 @@ Files - the reason you're using Image Relay. Here's how you get at them via the 
 Get Files
 ---------
 
-* `GET /folders/<folder_id>/files.json` returns all the files in the specified folder
+* `GET /folders/<folder_id>/files.json` returns all the files in the specified folder.
 
 We will return 100 files per page. If the result set has 100 files, it's your responsibility to check the next page to see if there are any more files -- you do this by adding `&page=2` to the query, then `&page=3` and so on.
-
-You may limit files returned by keyword using a query parameter, for example:
-`/api/v2/folders/<folder_id>/files.json?<query_param>=dogs`
-
-To search all the files in the archive by keyword via the API, obtain the root folder id of the archive via API (`GET /folders/root.json`), this ID will never change, then use this call:
-`/api/v2/folders/<root_folder_id>/files.json?<query_param>=dogs&recursive=true`
-
-The following filters/query parameters (<query_param>) can be used when requesting a folder's files:
-
-`uploaded_after` will filter the files returned to only those that have been uploaded after that date. The format of the parameter should be: "YYYY-MM-DD HH:MM:SS GMT+00:00". You can leave off the timezone information if you are using UTC time, you can leave off time if you want files filtered from the beginning of the day specified (e.g. YYYY-MM-DD)
-
-`updated_after` will filter the files returned to only those that have been updated/modified after that date. The date/time should be formatted the same as upload_after.
-
-`file_type_id` will filter the files returned to only those that have the asset profile/file type id of the supplied parameter
-
-* **Note:** The above filter parameters can be combined*
-
-Example urls (url encoded):
-
-`GET /folders/<folder_id>/files.json?uploaded_after=2014-06-10%2001:00:00%20GML%2B00:00`
-
-`GET /folders/<folder_id>/files.json?updated_after=2014-06-10`
-
-`GET /folders/<folder_id>/files.json?file_type_id=149`
-
-`GET /folders/<folder_id>/files.json?file_type_id=149&updated_after=2014-06-10`
 
 ```json
 [
@@ -131,6 +105,32 @@ Example urls (url encoded):
 ]
 ```
 
+You may limit files returned by keyword using a query parameter, for example:
+`/api/v2/folders/<folder_id>/files.json?<query_param>=dogs`
+
+To search all the files in the archive by keyword via the API, obtain the root folder id of the archive via API (`GET /folders/root.json`), this ID will never change, then call:
+`/api/v2/folders/<root_folder_id>/files.json?<query_param>=dogs&recursive=true`
+
+The following filters/query parameters (<query_param>) can be used when requesting a folder's files:
+
+* `uploaded_after` will filter the files returned to only those that have been uploaded after that date. The format of the parameter should be: "YYYY-MM-DD HH:MM:SS GMT+00:00". You can leave off the timezone information if you are using UTC time, you can leave off time if you want files filtered from the beginning of the day specified (e.g. YYYY-MM-DD)
+
+* `updated_after` will filter the files returned to only those that have been updated/modified after that date. The date/time should be formatted the same as `uploaded_after`.
+
+* `file_type_id` will filter the files returned to only those that have the file type id/metadata template of the supplied parameter.
+
+_**Note:** The above filter parameters can be combined_
+
+Example urls (url encoded):
+
+* `GET /folders/<folder_id>/files.json?uploaded_after=2014-06-10%2001:00:00%20GML%2B00:00`
+
+* `GET /folders/<folder_id>/files.json?updated_after=2014-06-10`
+
+* `GET /folders/<folder_id>/files.json?file_type_id=149`
+
+* `GET /folders/<folder_id>/files.json?file_type_id=149&updated_after=2014-06-10`
+
 Get File
 --------
 
@@ -139,7 +139,7 @@ Get File
 ```json
 {
   "id": "<file_id>",
-  "filename":"grey_lock_icon.png",
+  "filename":"<filename>",
   "created_at":"2013-05-20T12:58:05Z",
   "updated_on":"2013-05-20T13:03:33Z",
   "size":2974,
@@ -189,17 +189,18 @@ Upload File From URL
 
 * `POST /files.json` returns `201 OK` if the file was uploaded successfully.
 
-We will respond with information about the file uploaded in the response body.
+Required parameters are:
+* `filename` - name of the file to be uploaded.
+* `folder_id` - ID of the folder the file will be uploaded to.
+* `file_type_id` - ID of the metadata template/file type that the file will have.
+* `terms` - List of keywords that the file may have in the form of a hash, with a `term_id` and a `value`. If you don't want to set any metadata on upload, terms can be nil.
+* `url` - URL of where the file will be downloaded and then uploaded to your library in the specified folder.
 
-A `filename`, a `folder_id` for the folder the file will be uploaded to, a `file_type_id`, `terms`, and a `url` where the file will be downloaded from, and uploaded, are required.  
-
-Metadata terms should be in the form of a hash, with a `term_id` and a `value`.  If you don't want to set any metadata on upload, terms can be nil.
-
-Keyword ids are optional and should be an array if included.
+`keyword_ids` are optional and should be an array if included. To get keywords see [Keywords Sets/Keywords](https://github.com/imagerelay/api/blob/master/sections/keywording.md).
 
 ```json
 {
-  "filename":"Example.jpg",
+  "filename":"<filename>",
   "folder_id":"<folder_id>",
   "file_type_id":"<file_type_id>",
   "terms": [
@@ -212,7 +213,7 @@ Keyword ids are optional and should be an array if included.
   "url":"<url_to_download_from>"
 }
 ```
-We will return a representation of the uploaded file.
+We will return a JSON representation of the uploaded file.
 
 ```json
 {
@@ -296,7 +297,7 @@ Parameters:
 Update File Tags
 -------------
 
-* `POST /files/<file_id>/tags` will update the metadata keyword terms of the file specified.
+* `POST /files/<file_id>/tags` will update the tags of the file specified.
 
 Parameters:
   * `tags` - contains a list of tag ids to both add and remove from the asset.
@@ -332,12 +333,9 @@ Move File
 
 Synced File / Copy
 -------------
+Synced Files let you have the exact same file in multiple folders. When you make a change to any Synced File, that change applies to all instances of the Synced File.
 
 * `POST /files/<file_id>/synced_file` or `POST /files/<file_id>/copy` will create a synced file within the specified folder ids, leaving it in any existing folders.
-
- Synced Files let you have the exact same file in multiple folders. When you make a change to any Synced File, that change applies to all instances of the Synced File.
-
- We will be removing the `/files/<file_id>/copy` endpoint soon - please start using `/synced_file` in your integrations.
 
  The JSON body should contain an array of folder ids
 
@@ -347,14 +345,16 @@ Synced File / Copy
 }
 ```
 
+_**Note:** We will be removing the `/files/<file_id>/copy` endpoint soon - please start using `/synced_file` in your integrations._
+
+
 Duplicate File
 -------------
 
 * `POST /files/<file_id>/duplicate` will create a duplicate of the file in a single destination folder. This duplicate behaves as a completely new file and is completely separate from the original file.
 
- You can choose to copy all metadata, tags/keywords, and IPTC fields or not. Here's an example JSON body
-
- If you choose to not copy metadata (`"should_copy_metadata": false`) - the copied file will get the destination folder's default asset profile
+ You can choose to copy all metadata, tags/keywords, and IPTC fields or not. If you choose to not copy metadata (`"should_copy_metadata": false`) - the copied file will get the destination folder's default asset profile.
+ Here's an example JSON body:
 
  ```json
  {
@@ -362,7 +362,7 @@ Duplicate File
 	"should_copy_metadata": false
  }
  ```
- *Please note: there can only be a single destination `folder_id`, not an array of ids*
+ _**Note:** there can only be a single destination `folder_id`, not an array of ids_
 
 Asset Thumbnail
 -------------
@@ -415,15 +415,16 @@ File chunks are grouped together using a v4 UUID.
 
 
 `POST /api/v2/files/<file_id>/versions` will return a JSON response with a valid v4 UUID to be used when uploading the new file in chunks.
-_Note: <file_id> is the ID of the file that will be updated by the new, chunk-uploaded file._
+
+_**Note:** <file_id> is the ID of the file that will be updated by the new, chunk uploaded file._
 
 ```json
 {
-  "uuid": "A v4 uuid will be here"
+  "uuid": "<valid_v4_uuid>"
 }
 ```
 
-_Please note that "versions" is pluralized in the path_
+_**Note:** "versions" is pluralized in the path_
 
 ### Uploading Chunks
 
@@ -433,7 +434,7 @@ The request body should be the binary data of the file chunk and the Content-Typ
 
 The chunk number in the path is used for ordering chunks when assembling the final file.
 
-You will receive a `204 no content`, http status code when the chunk has uploaded successfully.
+You will receive a `204 No Content`, http status code when the chunk has uploaded successfully.
 
 ### Completing the Upload
 
@@ -447,20 +448,20 @@ The JSON body you post must contain two attributes, a `file_name` and `chunk_cou
 
 ```json
 {
-  "file_name": "image.png",
+  "file_name": "<filename>",
   "chunk_count": "<number_of_chunks>"
 }
 ```
 
 The `file_name` used here will replace the name of the asset. Also make sure that the `file_name` has an extension.
 
-You will receive a `201 created`, http status code on success.
+You will receive a `201 created` http status code on success.
 
 ### Example
 
 Here is an example using `curl` to create a new version of an asset.
 
-Step 1: Request a valid v4 UUID from the API
+**Step 1:** Request a valid v4 UUID from the API
 
 ```
 curl -u "user:pass" \
@@ -469,7 +470,9 @@ curl -u "user:pass" \
   "https://api.imagerelay.com/api/v2/files/555/versions"
 ```
 
-Step 2: Start uploading chunks. _Please note the chunk number at the end of the path corresponds to the chunk being uploaded_
+**Step 2:** Start uploading chunks.
+
+ _**Note:** The chunk number at the end of the path corresponds to the chunk being uploaded_
 
 ```
 # chunk 1
@@ -487,7 +490,7 @@ curl -u "user:pass" \
   "https://api.imagerelay.com/api/v2/files/555/versions/abc-def-ghi/chunk/2"
 ```
 
-After all chunks have uploaded you may now hit the complete endpoint to start processing the file.
+**Step 3:** After all chunks have uploaded you may now hit the complete endpoint to start processing the file.
 
 ```
 curl -u "user:pass" \
