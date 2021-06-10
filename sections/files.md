@@ -196,7 +196,7 @@ Required parameters:
 * `terms` - List of metadata terms that the file may have. If a given file type has 10 terms associated with it, you may include 0-10 of those terms in your calls. These terms should be passed in the form of a hash, with a `term_id` and a `value`. `term_id` can be found with [`GET /file_types/<file_type_id>.json`](). If you don't want to set any of the metadata on upload, `terms` can be nil.
 * `url` - URL of where the file will be downloaded from. Then, it is uploaded to your library in the specified folder.
 
-* `keyword_ids` are optional and should be an array if included. To get keywords see [Keywords Sets/Keywords](https://github.com/imagerelay/api/blob/master/sections/keywording.md).
+* `keyword_ids` are optional and should be an array if included. To get keywords/tags see [Keywords Sets/Keywords](https://github.com/imagerelay/api/blob/master/sections/keywording.md).
 
 ```json
 {
@@ -214,6 +214,7 @@ Required parameters:
 }
 ```
 We will return a JSON representation of the uploaded file and `201 OK` if the file was uploaded successfully.
+_**Note:** Keywords and tags are the same thing in the request and response bodies._
 
 ```json
 {
