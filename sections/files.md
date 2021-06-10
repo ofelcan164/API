@@ -105,7 +105,7 @@ We will return 100 files per page. If the result set has 100 files, it's your re
 ]
 ```
 
-You may limit files returned by keyword using a query parameter, for example:
+You may limit files returned by keyword using a query parameters, for example:
 `/api/v2/folders/<folder_id>/files.json?<query_param>=dogs`
 
 To search all the files in the archive by keyword via the API, obtain the root folder id of the archive via API (`GET /folders/root.json`), this ID will never change, then call:
