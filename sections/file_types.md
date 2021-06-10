@@ -8,20 +8,20 @@ _**Note** that on the web, this is known as a Metadata Template. Not all plans h
 Get File Types
 --------------
 
-* `GET /file_types.json` will return all the file types for the account.
+* `GET /file_types.json` will return all the file types for the authenticated user.
 
 ```json
 [
   {
-    "name":"Action A1",
-    "description":"NaN",
+    "name":"<file_type_name1>",
+    "description":"",
     "created_on":"2008-05-18T20:16:52Z",
     "updated_on":"2013-01-07T17:06:14Z",
     "id":"<file_type_id>",
     "terms":
       [
         {
-          "name":"Keywords",
+          "name":"<metaterm_name1>",
           "position":1,
           "meta_name":"",
           "display_in_download":null,
@@ -32,7 +32,7 @@ Get File Types
           "id":"<term_id>"
          },
          {
-           "name":"Copyright",
+           "name":"<metaterm_name2>",
            "position":2,
            "meta_name":"",
            "display_in_download":null,
@@ -45,15 +45,15 @@ Get File Types
       ]
   },
   {
-    "name":"Meta Data",
-    "description":"Testing Excel",
+    "name":"<file_type_name2>",
+    "description":"",
     "created_on":"2009-05-06T10:48:00Z",
     "updated_on":"2009-05-06T12:43:30Z",
     "id":"<file_type_id>",
     "terms":
       [
         {
-          "name":"Title",
+          "name":"<metaterm_name>",
           "position":1,
           "meta_name":"Title",
           "display_in_download":null,
@@ -75,15 +75,15 @@ Get File Type
 
 ```json
 {
-  "name":"Action A1",
-  "description":"NaN",
+  "name":"<file_type_name1>",
+  "description":"",
   "created_on":"2008-05-18T20:16:52Z",
   "updated_on":"2013-01-07T17:06:14Z",
   "id":"<file_type_id>",
   "terms":
     [
       {
-        "name":"Keywords",
+        "name":"<metaterm_name1>",
         "position":1,
         "meta_name":"",
         "display_in_download":null,
@@ -94,7 +94,7 @@ Get File Type
         "id":"<term_id>"
        },
        {
-         "name":"Copyright",
+         "name":"<metaterm_name2>",
          "position":2,
          "meta_name":"",
          "display_in_download":null,
@@ -111,18 +111,20 @@ Get File Type
 Field Types and Metaterm Options
 -------------
 
-The `field_type` attribute can take values `text_field` or `single_select_field`. When it is set to `single_select_field`, populate the `metaterm_options` with choices you want available for that `term`. When it is set to `text_field` any input is acceptable and the `metaterm_options` array will be empty.
+_** TODO: ADD THE LITERAL ENDPOINTS FOR CREATING FILE TYPES **_
+
+The `field_type` attribute can take values `text_field` or `single_select_field`. When it is set to `single_select_field`, populate the `metaterm_options` with the choices you want available for that `term`. When it is set to `text_field` any input is acceptable and the `metaterm_options` array will be empty.
 
 ```json
 {
-  "name": "Rock Stars",
+  "name": "<file_type_name>",
   "description": null,
   "created_on": "2019-06-25T18:56:14.000Z",
   "updated_on": "2019-06-26T21:40:26.000Z",
   "id": "<file_type_id>",
   "terms": [
      {
-          "name": "Favorite Rolling Stones Member",
+          "name": "<metaterm_name1>",
           "position": 1,
           "meta_name": "",
           "display_in_download": null,
