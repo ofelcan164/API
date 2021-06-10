@@ -5,7 +5,7 @@ Allows you to retrieve, create, update, and delete your collections.
 
 Get Collections
 ----------
-* `GET /collections.json` will return `200 OK` and a list of collections created by the authenticated user, 100 collections per page (`?page=X`).
+* `GET /collections.json` will return `200 OK` and a list of collections created by the authenticated user. 100 collections will be returned per page. If you have more than 100 collections, use `page` as a query parameter to retrieve pages beyond the first one.
 
 ```json
 [
@@ -72,7 +72,7 @@ Get collection
 
 Get collection files
 ---------
-* `GET /collections/<collection_id>/files.json` will return `200 OK` with a list of files associated with the collection, 100 per page (`?page=X`).
+* `GET /collections/<collection_id>/files.json` will return `200 OK` with a list of files associated with the collection. 100 files will be returned per page. If you have more than 100 files in the specified collection, use `page` as a query parameter to retrieve pages beyond the first one.
 
 ```json
 [
@@ -130,7 +130,7 @@ Get collection files
 Create collection
 --------------
 
-* `POST /collections.json` will create a new collection. `name` is required and `asset_ids` is an optional comma separated list of IDs of assets/files to be *added* to the new collection.
+* `POST /collections.json` will create a new collection. `name` is required and `asset_ids` is an optional comma separated list of IDs of assets/files to be added to the new collection.
 
 ```json
 {
@@ -153,11 +153,11 @@ Update collection
 }
 ```
 
-Will return a `200 OK` response and a JSON representation of the user.
+Will return a `200 OK` response and a JSON representation of the collection.
 
 Delete collection
 --------------
 
 * `DELETE /collections/<collection_id>.json` will delete the specified collection.
 
-Will return a `204 No Content` response if the collection was deleted.
+Will return a `204 No Content` response if the collection was deleted successfully.
