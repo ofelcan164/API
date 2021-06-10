@@ -1,11 +1,11 @@
 Collections
 ===========
 
-Allows you to retrieve your collections.
+Allows you to retrieve, create, update, and delete your collections.
 
 Get Collections
 ----------
-* `GET /collections.json` will return `200 OK` and a list of collections the created by the logged in user, 100 collections per page (`?page=X`).
+* `GET /collections.json` will return `200 OK` and a list of collections created by the authenticated user, 100 collections per page (`?page=X`).
 
 ```json
 [
@@ -37,7 +37,7 @@ Get Collections
 
 Get collection
 ---------
-* `GET /collections/<collection_id>.json` will return `200 OK` and a representation of the specified collection.
+* `GET /collections/<collection_id>.json` will return `200 OK` and a JSON representation of the specified collection.
 
 ```json
 {
@@ -78,14 +78,14 @@ Get collection files
 [
   {
     "id":"<file_id>",
-    "filename":"basic_perm_icon.png",
+    "filename":"<filename>",
     "created_at":"2013-05-20T12:58:07Z",
     "updated_on":"2013-05-20T13:03:36Z",
     "size":7358,
     "width":101,
     "height":101,
     "content_type":"image/png",
-    "user_id":405,
+    "user_id":"<user_id>",
     "deleted":null,
     "deletion_date":null,
     "delete_user_id":null,
@@ -93,30 +93,30 @@ Get collection files
     "terms":
       [
         {
-          "term_id":"<term_id>",
+          "term_id":"<term_id1>",
           "value":" "
         },
         {
-          "term_id":"<term_id>",
+          "term_id":"<term_id2>",
           "value":" "
         },
         {
-          "term_id":"<term_id>",
+          "term_id":"<term_id3>",
           "value":" "
         },
         {
-          "term_id":"<term_id>",
+          "term_id":"<term_id4>",
           "value":" "
         }
       ],
       "tags":
       [
         {
-          "tag_id":"<tag_id>",
+          "tag_id":"<tag_id1>",
           "value":"Sports"
         },
         {
-          "tag_id":"<tag_id>",
+          "tag_id":"<tag_id2>",
           "value":"Marketing"
         }
       ]
@@ -130,12 +130,12 @@ Get collection files
 Create collection
 --------------
 
-* `POST /collections.json` will create a new collection. `name` is required and `asset_ids` is an optional comma separated list of IDs of assets (files) to be added to the new collection.
+* `POST /collections.json` will create a new collection. `name` is required and `asset_ids` is an optional comma separated list of IDs of assets/files to be *added* to the new collection.
 
 ```json
 {
   "name": "New Collection Name",
-  "asset_ids": "<asset_id1>,<asset_id2>,<asset_id3>"
+  "asset_ids": "<asset_id1>, <asset_id2>, <asset_id3>"
 }
 ```
 
@@ -144,12 +144,12 @@ This will return `201 Created`, if successful.
 Update collection
 --------------
 
-* `PUT /collections/<collection_id>.json` will update an existing collection. `name` is required and `asset_ids` is an optional comma separated list of IDs of assets (files) to be added to the new collection.
+* `PUT /collections/<collection_id>.json` will update an existing collection. `name` is required and `asset_ids` is an optional comma separated list of IDs of assets/files to be *added* to the new collection.
 
 ```json
 {
   "name": "New Collection Name",
-  "asset_ids": "<asset_id1>,<asset_id2>,<asset_id3>"
+  "asset_ids": "<asset_id1>, <asset_id2>, <asset_id3>"
 }
 ```
 
@@ -158,6 +158,6 @@ Will return a `200 OK` response and a JSON representation of the user.
 Delete collection
 --------------
 
-* `DELETE /collections/<collection_id>.json` will delete the collection with the given ID.
+* `DELETE /collections/<collection_id>.json` will delete the specified collection.
 
 Will return a `204 No Content` response if the collection was deleted.
