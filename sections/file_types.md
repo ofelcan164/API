@@ -108,14 +108,43 @@ Get File Type
 }
 ```
 
-Field Types and Metaterm Options
+Create File Type
 -------------
 
-_** TODO: ADD THE LITERAL ENDPOINTS FOR CREATING FILE TYPES **_
+* `POST /file_types.json` will create a file type/metadata template.
 
-The `field_type` attribute can take values `text_field` or `single_select_field`. When it is set to `single_select_field`, populate the `metaterm_options` with the choices you want available for that `term`. When it is set to `text_field` any input is acceptable and the `metaterm_options` array will be empty.
+`metaterms_options` is where you define the metadata terms which will be a part of the newly created file type/metadata template. There can be 0 or more. The `field_type` attribute can take values `text_field` or `single_select_field`. When it is set to `single_select_field`, populate the `metaterm_options` with the choices you want available for that `term`. When it is set to `text_field` any input is acceptable and the `metaterm_options` array will be empty.
 
-A `_____` reponse and JSON representation of the created file type will be returned.
+``` json
+{
+  "name": "<file_type_name>",
+  "description": "Template description, this is optional",
+  "metaterms_attributes": [
+    {
+      "name": "<metaterm_name1>",
+      "position": 1,
+      "meta_name": "optional name",
+      "display_in_download": true,
+      "field_type": "text_field"
+    },
+    {
+      "name": "<metaterm_name2>",
+      "position": 2,
+      "meta_name": "optional name",
+      "display_in_download": true,
+      "field_type": "single_select_field",
+      "metaterm_options": [
+        {
+
+        }
+      ]
+    },
+    {...}
+  ]
+}
+```
+
+A `201 Created` response and JSON representation of the created file type will be returned.
 
 ```json
 {
