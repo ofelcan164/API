@@ -14,7 +14,7 @@ We will return 100 files per page. If the result set has 100 files, it's your re
 [
   {
     "id":"<file_id>",
-    "filename":"basic_perm_icon.png",
+    "filename":"<filename>",
     "created_at":"2013-05-20T12:58:07Z",
     "updated_on":"2013-05-20T13:03:36Z",
     "size":7358,
@@ -59,7 +59,7 @@ We will return 100 files per page. If the result set has 100 files, it's your re
   },
   {
     "id": "<file_id>",
-    "filename":"grey_lock_icon.png",
+    "filename":"<filename>",
     "created_at":"2013-05-20T12:58:05Z",
     "updated_on":"2013-05-20T13:03:33Z",
     "size":2974,
@@ -192,11 +192,11 @@ Upload File From URL
 Required parameters:
 * `filename` - Name of the file being uploaded.
 * `folder_id` - ID of the folder the file will be uploaded to.
-* `file_type_id` - ID of the metadata template/file type that the file will have.
-* `terms` - List of keywords that the file may have in the form of a hash, with a `term_id` and a `value`. If you don't want to set any metadata on upload, `terms` can be nil.
+* `file_type_id` - ID of the metadata template/file type that the file will have. These can be acquired with [`GET /file_types.json`](https://github.com/ofelcan164/API/blob/Improve-Docs/sections/file_types.md#get-file-types).
+* `terms` - List of metadata terms that the file may have. If a given file type has 10 terms associated with it, you may include 0-10 of those terms in your calls. These terms should be passed in the form of a hash, with a `term_id` and a `value`. `term_id` can be found with [`GET /file_types/<file_type_id>.json`](). If you don't want to set any of the metadata on upload, `terms` can be nil.
 * `url` - URL of where the file will be downloaded from. Then, it is uploaded to your library in the specified folder.
 
-`keyword_ids` are optional and should be an array if included. To get keywords see [Keywords Sets/Keywords](https://github.com/imagerelay/api/blob/master/sections/keywording.md).
+* `keyword_ids` are optional and should be an array if included. To get keywords see [Keywords Sets/Keywords](https://github.com/imagerelay/api/blob/master/sections/keywording.md).
 
 ```json
 {
