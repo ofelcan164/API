@@ -187,14 +187,14 @@ Get File
 Upload File From URL
 -----------
 
-* `POST /files.json` returns `201 OK` if the file was uploaded successfully.
+* `POST /files.json` uploads a file given the request body.
 
-Required parameters are:
-* `filename` - name of the file to be uploaded.
+Required parameters:
+* `filename` - Name of the file being uploaded.
 * `folder_id` - ID of the folder the file will be uploaded to.
 * `file_type_id` - ID of the metadata template/file type that the file will have.
-* `terms` - List of keywords that the file may have in the form of a hash, with a `term_id` and a `value`. If you don't want to set any metadata on upload, terms can be nil.
-* `url` - URL of where the file will be downloaded and then uploaded to your library in the specified folder.
+* `terms` - List of keywords that the file may have in the form of a hash, with a `term_id` and a `value`. If you don't want to set any metadata on upload, `terms` can be nil.
+* `url` - URL of where the file will be downloaded from. Then, it is uploaded to your library in the specified folder.
 
 `keyword_ids` are optional and should be an array if included. To get keywords see [Keywords Sets/Keywords](https://github.com/imagerelay/api/blob/master/sections/keywording.md).
 
@@ -213,7 +213,7 @@ Required parameters are:
   "url":"<url_to_download_from>"
 }
 ```
-We will return a JSON representation of the uploaded file.
+We will return a JSON representation of the uploaded file and `201 OK` if the file was uploaded successfully.
 
 ```json
 {
@@ -273,7 +273,7 @@ Update File Keywords
 
 * `POST /files/<file_id>/terms` will update the metadata keyword terms of the file specified.
 
-Parameters:
+Required parameters:
   * `terms` - an array of term ids and values to update.
   * `overwrite` - if true, it will overwrite the entire value for that term, if false, it will append the value to any existing metadata already present in that term field.
 
@@ -299,7 +299,7 @@ Update File Tags
 
 * `POST /files/<file_id>/tags` will update the tags of the file specified.
 
-Parameters:
+Required parameters:
   * `tags` - contains a list of tag ids to both add and remove from the asset.
 
 ```json
@@ -353,7 +353,7 @@ Duplicate File
 
 * `POST /files/<file_id>/duplicate` will create a duplicate of the file in a single destination folder. This duplicate behaves as a completely new file and is completely separate from the original file.
 
- You can choose to copy all metadata, tags/keywords, and IPTC fields or not. If you choose to not copy metadata (`"should_copy_metadata": false`) - the copied file will get the destination folder's default asset profile.
+ You can choose to copy all metadata, tags/keywords, and IPTC fields or not. If you choose to not copy metadata (`"should_copy_metadata": false`) - the copied file will get the destination folder's default file type.
  Here's an example JSON body:
 
  ```json
@@ -362,14 +362,14 @@ Duplicate File
 	"should_copy_metadata": false
  }
  ```
- _**Note:** there can only be a single destination `folder_id`, not an array of ids_
+ _**Note:** There can only be a single destination `folder_id`, not an array of ids_
 
 Asset Thumbnail
 -------------
 
 * `POST /files/<file_id>/thumbnail?file_name=image.png` will update the asset thumbnail.
 
-Make sure that the header `Content-Type: application/octet-stream` is present and the request body is the binary file data. The total file size must be 5Mb or less. Only JPG and PNG image types are supported.
+Make sure that the header `Content-Type: application/octet-stream` is present and the request body is the binary data of the new thumbnail file. The total file size must be 5Mb or less. Only JPG and PNG image types are supported.
 
 A `file_name` parameter is required in the query string. Make sure the `file_name` includes an extension otherwise you will receive an error.
 
@@ -455,7 +455,7 @@ The JSON body you post must contain two attributes, a `file_name` and `chunk_cou
 
 The `file_name` used here will replace the name of the asset. Also make sure that the `file_name` has an extension.
 
-You will receive a `201 created` http status code on success.
+You will receive a `201 Created` http status code on success.
 
 ### Example
 
@@ -490,7 +490,7 @@ curl -u "user:pass" \
   "https://api.imagerelay.com/api/v2/files/555/versions/abc-def-ghi/chunk/2"
 ```
 
-**Step 3:** After all chunks have uploaded you may now hit the complete endpoint to start processing the file.
+**Step 3:** After all chunks have uploaded you may now make a call to the `complete` endpoint to start processing the file.
 
 ```
 curl -u "user:pass" \
