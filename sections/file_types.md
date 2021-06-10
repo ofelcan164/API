@@ -115,6 +115,8 @@ _** TODO: ADD THE LITERAL ENDPOINTS FOR CREATING FILE TYPES **_
 
 The `field_type` attribute can take values `text_field` or `single_select_field`. When it is set to `single_select_field`, populate the `metaterm_options` with the choices you want available for that `term`. When it is set to `text_field` any input is acceptable and the `metaterm_options` array will be empty.
 
+A `_____` reponse and JSON representation of the created file type will be returned.
+
 ```json
 {
   "name": "<file_type_name>",
