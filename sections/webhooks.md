@@ -160,7 +160,7 @@ This will return `200 Ok`
         "updated_file",
 
 
-Details about our currently supported list of `resources` and `actions`:
+Details about our currently supported list of resources and actions:
 --------------------------------------------------------------------
 
 ### Response
