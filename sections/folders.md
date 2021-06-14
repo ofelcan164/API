@@ -6,10 +6,7 @@ Folders are one of the main ways to keep files organized and findable in Image R
 Get Folders
 -----------
 
-* `GET /folders.json` will return all top-level folders viewable by the user
-* `GET /folders/<folder_id>/children?page=1` will return a paginated set of all child folders, 100 folders per page, of the specified folder along with pagination information.
-
-_**Note:** the unpaginated version of the child folder endpoint (`GET /folders/<parent_folder_id>/children`) currently works but will be deprecated in the near future so please use the paginated version if building a new integration_
+* `GET /folders.json` will return all top-level folders viewable by the
 
 ```json
 [
@@ -38,6 +35,9 @@ _**Note:** the unpaginated version of the child folder endpoint (`GET /folders/<
 ]
 ```
 
+* `GET /folders/<parent_folder_id>/children?page=1` will return a paginated set of all child folders, 100 folders per page, of the specified folder along with pagination information.
+
+_**Note:** the unpaginated version of the child folder endpoint (`GET /folders/<parent_folder_id>/children`) currently works but will be deprecated in the near future so please use the paginated version if building a new integration._
 
 ```json
 {
@@ -49,8 +49,8 @@ _**Note:** the unpaginated version of the child folder endpoint (`GET /folders/<
         "id":"<folder_id>",
         "metagroup_id":null,
         "name":"McCadam Logos",
-        "parent_id":6527,"
-        updated_on":"2012-07-23T15:39:16Z",
+        "parent_id":"<parent_folder_id>",
+        "updated_on":"2012-07-23T15:39:16Z",
         "user_id":"<user_id>"
       },
       {
@@ -60,7 +60,7 @@ _**Note:** the unpaginated version of the child folder endpoint (`GET /folders/<
         "id":"<folder_id>",
         "metagroup_id":null,
         "name":"Product Photography",
-        "parent_id":6527,
+        "parent_id":"<parent_folder_id>",
         "updated_on":"2012-10-09T12:09:25Z",
         "user_id":"<user_id>"
       }
@@ -73,7 +73,7 @@ _**Note:** the unpaginated version of the child folder endpoint (`GET /folders/<
         "pages": 2,
         "count": 155,
         "prev_page_path": null,
-        "next_page_path": "/api/v2/folders/555/children?page=2"
+        "next_page_path": "/api/v2/folders/<parent_folder_id>/children?page=2"
     }
 }
 ```
@@ -88,14 +88,14 @@ Get Folder
   "id":"<folder_id>",
   "metagroup_id":null,
   "name":"McCadam Logos",
-  "parent_id":6527,
+  "parent_id":"<parent_folder_id>",
   "user_id":"<user_id>",
   "created_on":"2012-06-19T08:41:19Z",
   "updated_on":"2012-07-23T15:39:16Z",
 }
 ```
 
-Get Folder Files
+Get a Folder's Files
 ----------------
 * `GET /folders/<folder_id>/files.json` returns all the files in the specified folder.
 For more information regarding files within folders, see [Files](https://github.com/imagerelay/api/blob/master/sections/files.md).
@@ -103,7 +103,7 @@ For more information regarding files within folders, see [Files](https://github.
 [
   {
     "id":"<file_id>",
-    "filename":"basic_perm_icon.png",
+    "filename":"<filename1>",
     "created_at":"2013-05-20T12:58:07Z",
     "updated_on":"2013-05-20T13:03:36Z",
     "size":7358,
@@ -148,7 +148,7 @@ For more information regarding files within folders, see [Files](https://github.
   },
   {
     "id": "<file_id>",
-    "filename":"grey_lock_icon.png",
+    "filename":"<filename2>",
     "created_at":"2013-05-20T12:58:05Z",
     "updated_on":"2013-05-20T13:03:33Z",
     "size":2974,
@@ -194,7 +194,7 @@ For more information regarding files within folders, see [Files](https://github.
 ]
 ```
 
-Allowing others to download files is down via [Quicklinks](https://github.com/imagerelay/api/blob/master/sections/quick_links.md).
+If you wish others to be able download files, create a [Quicklink](https://github.com/imagerelay/api/blob/master/sections/quick_links.md).
 
 Get Root Folder
 ---------------
@@ -207,34 +207,28 @@ calling `GET /folders.json`.
   "root_id":"<root_folder_id>"
 }
 ```
-_**Note:** This is mainly for top-level folder manipulation._
+_**Note:** This is mainly used for top-level folder manipulation._
 
 Create Folder
 -------------
 
 * `POST /folders/<root_folder_id>/children` will create a new top-level folder.
 
-```json
-{
-  "name": "My New Folder Name"
-}
-```
-
 * `POST /folders/<parent_folder_id>/children` will create a new folder that is a child of the specified parent folder.
 
 ```json
 {
-  "name": "My New Folder Name"
+  "name": "<new_folder_name>"
 }
 ```
 
 
-This will return `201 Created` and a JSON representation of the file created, if successful.
+This will return `201 Created` and a JSON representation of the folder created, if successful.
 
 ```json
 {
     "id": "<new_folder_id>",
-    "name": "New folder name",
+    "name": "<new_folder_name>",
     "user_id": "<user_id>",
     "created_on": "2021-06-09T15:46:55.000Z",
     "updated_on": "2021-06-09T15:46:55.000Z",
@@ -254,11 +248,11 @@ This will return `201 Created` and a JSON representation of the file created, if
 Update Folder
 -------------
 
-* `PUT /folders/<folder_id>.json` will update the folder name from the parameter `name` passed in.
+* `PUT /folders/<folder_id>.json` will update the specified folder name from the parameter `name` passed in.
 
 ```json
 {
-  "name": "A new Name for the folder"
+  "name": "<new_folder_name>"
 }
 ```
 
