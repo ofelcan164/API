@@ -67,8 +67,8 @@ The request body should be the binary data of the chunk. Make sure to set the Co
 
 POST requests to the chunk endpoint will return the following response codes:
 
+* `201` - File upload chunk processed successfully and the file upload is complete.
 * `204` - File upload chunk processed successfully, waiting for more file chunks for the complete file upload.
-* `201` - File upload chunk processed successfully and the file upload is complete
 * `422` - File upload chunk failed, please ensure your file chunk is 5MB or less and retry.
 
 Once all files for an upload job have been uploaded, an asset will be created automatically on Image Relay.
