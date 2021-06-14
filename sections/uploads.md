@@ -36,7 +36,7 @@ Include a value for `prefix` if you would like your uploaded asset to be placed 
 }
 ```
 
-This will return `201 Created` if successful, as well as a json representation of the upload job
+This will return `201 Created` if successful, as well as a JSON representation of the upload job.
 
 ```json
 {
