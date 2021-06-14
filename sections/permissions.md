@@ -32,7 +32,7 @@ We will return 100 permissions per page. If the result set has 100 permissions, 
 Get Permission
 -------------
 
-* `GET /permissions/<permission_group_id>.json` will return `200 OK`.
+* `GET /permissions/<permission_group_id>.json` will return `200 OK` and a JSON representation of the specified permission group.
 
 ```json
 {
