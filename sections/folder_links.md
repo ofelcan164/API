@@ -7,7 +7,7 @@ Folder links provide a portable and easy view experience of your folders. Allowi
 Get Folder Links
 ---------------
 
-* `GET folder_links.json` will return a list of folder links associated with the authenticated user.
+* `GET /folder_links.json` will return a list of folder links associated with the authenticated user.
 
 We will return 100 files per page. If the result set has more than 100 folder links, it's your responsibility to check the next page to see if there are any more folder links -- you do this by adding `&page=2` to the query, then `&page=3` and so on.
 
@@ -47,7 +47,7 @@ We will return 100 files per page. If the result set has more than 100 folder li
 Get Folder Link
 ---------------
 
-* `GET folder_links/<folder_link_id>.json` will return the specified folder link.
+* `GET /folder_links/<folder_link_id>.json` will return the specified folder link.
 
 ```json
 {
@@ -69,7 +69,7 @@ Get Folder Link
 Create Folder Links
 ---------------
 
-* `POST folder_links.json` will create a new folder link.
+* `POST /folder_links.json` will create a new folder link.
 
 The Content-Type header should be `application/json`. `purpose` is defined by you and can be whatever you like.
 
@@ -105,7 +105,7 @@ If successful, the call will return `201 Created` and a JSON representation of t
 Delete Folder Links
 -----------------
 
-* `DELETE folder_links/<folder_link_id>.json` will delete the specified folder link.
+* `DELETE /folder_links/<folder_link_id>.json` will delete the specified folder link.
 
 The Content-Type header should be `application/json`
 
