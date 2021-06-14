@@ -105,19 +105,19 @@ We will return 100 files per page. If the result set has 100 files, it's your re
 ]
 ```
 
-You may limit files returned by keyword using a query parameters, for example:
+You may limit files returned by keyword using query parameters, for example:
 `/api/v2/folders/<folder_id>/files.json?<query_param>=dogs`
 
-To search all files your library by keyword via the API, obtain the root folder ID (`GET /folders/root.json`), this ID will never change, then call:
+To search all files in your library by keyword via the API, obtain the root folder ID (`GET /folders/root.json`), this ID will never change, then call:
 `/api/v2/folders/<root_folder_id>/files.json?<query_param>=dogs&recursive=true`
 
-The following filters/query parameters (<query_param>) can be used when requesting a folder's files:
+The following filters/query parameters (*<query_param>*) can be used when requesting a folder's files:
 
-* `uploaded_after` will filter the files returned to only those that have been uploaded after that date. The format of the parameter should be: "YYYY-MM-DD HH:MM:SS GMT+00:00". You can leave off the timezone information if you are using UTC time, you can leave off time if you want files filtered from the beginning of the day specified (e.g. YYYY-MM-DD)
+* `uploaded_after` - filters the files returned to only those that have been uploaded after that date. The format of the parameter should be: "YYYY-MM-DD HH:MM:SS GMT+00:00". You can leave off the timezone information if you are using UTC time, you can leave off time if you want files filtered from the beginning of the day specified (e.g. YYYY-MM-DD)
 
-* `updated_after` will filter the files returned to only those that have been updated/modified after that date. The date/time should be formatted the same as `uploaded_after`.
+* `updated_after` - filters the files returned to only those that have been updated/modified after that date. The date/time should be formatted the same as `uploaded_after`.
 
-* `file_type_id` will filter the files returned to only those that have the file type id/metadata template of the supplied parameter.
+* `file_type_id` - filters the files returned to only those that have the specified file type/metadata template.
 
 _**Note:** The above filter parameters can be combined_
 
@@ -187,13 +187,13 @@ Get File
 Upload File From URL
 -----------
 
-* `POST /files.json` uploads a file given the request body.
+* `POST /files.json` uploads a file from a provided URL.
 
 Required parameters:
 * `filename` - Name of the file being uploaded.
 * `folder_id` - ID of the folder the file will be uploaded to.
 * `file_type_id` - ID of the metadata template/file type that the file will have. These can be acquired with [`GET /file_types.json`](https://github.com/ofelcan164/API/blob/Improve-Docs/sections/file_types.md#get-file-types).
-* `terms` - List of metadata terms that the file may have. If a given file type has 10 terms associated with it, you may include 0-10 of those terms in your calls and terms you do not specify will have empty values. These terms should be passed in the form of a hash, with a `term_id` and a `value`. `term_id` can be found with [`GET /file_types/<file_type_id>.json`](). If you don't want to set any of the metadata on upload, `terms` can be nil.
+* `terms` - List of metadata terms that the file may have associated with its file type/metadata template. If a given file type has 10 terms associated with it, you may include 0-10 of those terms in your calls and terms you do not specify will have empty values. These terms should be passed in the form of a hash, with a `term_id` and a `value`. `term_id` can be found with [`GET /file_types/<file_type_id>.json`](https://github.com/imagerelay/API/blob/master/sections/file_types.md#get-file-type). If you don't want to set any of the metadata on upload, `terms` can be nil.
 * `url` - URL of where the file will be downloaded from. Then, it is uploaded to your library in the specified folder.
 
 * `keyword_ids` are optional and should be an array if included. To get keywords/tags see [Keywords Sets/Keywords](https://github.com/imagerelay/api/blob/master/sections/keywording.md).
@@ -215,7 +215,7 @@ Required parameters:
 ```
 We will return a JSON representation of the uploaded file and `201 OK` if the file was uploaded successfully.
 
-_**Note:** Keywords and tags are the same thing in the request and response bodies._
+_**Note:** Keywords and tags are the same thing in the request and response bodies but the request body in your call must match exactly how they appear below._
 
 ```json
 {
@@ -277,7 +277,7 @@ Update File Metadata Terms
 
 Required parameters:
   * `terms` - an array of term ids and values to update.
-  * `overwrite` - if true, it will overwrite the entire value for that term, if false, it will append the value to any existing metadata already present in that term field.
+  * `overwrite` - if true, it will overwrite the entire value for that term, if false, it will append the value to any existing metadata term value already present in that term field.
 
 ```json
 {
