@@ -12,40 +12,26 @@ We will return 100 files per page. If the result set has more than 100 invited u
 
 ```json
 [
-	{
-		"id":"<invited_user_id>",
-		"user_id":"<user_id>",
-		"permission_id":"<permission_group_id>",
-		"first_name":"First Name",
-		"last_name":"Last Name",
-		"email":"example@imagerelay.com",
-		"company":"API Test Company",
-		"registration_url": "<registration_url>",
-		"created_at":"2015-06-01T20:02:33Z",
-		"updated_at":"2015-06-01T20:02:33Z",
-		"custom_field_one":null,
-		"custom_field_two":null,
-		"custom_field_three":null,
-		"custom_field_four":null,
-		"sub_domain_id":"<sub_domain_id>"
-	},
-	{
-		"id":"<invited_user_id>",
-		"user_id":"<user_id>",
-		"permission_id":"<permission_group_id>",
-		"first_name":"First Name",
-		"last_name":"Last Name",
-		"email":"example@imagerelay.com",
-		"company":"API Test Company",
-		"registration_url": "<registration_url>",
-		"created_at":"2015-06-01T20:02:33Z",
-		"updated_at":"2015-06-01T20:02:33Z",
-		"custom_field_one":null,
-		"custom_field_two":null,
-		"custom_field_three":null,
-		"custom_field_four":null,
-		"sub_domain_id":"<sub_domain_id>"
-	}
+    {
+        "id": "<invited_user_id>",
+        "user_id": "<inviting_user_id>",
+        "sub_domain_id": "sub_domain_id",
+        "first_name": "First Name",
+        "last_name": "Last Name",
+        "email": "email@example.com",
+        "company": "Company",
+        "custom_field_one": null,
+        "custom_field_two": null,
+        "custom_field_three": null,
+        "custom_field_four": null,
+        "created_at": "2021-06-14T15:12:29.000Z",
+        "updated_at": "2021-06-14T15:12:29.000Z",
+        "permission_id": "<permission_group_id>",
+        "registration_url": "<registration_url>"
+    },
+		{
+			...
+		}
 ]
 ```
 
