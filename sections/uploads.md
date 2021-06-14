@@ -58,13 +58,12 @@ You'll need the `<upload_id>` and `<asset_id>` to upload your file.
 Upload File Chunks
 -------------------
 
-First, split your file into 5 MB or less chunks. Then:
+First, split your file into chunks. Chunk size is up to you but must be 5 MB or less in size. If you attempt to upload a chunk larger than 5 MB you'll receive an error.
+Then:
 
 * `POST /upload_jobs/<upload_id>/files/<asset_id>/chunks/1.json` uploads a file chunk. The last number is the chunk number. This is used,
 to determine the order to reassemble the chunks on the server. So the next chunk would be `POST /upload_jobs/<upload_id>/files/<asset_id>/chunks/2.json`.
 The request body should be the binary data of the chunk. Make sure to set the Content-Length header. The Content-Type header should be `application/octet-stream`
-
-Chunk size is up to you, up to 5 MB in size. If you attempt to upload a chunk larger than 5 MB you'll receive an error.
 
 POST requests to the chunk endpoint will return the following response codes:
 
