@@ -163,7 +163,7 @@ This will return `200 Ok`
 Details about our currently supported list of `resources` and `actions`:
 --------------------------------------------------------------------
 
-###Response
+### Response
 
 All Webhook POSTs will contain the following information in JSON format:
 
@@ -190,7 +190,7 @@ The `data` section contains data specific to the resource being triggered. For a
 about the file, for a user, it will contain details about the user and so forth. The `event` section will always be present
 for all webhook calls.
 
-###Resource: File
+### Resource: File
 
 * _Created:_ triggered when a file is created at Image Relay
 * _Processed:_ triggered when a file has been created or updated in Image Relay and is available for download
@@ -203,7 +203,7 @@ for all webhook calls.
 * _Removed from Folder:_ triggered when a file is removed from a folder
 * _File Updated_: triggered when the original file is updated in Image Relay
 
-####Sample Data
+#### Sample Data
 
 ```json
 {
@@ -236,7 +236,7 @@ for all webhook calls.
 }
 ```
 
-###Resource: Folder
+### Resource: Folder
 
 * _Created:_ triggered when a folder is created at Image Relay
 * _Renamed:_ triggered when a folder is renamed
@@ -246,7 +246,7 @@ for all webhook calls.
 * _Shared:_ triggered when a user shares a public link to a folder
 
 
-####Sample Data
+#### Sample Data
 
 ```json
 {
@@ -274,13 +274,13 @@ for all webhook calls.
 }
 ```
 
-###Resource: User
+### Resource: User
 
 * _Created:_ triggered when a user is created at Image Relay
 * _Modified:_ triggered when a user is modified
 * _Destroyed:_ triggered when a user is destroyed
 
-####Sample Data
+#### Sample Data
 
 ```json
 {
