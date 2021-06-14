@@ -4,14 +4,14 @@ Keywording
 Keywording allows you to add searchable keywords to your assets.
 
 
-Keyword Sets
+Keyword/Tag Sets
 ============
 
 Keyword sets are groups of keywords that can be associated with an asset.
 
 Get Keyword Sets
 ----------------
-* `GET /keyword_sets.json` will return `200 OK` and the API user's list of keyword sets.
+* `GET /keyword_sets.json` will return `200 OK` and the authenticated user's list of keyword sets.
 
 We will return 100 files per page. If the result set has 100 files, it's your responsibility to check the next page to see if there are any more keyword sets -- you do this by adding `&page=2` to the query, then `&page=3` and so on.
 
@@ -30,7 +30,7 @@ We will return 100 files per page. If the result set has 100 files, it's your re
     "created_at": "2015-06-12T18:21:43Z",
     "updated_at": "2015-06-12T18:22:07Z",
     "deleted_at": null
-  },
+  }
 ]
 ```
 
@@ -40,17 +40,17 @@ Get Keyword Set
 
 ```json
 {
-    "id": "<keyword_set_id>",
-    "name": "Test",
-    "created_at": "2015-06-15T11:30:21Z",
-    "updated_at": "2015-06-15T11:30:21Z",
-	"deleted_at": null
+  "id": "<keyword_set_id>",
+  "name": "Test",
+  "created_at": "2015-06-15T11:30:21Z",
+  "updated_at": "2015-06-15T11:30:21Z",
+  "deleted_at": null
 }
 ```
 
 Create Keyword Set
 ------------------
-* `POST /keyword_sets.json` will create a new keyword set.
+* `POST /keyword_sets.json` will create a new keyword set. When a keyword set is created, it will be initially empty. Then, individual keywords can be created and added to the keyword set. See [Create Keyword](https://github.com/ofelcan164/API/blob/Improve-Docs/sections/keywording.md#create-keyword).
 
 ```json
 {
@@ -58,7 +58,7 @@ Create Keyword Set
 }
 ```
 
-We will return `201 CREATED` and a representation of the new keyword set. Once a keyword set is created, it will be initially empty. Then, individual keywords can be created and added to the keyword set. See below.
+We will return `201 Created` and a JSON representation of the new keyword set.
 
 
 ```json
@@ -73,13 +73,13 @@ We will return `201 CREATED` and a representation of the new keyword set. Once a
 
 Update Keyword Set
 ------------------
-* `PUT /keyword_sets/<keyword_set_id>.json` will update the `name` of a keyword set.
+* `PUT /keyword_sets/<keyword_set_id>.json` will update the `name` of the specified keyword set.
 ```json
 {
 	"name":"New Keyword Set Name"
 }
 ```
-Will return `200 OK` and a representation of the keyword set.
+We will return `200 OK` and a JSON representation of the specified keyword set.
 
 ```json
 {
@@ -93,18 +93,18 @@ Will return `200 OK` and a representation of the keyword set.
 
 Delete Keyword Set
 -------------------
-* `DELETE /keyword_sets/<keyword_set_id>.json` will delete a keyword set and return `204 NO-CONTENT`. All associated keywords will also be deleted.
+* `DELETE /keyword_sets/<keyword_set_id>.json` will delete the specified keyword set and return `204 No Content` upon success. All of the keyword set's associated keywords/tags will also be deleted.
 
 _**Note:** If identical keywords exists in multiple keyword sets, only the keyword in the deleted set will be deleted._
 
-Keywords
+Keywords/Tags
 ========
 
-Keywords are associated with keyword sets and are the searchable asset terms.
+Keywords are associated with keyword sets and are searchable.
 
 Get Keywords
 ------------
-* `GET /keyword_sets/<keyword_set_id>/keywords.json` will return `200 OK` and a list of keywords associated with the specified keyword set.
+* `GET /keyword_sets/<keyword_set_id>/keywords.json` will return `200 OK` and a list of keywords/tags associated with the specified keyword set.
 
 ```json
 [
@@ -127,7 +127,7 @@ Get Keywords
 
 Get Keyword
 -----------
-* `GET /keyword_sets/<keyword_set_id>/keywords/<keyword_id>.json` will return `200 OK` and a representation of the keyword requested.
+* `GET /keyword_sets/<keyword_set_id>/keywords/<keyword_id>.json` will return `200 OK` and a representation of the specified keyword requested.
 
 ```json
 {
@@ -149,7 +149,7 @@ Create Keyword
 }
 ```
 
-We will return `201 CREATED` and a representation of the new keyword
+We will return `201 Created` and a JSON representation of the new keyword
 
 ```json
 {
@@ -163,7 +163,7 @@ We will return `201 CREATED` and a representation of the new keyword
 
 Update Keyword
 --------------
-* `PUT /keyword_sets/<keyword_set_id>/keywords/<keyword_id>.json` will update a keyword.
+* `PUT /keyword_sets/<keyword_set_id>/keywords/<keyword_id>.json` will update the specified keyword.
 
 ```json
 {
@@ -171,7 +171,7 @@ Update Keyword
 }
 ```
 
-We will return `200 OK` and a representation of the updated keyword.
+We will return `200 OK` and a JSON representation of the updated keyword.
 
 ```json
 {
@@ -185,4 +185,4 @@ We will return `200 OK` and a representation of the updated keyword.
 
 Delete Keyword
 --------------
-* `DELETE /keyword_sets/<keyword_set_id>/keywords/<keyword_id>.json` will delete a keyword and return `204 NO-CONTENT`.
+* `DELETE /keyword_sets/<keyword_set_id>/keywords/<keyword_id>.json` will delete the specified keyword and return `204 No Content`.
