@@ -18,7 +18,7 @@ We will return 100 files per page. If the result set has more than 100 invited u
         "sub_domain_id": "sub_domain_id",
         "first_name": "First Name",
         "last_name": "Last Name",
-        "email": "email@example.com",
+        "email": "example@imagerelay.com",
         "company": "Company",
         "custom_field_one": null,
         "custom_field_two": null,
@@ -39,21 +39,21 @@ We will return 100 files per page. If the result set has more than 100 invited u
 
 ```json
 {
-	"id":"<invited_user_id>",
-	"user_id":"<user_id>",
-	"permission_id":"<permission_group_id>",
-	"first_name":"First Name",
-	"last_name":"Last Name",
-	"email":"example@imagerelay.com",
-	"company":"API Test Company",
-	"registration_url": "<registration_url>",
-	"created_at":"2015-06-01T20:02:33Z",
-	"updated_at":"2015-06-01T20:02:33Z",
-	"custom_field_one":null,
-	"custom_field_two":null,
-	"custom_field_three":null,
-	"custom_field_four":null,
-	"sub_domain_id":"<sub_domain_id>"
+		"id": "<invited_user_id>",
+		"user_id": "<inviting_user_id>",
+		"sub_domain_id": "sub_domain_id",
+		"first_name": "First Name",
+		"last_name": "Last Name",
+		"email": "example@imagerelay.com",
+		"company": "Company",
+		"custom_field_one": null,
+		"custom_field_two": null,
+		"custom_field_three": null,
+		"custom_field_four": null,
+		"created_at": "2021-06-14T15:12:29.000Z",
+		"updated_at": "2021-06-14T15:12:29.000Z",
+		"permission_id": "<permission_group_id>",
+		"registration_url": "<registration_url>"
 }
 ```
 
@@ -74,29 +74,29 @@ The Content-Type header should be `application/json`
 }
 ```
 
-We will return a response with json data on the new invited user and the user will be sent an invite email to signup for Image Relay.
+We will return a response with JSON data on the new invited user and the user will be sent an invite email to signup for Image Relay.
 
 ```json
 {
-	"id": "<invited_user_id>",
-	"user_id": "<user_id>",
-	"permission_id": "<permission_group_id>",
-	"first_name": "First Name",
-	"last_name": "Last Name",
-	"email": "example@imagerelay.com",
-	"company": "IR",
-	"registration_url": "<registration_url>",
-	"created_at": "2015-06-02T14:04:07Z",
-	"updated_at": "2015-06-02T14:04:07Z",
-	"custom_field_one": null,
-	"custom_field_two": null,
-	"custom_field_three": null,
-	"custom_field_four": null,
-	"sub_domain_id": "<sub_domain_id>"
+		"id": "<invited_user_id>",
+		"user_id": "<inviting_user_id>",
+		"sub_domain_id": "sub_domain_id",
+		"first_name": "First Name",
+		"last_name": "Last Name",
+		"email": "example@imagerelay.com",
+		"company": "Company",
+		"custom_field_one": null,
+		"custom_field_two": null,
+		"custom_field_three": null,
+		"custom_field_four": null,
+		"created_at": "2021-06-14T15:12:29.000Z",
+		"updated_at": "2021-06-14T15:12:29.000Z",
+		"permission_id": "<permission_group_id>",
+		"registration_url": "<registration_url>"
 }
 ```
 
-_**Note:** <invited_user_id> is distinct from <user_id>._
+_**Note:** <invited_user_id> is distinct from <inviting_user_id>._
 
 If the invite is successful, the call will return `201 CREATED`.  Otherwise you will receive `400 Bad Request`.
 
