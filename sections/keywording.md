@@ -3,7 +3,7 @@ Keywording
 
 Keywording allows you to add searchable keywords to your assets.
 
-_**Note:** Keywords and tags are the same thing and those terms are interchangeable throughout this documentation._
+_**Note:** Keywords and tags are the same thing and are interchangeable throughout this documentation._
 
 
 Keyword/Tag Sets
