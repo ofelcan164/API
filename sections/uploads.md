@@ -2,13 +2,13 @@
 File Uploads
 =======
 
-The upload API is how you can add files to Image Relay. Files are uploaded to Image Relay through the creation of upload jobs. And files are sent up in chunks.
+The upload API is how you can add files to Image Relay. Files are uploaded to Image Relay through the creation of upload jobs, and then individual files are sent up in chunks.
 
 Create Upload Job
 -----------------
 
-* `POST /upload_jobs.json` will start an upload job. You'll need the this upload id to your upload file. Each upload job will create a *single* asset.
-Include a value for `prefix` if you would like your uploaded asset to be placed in a new folder created as a child of the specified folder. `size` is required and is in bytes.
+* `POST /upload_jobs.json` will start an upload job. Each upload job will create a *single* asset.
+Include a value for `prefix` if you would like your uploaded asset to be placed in a new folder created as a child of the specified folder with the name `prefix`. `size` is required and is in bytes.
 
 ```json
 {
@@ -36,7 +36,7 @@ Include a value for `prefix` if you would like your uploaded asset to be placed 
 }
 ```
 
-This will return `201 Created` if successful, as well as a json representation of the upload job:
+This will return `201 Created` if successful, as well as a json representation of the upload job
 
 ```json
 {
@@ -53,7 +53,9 @@ This will return `201 Created` if successful, as well as a json representation o
 }
 ```
 
-Create a File Chunk
+You'll need the `<upload_id>` and `<asset_id>` to upload your file.
+
+Upload File Chunks
 -------------------
 
 First, split your file into 5 MB or less chunks. Then:
@@ -66,9 +68,9 @@ Chunk size is up to you, up to 5 MB in size. If you attempt to upload a chunk la
 
 POST requests to the chunk endpoint will return the following response codes:
 
-* 204: File upload chunk processed successfully, waiting for more file chunks for the complete file upload.
-* 201: File upload chunk processed successfully and the file upload is complete
-* 422: File upload chunk failed, please ensure your file chunk is 5MB or less and retry.
+* `204` - File upload chunk processed successfully, waiting for more file chunks for the complete file upload.
+* `201` - File upload chunk processed successfully and the file upload is complete
+* `422` - File upload chunk failed, please ensure your file chunk is 5MB or less and retry.
 
 Once all files for an upload job have been uploaded, an asset will be created automatically on Image Relay.
 
@@ -88,13 +90,13 @@ curl --data-binary @chunk.bin \
 
 You may include the optional `expires_on` and `keyword_ids` attributes in the JSON payload when posting to the `/api/v2/upload_jobs.json` endpoint.
 
-The `expires_on` attribute must be a valid date time, otherwise posting chunks will fail. This attribute is used for setting the expiration date of an asset.
+* `expires_on` - must be a valid date time, otherwise posting chunks will fail. This attribute is used for setting the expiration date of an asset.
 
-The `keyword_ids` attribute must contain an array of valid keyword ids from your account, otherwise posting chunks will fail. This attribute is used for attaching existing keywords to an asset.
+* `keyword_ids` - must contain an array of valid keyword ids from your account, otherwise posting chunks will fail. This attribute is used for attaching existing keywords to an asset.
 
-* **Note:** You do not need to include the keyword set id, just the id of the keyword.*
+_**Note:** You do not need to include the keyword set id, just the id of the keyword._
 
-You may create keywords from the API, however, you must have the correct permissions to do so. You may retrieve keyword ids from the API as well. See the Keywording section for more information.
+You may create keywords from the API, however, you must have the correct permissions to do so. You may retrieve keyword ids from the API as well. See the [Keywording](https://github.com/imagerelay/API/blob/master/sections/keywording.md) for more information.
 
 Here is an example curl request that uses the above metadata attributes to create an upload job.
 
