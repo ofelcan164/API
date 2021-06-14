@@ -87,7 +87,7 @@ Get Folder
 {
   "id":"<folder_id>",
   "metagroup_id":null,
-  "name":"McCadam Logos",
+  "name":"<folder_name>",
   "parent_id":"<parent_folder_id>",
   "user_id":"<user_id>",
   "created_on":"2012-06-19T08:41:19Z",
@@ -194,7 +194,7 @@ For more information regarding files within folders, see [Files](https://github.
 ]
 ```
 
-If you wish others to be able download files, create a [Quicklink](https://github.com/imagerelay/api/blob/master/sections/quick_links.md).
+If you wish for others to be able download files, create a [Quicklink](https://github.com/imagerelay/api/blob/master/sections/quick_links.md).
 
 Get Root Folder
 ---------------
@@ -204,7 +204,7 @@ calling `GET /folders.json`.
 
 ```json
 {
-  "root_id":"<root_folder_id>"
+  "id":"<root_folder_id>"
 }
 ```
 _**Note:** This is mainly used for top-level folder manipulation._
