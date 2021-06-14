@@ -58,7 +58,7 @@ You'll need the `<upload_id>` and `<asset_id>` to upload your file.
 Upload File Chunks
 -------------------
 
-First, split your file into chunks. Chunk size is up to you but must be 5 MB or less in size. If you attempt to upload a chunk larger than 5 MB you'll receive an error.
+First, split your file into chunks. Chunk size is up to you but must be 5 MB or less. If you attempt to upload a chunk larger than 5 MB you'll receive an error.
 Then:
 
 * `POST /upload_jobs/<upload_id>/files/<asset_id>/chunks/1.json` uploads a file chunk. The last number is the chunk number. This is used,
