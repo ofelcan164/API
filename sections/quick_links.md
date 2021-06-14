@@ -8,43 +8,43 @@ your company's bandwidth account limits.
 Get Quick Links
 ---------------
 
-* `GET /quick_links.json` will return `200 OK` and the API user's list of quick links
+* `GET /quick_links.json` will return `200 OK` and the authenticated user's list of quick links
 
-We will return 100 files per page. If the result set has 100 files, it's your responsibility to check the next page to see if there are any more files -- you do this by adding `&page=2` to the query, then `&page=3` and so on.
+We will return 100 quick links per page. If the result set has 100 files, it's your responsibility to check the next page to see if there are any more quick links -- you do this by adding `&page=2` to the query, then `&page=3` and so on.
 
 ```json
 [
-    {
-        "id": "<quick_link_id>",
-        "uid": "283f889bb3424fce814577d0d87979zd",
-        "purpose": null,
-        "created_at": "2013-08-12T14:58:34Z",
-        "processing": false,
-        "asset_id": "<asset_id>",
-        "user_id": "<user_id>",
-        "url": "<quick_link_url>"
-    },
-    {
-        "id": "<quick_link_id>",
-        "uid": "88460f259af94d819f2032c09206a4zz",
-        "purpose": null,
-        "created_at": "2013-08-12T14:58:58Z",
-        "processing": false,
-        "asset_id": "<asset_id>",
-        "user_id": "<user_id>",
-        "url": "<quick_link_url>"
-    },
-    {
-        "id": "<quick_link_id>",
-        "uid": "ddc5f4615d3d4dc4b46c095e913011z7",
-        "purpose": "API",
-        "created_at": "2012-05-04T14:04:17Z",
-        "processing": false,
-        "asset_id": "<asset_id>",
-        "user_id": "<user_id>",
-        "url": "<quick_link_url>"
-    }
-]
+  {
+    "id": "<quick_link_id>",
+    "uid": "<uid>",
+    "purpose": null,
+    "created_at": "2013-08-12T14:58:34Z",
+    "processing": false,
+    "asset_id": "<asset_id>",
+    "user_id": "<user_id>",
+    "url": "<quick_link_url>"
+  },
+  {
+    "id": "<quick_link_id>",
+    "uid": "<uid>",
+    "purpose": null,
+    "created_at": "2013-08-12T14:58:58Z",
+    "processing": false,
+    "asset_id": "<asset_id>",
+    "user_id": "<user_id>",
+    "url": "<quick_link_url>"
+  },
+  {
+    "id": "<quick_link_id>",
+    "uid": "<uid>",
+    "purpose": "API",
+    "created_at": "2012-05-04T14:04:17Z",
+    "processing": false,
+    "asset_id": "<asset_id>",
+    "user_id": "<user_id>",
+    "url": "<quick_link_url>"
+  }
+  ]
 ```
 
 Get Quick Link
@@ -55,7 +55,7 @@ Get Quick Link
 ```json
 {
     "id": "<quick_link_id>",
-    "uid": "630f1eaf95474d8288a9b62ff3c3549bt",
+    "uid": "<uid>",
     "purpose": "API",
     "created_at": "2012-11-30T09:21:54Z",
     "processing": false,
@@ -67,9 +67,19 @@ Get Quick Link
 
 Create Quick Link
 -----------------
-Quick links can be used to generate a url to download/embed an asset, or to download/embed a converted (and or resized) version of the asset in jpg or png format.
+Quick links can be used to generate a URL to download/embed an asset, or to download/embed a converted (and or resized) version of the asset in jpg or png format.
 
 * `POST /quick_links.json` will create a new quick link.
+
+Required parameters are `purpose` and `asset_id`. All other parameters are optional.
+
+If you are using the quick link URL to download the asset then do not include the `disposition` parameter in the post body.
+
+If you are using the quick link to render the image inline in a web browser or using it in an `<img>` tag, for example, then include `"disposition": "inline"` in the post body.
+
+If you want to downsize or convert the asset to a jpg or png then include the `max_width` and `max_height` parameters in addition to the `format` parameter in the post body. Accepted `formats` are `jpg` and `png`.
+
+_**Note:** we can only downsize images, if you post dimensions that are larger than the asset's dimensions - the quick link will be sized to the asset's dimensions._
 
 ```json
 {
@@ -85,22 +95,12 @@ Quick links can be used to generate a url to download/embed an asset, or to down
 }
 ```
 
-Required parameters are `purpose` and `asset_id`. All other parameters are optional.
-
-If you are using the quick link URL to download the asset then do not include the `disposition` parameter in the post body.
-
-If you are using the quick link to render the image inline in a web browser or using it in an `<img>` tag, for example, then include `"disposition": "inline"` in the post body.
-
-If you want to downsize or convert the asset to a jpg or png then include the `max_width` and `max_height` parameters in addition to the `format` parameter in the post body. Accepted `formats` are `jpg` and `png`.
-
-_**Note:** we can only downsize images, if you post dimensions that are larger than the asset's dimensions - the quick link will be sized to the asset's dimensions._
-
 This endpoint returns `201 Created`, if successful, as well as a representation of the quick link.
 
 ```json
 {
     "id": "<quick_link_id>",
-    "uid": "630f1eaf95474d8288a9b62ff3c3549bt",
+    "uid": "<uid>",
     "purpose": "API",
     "created_at": "2012-11-30T09:21:54Z",
     "processing": true,
@@ -115,6 +115,6 @@ If the quick link `processing` flag is `true`, then the image hasn't finished re
 Delete Quick Link
 -----------------
 
-* `DELETE /quick_links/<quick_link_id>.json` will delete a quick link.
+* `DELETE /quick_links/<quick_link_id>.json` will delete the specified quick link.
 
 This will return `204 No Content`, if successful.
