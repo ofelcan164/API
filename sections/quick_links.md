@@ -10,7 +10,7 @@ Get Quick Links
 
 * `GET /quick_links.json` will return `200 OK` and the authenticated user's list of quick links
 
-We will return 100 quick links per page. If the result set has 100 files, it's your responsibility to check the next page to see if there are any more quick links -- you do this by adding `&page=2` to the query, then `&page=3` and so on.
+We will return 100 quick links per page. If the result set has 100 quick links, it's your responsibility to check the next page to see if there are any more quick links -- you do this by adding `&page=2` to the query, then `&page=3` and so on.
 
 ```json
 [
