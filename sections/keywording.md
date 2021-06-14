@@ -19,11 +19,11 @@ We will return 100 files per page. If the result set has 100 files, it's your re
 ```json
 [
   {
-	"id": "<keyword_set_id1>",
-	"name": "Test",
-	"created_at": "2015-06-15T11:30:21Z",
-	"updated_at": "2015-06-15T11:30:21Z",
-	"deleted_at": null
+    "id": "<keyword_set_id1>",
+    "name": "Test",
+    "created_at": "2015-06-15T11:30:21Z",
+    "updated_at": "2015-06-15T11:30:21Z",
+    "deleted_at": null
   },
   {
     "id": "<keyword_set_id2>",
