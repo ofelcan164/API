@@ -7,7 +7,9 @@ Get Folders
 -----------
 
 * `GET /folders.json` will return all top-level folders viewable by the user
-* `GET /folders/<parent_folder_id>/children` will return all the child folders of the specified parent folder.
+* `GET /folders/<folder_id>/children?page=1` will return a paginated set of all child folders, 100 folders per page, of the specified folder along with pagination information.
+
+_**Note:** the unpaginated version of the child folder endpoint (`GET /folders/<parent_folder_id>/children`) currently works but will be deprecated in the near future so please use the paginated version if building a new integration_
 
 ```json
 [
@@ -36,11 +38,6 @@ Get Folders
 ]
 ```
 
-Get a folder's children, paginated, 100 per page
-
- * `GET /folders/<folder_id>/children?page=1` will return a paginated set of children folders along with pagination information.
-
- **Please note the unpaginated version of this endpoint will be deprecated in the near future so please use this version if building a new integration**
 
 ```json
 {
