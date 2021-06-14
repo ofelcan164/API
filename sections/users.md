@@ -14,8 +14,8 @@ Get Yourself (authenticated user)
   "login": "your-login",
   "email": "email@company.com",
   "company": "Company Name",
-  "first_name": "FirstName",
-  "last_name": "LastName",
+  "first_name": "First Name",
+  "last_name": "Last Name",
   "permission_group_id": "<permission_group_id>",
   "permissions": [
     {
@@ -23,7 +23,9 @@ Get Yourself (authenticated user)
       "description": "Description of permissions associated",
       "id": "<permission_group_id>"
     },
-    {...}
+    {
+      ...
+    }
   ]
 }
 ```
@@ -35,7 +37,7 @@ Get Users
 ```json
 [
 	{
-	    "id": "user_id1>",
+	    "id": "<user_id1>",
 	    "login": "mldorm",
 	    "first_name": "Michael",
 	    "last_name": "Dorm",
@@ -50,7 +52,7 @@ Get Users
 	    "custom_field_four": null
 	},
 	{
-	    "id": "user_id2>",
+	    "id": "<user_id2>",
 	    "login": "login",
 	    "first_name": "First Name",
 	    "last_name": "Last Name",
@@ -115,7 +117,7 @@ Get User
 
 Get a user's Quick Links
 ---------
-* `GET /users/<user_id>/quick_links.json` will return `200 OK` with a list of quick links the user created, 100 per page (`?page=X`).
+* `GET /users/<user_id>/quick_links.json` will return `200 OK` with a list of quick links the specified user has created, 100 per page (`?page=X`).
 
 ```json
 [
@@ -130,7 +132,9 @@ Get a user's Quick Links
     "filename": "filename.jpg",
     "url": "<quick_link_url>"
   },
-  {...}
+  {
+    ...
+  }
 ]
 ```
 
@@ -155,7 +159,6 @@ This will return `201 Created`, if successful.
 
 Update User's Role/Permissions Group
 --------------
-
 
 * `PUT /users/<user_id>.json` will update a user's role. Permissions groups can be obtained [here](https://github.com/imagerelay/api/blob/master/sections/permissions.md).
 ```json
