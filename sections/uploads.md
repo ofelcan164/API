@@ -3,6 +3,7 @@ File Uploads
 =======
 
 The upload API is how you can add files to Image Relay. Files are uploaded to Image Relay through the creation of upload jobs, and then individual files are sent up in chunks.
+Image Relay also allows for the nesting of assets in which multiple files are uploaded as a singular asset. This may be desired, for example, for an image in multiple formats. See [Nested Uploads](https://github.com/imagerelay/API/blob/master/sections/nested_uploads.md) for more information on how to deal with these types of assets.
 
 Create Upload Job
 -----------------

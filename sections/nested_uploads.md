@@ -2,7 +2,7 @@
 Nested File Uploads
 =======
 
-The nested upload API is how you can add nested files to Image Relay. Nested files are uploaded to Image Relay through the creation of upload jobs. And then files are sent up in chunks.
+The nested upload API is how you can add nested files to Image Relay. Nested files are uploaded to Image Relay through the creation of upload jobs, then multiple files are sent up in chunks. This may be desired, for example, for an image in multiple formats.
 
 Create Upload Job
 -----------------

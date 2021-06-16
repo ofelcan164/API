@@ -12,7 +12,7 @@ Keyword sets are groups of keywords that can be associated with an asset
 
 Get Keyword Sets
 ----------------
-* `GET /keyword_sets.json` will return `200 OK` and the authenticated user's list of keyword sets.
+* `GET /keyword_sets.json` will return `200 OK` and the authenticated user's list of keyword sets given their permissions group allows for metadata access.
 
 We will return 100 keyword sets per page. If the result set has 100 keyword sets, it's your responsibility to check the next page to see if there are any more keyword sets -- you do this by adding `&page=2` to the query, then `&page=3` and so on.
 

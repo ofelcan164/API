@@ -8,7 +8,7 @@ _**Note:** On the web, file types are referred to interchangeably with Metadata 
 Get File Types
 --------------
 
-* `GET /file_types.json` will return all the file types for the authenticated user.
+* `GET /file_types.json` will return all the file types for the account given that the authenticated user is within a permission group with metadata access.
 
 ```json
 [
