@@ -15,36 +15,36 @@ We will return 100 quick links per page. If the result set has 100 quick links, 
 ```json
 [
   {
-    "id": "<quick_link_id>",
+    "id": "<quick_link_id1>",
     "uid": "<uid>",
     "purpose": null,
     "created_at": "2013-08-12T14:58:34Z",
     "processing": false,
-    "asset_id": "<asset_id>",
+    "asset_id": "<asset_id1>",
     "user_id": "<user_id>",
     "url": "<quick_link_url>"
   },
   {
-    "id": "<quick_link_id>",
+    "id": "<quick_link_id2>",
     "uid": "<uid>",
     "purpose": null,
     "created_at": "2013-08-12T14:58:58Z",
     "processing": false,
-    "asset_id": "<asset_id>",
+    "asset_id": "<asset_id2>",
     "user_id": "<user_id>",
     "url": "<quick_link_url>"
   },
   {
-    "id": "<quick_link_id>",
+    "id": "<quick_link_id3>",
     "uid": "<uid>",
     "purpose": "API",
     "created_at": "2012-05-04T14:04:17Z",
     "processing": false,
-    "asset_id": "<asset_id>",
+    "asset_id": "<asset_id3>",
     "user_id": "<user_id>",
     "url": "<quick_link_url>"
   }
-  ]
+]
 ```
 
 Get Quick Link
@@ -79,7 +79,7 @@ If you are using the quick link to render the image inline in a web browser or u
 
 If you want to downsize or convert the asset to a jpg or png then include the `max_width` and `max_height` parameters in addition to the `format` parameter in the post body. Accepted `formats` are `jpg` and `png`.
 
-_**Note:** we can only downsize images, if you post dimensions that are larger than the asset's dimensions - the quick link will be sized to the asset's dimensions._
+_**Note:** We can only downsize images. If you post dimensions that are larger than the asset's dimensions - the quick link will be sized to the asset's dimensions._
 
 ```json
 {

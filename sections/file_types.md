@@ -1,9 +1,9 @@
 File Types
 ==========
 
-Each file in Image Relay is assigned a file type. Different file types have different sets of metadata associated with them.
+Each file in Image Relay is assigned a file type. Different file types have different sets of metadata terms associated with them.
 
-_**Note** that on the web, this is known as a Metadata Template. Not all plans have the ability to create new templates and alter the terms associated with your default template. Accounts require `Admin Access to Metadata Tools` for this funcionality to be accessible. Please contact support@imagerelay.com if you have questions about your plan features._
+_**Note:** On the web, file types are referred to interchangeably with Metadata Templates. Not all plans have the ability to create new templates and alter the terms associated with your default template. Accounts require `Admin Access to Metadata Tools` for this functionality to be accessible. Please contact support@imagerelay.com if you have questions about your plan features._
 
 Get File Types
 --------------

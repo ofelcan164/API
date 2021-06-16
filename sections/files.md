@@ -13,8 +13,8 @@ We will return 100 files per page. If the result set has 100 files, it's your re
 ```json
 [
   {
-    "id":"<file_id>",
-    "filename":"<filename>",
+    "id":"<file_id1>",
+    "filename":"<filename1>",
     "created_at":"2013-05-20T12:58:07Z",
     "updated_on":"2013-05-20T13:03:36Z",
     "size":7358,
@@ -58,8 +58,8 @@ We will return 100 files per page. If the result set has 100 files, it's your re
       ]
   },
   {
-    "id": "<file_id>",
-    "filename":"<filename>",
+    "id": "<file_id2>",
+    "filename":"<filename2>",
     "created_at":"2013-05-20T12:58:05Z",
     "updated_on":"2013-05-20T13:03:33Z",
     "size":2974,
@@ -108,7 +108,7 @@ We will return 100 files per page. If the result set has 100 files, it's your re
 You may limit files returned by keyword using query parameters, for example:
 `/api/v2/folders/<folder_id>/files.json?<query_param>=dogs`
 
-To search all files in your library by keyword via the API, obtain the root folder ID (`GET /folders/root.json`), this ID will never change, then call:
+To search all files in your library by keyword via the API, obtain the root folder ID (`GET /folders/root.json`). This ID will never change, then call:
 `/api/v2/folders/<root_folder_id>/files.json?<query_param>=dogs&recursive=true`
 
 The following filters/query parameters (*<query_param>*) can be used when requesting a folder's files:
@@ -155,19 +155,19 @@ Get File
   [
     {
       "term_id":"<term_id1>",
-      "value":" "
+      "value":""
     },
     {
       "term_id":"<term_id2>",
-      "value":" "
+      "value":""
     },
     {
       "term_id":"<term_id3>",
-      "value":" "
+      "value":""
     },
     {
       "term_id":"<term_id4>",
-      "value":" "
+      "value":""
     }
   ],
   "tags":
@@ -215,7 +215,7 @@ Required parameters:
 ```
 We will return a JSON representation of the uploaded file and `201 OK` if the file was uploaded successfully.
 
-_**Note:** Keywords and tags are the same thing in the request and response bodies but the request body in your call must match exactly how they appear below._
+_**Note:** Keywords and tags are the same thing in the request and response bodies but the request body in your call must match exactly how it appears above._
 
 ```json
 {
@@ -415,7 +415,6 @@ File chunks are grouped together using a v4 UUID.
 
 ### Obtaining a v4 UUID
 
-
 `POST /api/v2/files/<file_id>/versions` will return a JSON response with a valid v4 UUID to be used when uploading the new file in chunks.
 
 _**Note:** <file_id> is the ID of the file that will be updated by the new, chunk uploaded file._
@@ -429,12 +428,14 @@ _**Note:** <file_id> is the ID of the file that will be updated by the new, chun
 _**Note:** "versions" is pluralized in the path_
 
 ### Uploading Chunks
+First, split your file into chunks. Chunk size is up to you but must be 5 MB or less. If you attempt to upload a chunk larger than 5 MB you'll receive an error.
+Then:
 
 * `POST /api/v2/files/<file_id>/versions/<v4_uuid>/chunk/<chunk_number>` to upload a chunk.
 
-The request body should be the binary data of the file chunk and the Content-Type should be `application/octet-stream`.
-
-The chunk number in the path is used for ordering chunks when assembling the final file.
+The last number is the chunk number. This is used,
+to determine the order to reassemble the chunks on the server. So the second chunk would be `POST /api/v2/files/<file_id>/versions/<v4_uuid>/chunk/2`.
+The request body should be the binary data of the chunk. Make sure to set the Content-Length header. The Content-Type header should be `application/octet-stream`
 
 You will receive a `204 No Content`, http status code when the chunk has uploaded successfully.
 

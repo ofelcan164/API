@@ -14,9 +14,9 @@ Get Folders
     "asset_count":1,
     "child_count":0,
     "created_on":"2012-06-19T08:41:19Z",
-    "id":"<folder_id>",
+    "id":"<folder_id1>",
     "metagroup_id":null,
-    "name":"McCadam Logos",
+    "name":"<folder_name1>",
     "parent_id":"<parent_folder_id>",
     "updated_on":"2012-07-23T15:39:16Z",
     "user_id":"<user_id>"
@@ -25,15 +25,16 @@ Get Folders
     "asset_count":47,
     "child_count":1,"
     created_on":"2012-10-09T12:09:25Z",
-    "id":"<folder_id>",
+    "id":"<folder_id2>",
     "metagroup_id":null,
-    "name":"Product Photography",
+    "name":"<folder_name2>",
     "parent_id":"<parent_folder_id>",
     "updated_on":"2012-10-09T12:09:25Z",
     "user_id":"<user_id>"
   }
 ]
 ```
+
 
 * `GET /folders/<parent_folder_id>/children?page=1` will return a paginated set of all child folders, 100 folders per page, of the specified folder along with pagination information.
 
@@ -46,9 +47,9 @@ _**Note:** the unpaginated version of the child folder endpoint (`GET /folders/<
         "asset_count":1,
         "child_count":0,
         "created_on":"2012-06-19T08:41:19Z",
-        "id":"<folder_id>",
+        "id":"<folder_id1>",
         "metagroup_id":null,
-        "name":"McCadam Logos",
+        "name":"<folder_name1>",
         "parent_id":"<parent_folder_id>",
         "updated_on":"2012-07-23T15:39:16Z",
         "user_id":"<user_id>"
@@ -57,9 +58,9 @@ _**Note:** the unpaginated version of the child folder endpoint (`GET /folders/<
         "asset_count":47,
         "child_count":1,"
         created_on":"2012-10-09T12:09:25Z",
-        "id":"<folder_id>",
+        "id":"<folder_id2>",
         "metagroup_id":null,
-        "name":"Product Photography",
+        "name":"<folder_name>",
         "parent_id":"<parent_folder_id>",
         "updated_on":"2012-10-09T12:09:25Z",
         "user_id":"<user_id>"
@@ -102,7 +103,7 @@ For more information regarding files within folders, see [Files](https://github.
 ```json
 [
   {
-    "id":"<file_id>",
+    "id":"<file_id1>",
     "filename":"<filename1>",
     "created_at":"2013-05-20T12:58:07Z",
     "updated_on":"2013-05-20T13:03:36Z",
@@ -147,7 +148,7 @@ For more information regarding files within folders, see [Files](https://github.
       ]
   },
   {
-    "id": "<file_id>",
+    "id": "<file_id2>",
     "filename":"<filename2>",
     "created_at":"2013-05-20T12:58:05Z",
     "updated_on":"2013-05-20T13:03:33Z",
@@ -194,7 +195,7 @@ For more information regarding files within folders, see [Files](https://github.
 ]
 ```
 
-If you wish for others to be able download files, create a [Quicklink](https://github.com/imagerelay/api/blob/master/sections/quick_links.md).
+If you wish for others to be able download files form the specified folder, create a [Quicklink](https://github.com/imagerelay/api/blob/master/sections/quick_links.md).
 
 Get Root Folder
 ---------------

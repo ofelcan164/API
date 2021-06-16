@@ -3,7 +3,7 @@ Users
 
 Allows you to retrieve users.
 
-Get Yourself (authenticated user)
+Get Yourself (Authenticated User)
 ----------
 
 * `GET /users/me.json` will return `200 OK` information relating to the currently authenticated user.
@@ -14,12 +14,12 @@ Get Yourself (authenticated user)
   "login": "your-login",
   "email": "email@company.com",
   "company": "Company Name",
-  "first_name": "First Name",
-  "last_name": "Last Name",
+  "first_name": "<first_name>",
+  "last_name": "<last_name>",
   "permission_group_id": "<permission_group_id>",
   "permissions": [
     {
-      "name": "Permission One",
+      "name": "<permission_group_name>",
       "description": "Description of permissions associated",
       "id": "<permission_group_id>"
     },
@@ -38,9 +38,9 @@ Get Users
 [
 	{
 	    "id": "<user_id1>",
-	    "login": "mldorm",
-	    "first_name": "Michael",
-	    "last_name": "Dorm",
+	    "login": "<username1>",
+      "first_name": "<first_name1>",
+      "last_name": "<last_name1>",
 	    "email": "michael@dorm.com",
 	    "company": "",
 	    "created_on": null,
@@ -53,9 +53,9 @@ Get Users
 	},
 	{
 	    "id": "<user_id2>",
-	    "login": "login",
-	    "first_name": "First Name",
-	    "last_name": "Last Name",
+	    "login": "<username2>",
+      "first_name": "<first_name2>",
+	    "last_name": "<last_name2>",
 	    "email": "example@imagerelay.com",
 	    "company": "IR",
 	    "created_on": "2008-03-24T21:19:14Z",
@@ -71,15 +71,15 @@ Get Users
 
 Search Users
 ----------
-* `GET /search.json?<query_param>=Dorm` will return `200 OK` and a list of users belonging to your account that match the search term ("Dorm" in this example), 100 users per page (`?page=X`). Searches are performed against the fields `first_name`, `last_name`, and `email` which replace `<query_param>` above.
+* `GET /search.json?<query_param>=Dorm` will return `200 OK` and a list of users belonging to your account that match the search term ("Dorm" in this example). We will return 100 users per page. If the result set has 100 users, it's your responsibility to check the next page to see if there are any more users -- you do this by adding `&page=2` to the query, then `&page=3` and so on. Searches are performed against the fields `first_name`, `last_name`, and `email` which replace `<query_param>` above.
 
 ```json
 [
 	{
 	    "id": "<user_id>",
-	    "login": "mldorm",
-	    "first_name": "Michael",
-	    "last_name": "Dorm",
+	    "login": "<username>",
+	    "first_name": "<first_name>",
+	    "last_name": "<last_name>",
 	    "email": "michael@dorm.com",
 	    "company": "",
 	    "created_on": null,
@@ -100,9 +100,9 @@ Get User
 ```json
 {
     "id": "<user_id>",
-    "login": "login",
-    "first_name": "First Name",
-    "last_name": "Last Name",
+    "login": "<username>",
+    "first_name": "<first_name>",
+    "last_name": "<last_name>",
     "email": "example@imagerelay.com",
     "company": "IR",
     "created_on": "2008-03-24T21:19:14Z",
@@ -123,13 +123,13 @@ Get a user's Quick Links
 [
   {
     "id": "<quick_link_id>",
-    "uid": "GUID",
+    "uid": "<uid>",
     "purpose": "purpose of the quick link",
     "created_at": "2008-01-1T00:00:00.000Z",
     "processing": false,
     "asset_id": "<asset_id>",
     "user_id": "<user_id>",
-    "filename": "filename.jpg",
+    "filename": "<filename>",
     "url": "<quick_link_url>"
   },
   {
@@ -147,8 +147,8 @@ For SSO-enabled accounts, you may want to create SSO users in lieu of turning on
 
 ```json
 {
-  "first_name": "FirstName",
-  "last_name": "LastName",
+  "first_name": "<first_name>",
+  "last_name": "<last_name>",
   "email": "name@company.com",
   "company": "Your Company",
   "role_id": "permission_group_id>"
@@ -160,7 +160,7 @@ This will return `201 Created`, if successful.
 Update User's Role/Permissions Group
 --------------
 
-* `PUT /users/<user_id>.json` will update a user's role. Permissions groups can be obtained [here](https://github.com/imagerelay/api/blob/master/sections/permissions.md).
+* `PUT /users/<user_id>.json` will update a user's role to the specified permissions group. Permissions groups can be obtained [here](https://github.com/imagerelay/api/blob/master/sections/permissions.md).
 ```json
 {
 	"role_id": "<permission_group_id>"

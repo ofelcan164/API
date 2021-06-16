@@ -9,13 +9,13 @@ Get Folder Links
 
 * `GET /folder_links.json` will return a list of folder links associated with the authenticated user.
 
-We will return 100 files per page. If the result set has more than 100 folder links, it's your responsibility to check the next page to see if there are any more folder links -- you do this by adding `&page=2` to the query, then `&page=3` and so on.
+We will return 100 folder links per page. If the result set has more than 100 folder links, it's your responsibility to check the next page to see if there are any more folder links -- you do this by adding `&page=2` to the query, then `&page=3` and so on.
 
 ```json
 [
   {
     "id": "<folder_link_id1>",
-    "uid": "93527abc0258448885d5b388f70cd654",
+    "uid": "<uid>",
     "user_id": "<user_id>",
     "purpose": "testing api creation",
     "expires_on": null,
@@ -29,7 +29,7 @@ We will return 100 files per page. If the result set has more than 100 folder li
   },
   {
     "id": "<folder_link_id2>",
-    "uid": "b9d1a51601624f67a055f663c5852f24",
+    "uid": "<uid>",
     "user_id": "<user_id>",
     "purpose": "testing api creation",
     "expires_on": "2015-07-01T00:00:00Z",
@@ -52,7 +52,7 @@ Get Folder Link
 ```json
 {
   "id": "<folder_link_id>",
-  "uid": "b9d1a51601624f67a055f663c5852f24",
+  "uid": "<uid>",
   "user_id": "<user_id>",
   "purpose": "testing api creation",
   "expires_on": "2015-07-01T00:00:00Z",
@@ -106,7 +106,5 @@ Delete Folder Links
 -----------------
 
 * `DELETE /folder_links/<folder_link_id>.json` will delete the specified folder link.
-
-The Content-Type header should be `application/json`
 
 If the delete is successful, the call will return `204 No Content`.

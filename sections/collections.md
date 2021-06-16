@@ -5,7 +5,8 @@ Allows you to retrieve, create, update, and delete your collections.
 
 Get Collections
 ----------
-* `GET /collections.json` will return `200 OK` and a list of collections created by the authenticated user. 100 collections will be returned per page. If you have more than 100 collections, use `page` as a query parameter to retrieve pages beyond the first one.
+* `GET /collections.json` will return `200 OK` and a list of collections created by the authenticated user.
+We will return 100 collections per page. If the result set has 100 collections, it's your responsibility to check the next page to see if there are any more collections -- you do this by adding `&page=2` to the query, then `&page=3` and so on.
 
 ```json
 [
@@ -72,7 +73,8 @@ Get collection
 
 Get collection files
 ---------
-* `GET /collections/<collection_id>/files.json` will return `200 OK` with a list of files associated with the collection. 100 files will be returned per page. If you have more than 100 files in the specified collection, use `page` as a query parameter to retrieve pages beyond the first one.
+* `GET /collections/<collection_id>/files.json` will return `200 OK` with a list of files associated with the collection.
+We will return 100 files per page. If the result set has 100 files, it's your responsibility to check the next page to see if there are any more files -- you do this by adding `&page=2` to the query, then `&page=3` and so on.
 
 ```json
 [

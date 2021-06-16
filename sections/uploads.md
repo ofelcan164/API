@@ -8,7 +8,7 @@ Create Upload Job
 -----------------
 
 * `POST /upload_jobs.json` will start an upload job. Each upload job will create a *single* asset.
-Include a value for `prefix` if you would like your uploaded asset to be placed in a new folder created as a child of the specified folder with the name `prefix`. `size` is required and is in bytes.
+Include a value for `prefix` if you would like your uploaded asset to be placed in a new folder created as a child of the specified folder with the name `prefix`. `name` and `size` for each file to be uploaded to the nested asset is required. `name` must include an file extension and `size` is in bytes.
 
 ```json
 {
@@ -18,7 +18,7 @@ Include a value for `prefix` if you would like your uploaded asset to be placed 
     "files":
         [
             {
-                "name":"my_file.jpg",
+                "name":"<filename>",
                 "size":"12231796"
             }
         ]
@@ -46,7 +46,7 @@ This will return `201 Created` if successful, as well as a JSON representation o
         [
             {
                 "id":"<asset_id>",
-                "name":"my_file.jpg",
+                "name":"<filename>",
                 "size":12231976
             }
         ]
