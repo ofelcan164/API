@@ -148,18 +148,6 @@ This will return `200 Ok`
 ]
 ```
 
-
-        "expiration_date_set",
-        "expiration_date_removed",
-        "file_type_changed",
-        "name_changed",
-        "recovered",
-        "added_to_folder",
-        "removed_from_folder",
-        "keywords_updated",
-        "updated_file",
-
-
 Details about our currently supported list of resources and actions:
 --------------------------------------------------------------------
 
