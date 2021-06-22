@@ -2,36 +2,34 @@ Webhooks
 =========
 
 Webhooks allow you to receive notifications at an end-point of your choice for a myriad of events in Image Relay.
-Get notified when a file is uploaded, a new user is added, a folder is deleted, etc.
+Get notified when a file is uploaded, a new user is added, a folder is deleted...
 
 When there is a problem with a webhook, Image Relay will send an email to the user that created the webhook.
-The API also supports optionally adding additional `notification_emails` to the webhook if you wish to
+The API also supports optionally adding additional notification_emails to the webhook if you wish to
 alert other email addresses if issues arise.
 
 Get Webhooks
 -----------
 
 * `GET /webhooks.json` returns a list of all of your webhooks
-* `GET /webhooks/<webhook_id>.json` returns details about the specified webhook.
+* `GET /webhooks/51.json` returns details about the webhook with id 51.
 
 ```json
 [
   {
-    "id": "<webhook_id1>",
-    "user_id":"<user_id>",
-    "resource": "file",
-    "action": "processed",
-    "url": "<url_to_post_to>",
-    "created_at": "2021-06-01T13:45:36.000Z",
+    "user_id":405,
+    "resource":"file",
+    "action":"created",
+    "url":"http://example.com",
+    "created_at":"2015-06-18T19:18:35Z",
     "state": "normal",
-    "notification_emails": null
+    "notification_emails": ["email@example.com"]
   },
   {
-    "id": "<webhook_id2>",
-    "user_id":"<user_id>",
+    "user_id":405,
     "resource":"file",
     "action":"expiration_date_set",
-    "url":"<url_to_post_to>",
+    "url":"http://example.com",
     "created_at":"2015-06-18T19:18:35Z",
     "state": "paused",
     "notification_emails": null
@@ -44,18 +42,14 @@ Create Webhook
 
 * `POST /webhooks.json` will create a new webhook.
 
-After you create a webhook, when the event occurs that is specified in the webhook, Image Relay will POST
-the event details back to you at the `url` specified in the webhook. Valid `state` values are:
-* `normal`: normal functionality.
-* `paused`: user-initiated paused state, webhook will not be invoked
-* `error`: Image Relay encountered too many HTTP errors when invoking the webhook callback URL, callbacks have been temporarily suspended until the next day when it will be auto-resumed. If you’d like to resume your webhook sooner, [Update Webook](#Update-Webhook) and change its state.
-
+When you create a webhook, when the event occurs that is specified in the webhook, Image Relay will POST
+the event details back to you at the URL specified in the webhook.
 
 ```json
 {
   "resource": "file",
   "action": "created",
-  "url": "<url_to_post_to>",
+  "url": "https://example.com",
   "notification_emails": [
     "email1@example.com",
     "email2@example.com"
@@ -69,21 +63,20 @@ Update Webhook
 --------------
 
 
-* `PUT /webhooks/<webhook_id>.json` will update a webhook's `state`.
-
+* `PUT /webhooks/19.json` will update a webhook.
 ```json
 {
 	"state":"paused"
 }
 ```
 
-Will return `200 OK` and a representation of the specified webhook.
+Will return `200 OK` and a representation of the webhook. Valid values for "state" are: normal, error, paused
 
 ```json
 {
   "resource": "file",
   "action": "created",
-  "url": "<url_to_post_to>",
+  "url": "https://example.com",
   "state": "paused",
   "notification_emails": null
 }
@@ -92,7 +85,7 @@ Will return `200 OK` and a representation of the specified webhook.
 Delete Webhook
 --------------
 
-* `DELETE /webhooks/<webhook_id>.json` will delete the specified webhook.
+* `DELETE /webhooks/51.json` will delete the webhook where 51 represents the id of the webhook you wish to delete.
 
 This will return `204 No Content` if successful.
 
@@ -107,27 +100,25 @@ This will return `200 Ok`
 ```json
 [
   {
-    "resource":"file",
-    "supported_actions":
-    [
-        "created",
-        "expiration_date_set",
-        "expiration_date_removed",
-        "file_type_changed",
-        "name_changed",
-        "recovered",
-        "nested_file_deleted",
-        "added_to_folder",
-        "removed_from_folder",
-        "keywords_updated",
-        "updated_file",
-        "processed"
-    ]        
+    "resource": "file",
+    "supported_actions": [
+      "created",
+      "expiration_date_set",
+      "expiration_date_removed",
+      "file_type_changed",
+      "name_changed",
+      "recovered",
+      "added_to_folder",
+      "removed_from_folder",
+      "keywords_updated",
+      "updated_file",
+      "processed",
+      "deleted"
+    ]
   },
   {
-    "resource":"folder",
-    "supported_actions":
-    [
+    "resource": "folder",
+    "supported_actions": [
       "created",
       "renamed",
       "moved",
@@ -137,21 +128,20 @@ This will return `200 Ok`
     ]
   },
   {
-    "resource":"user",
-    "supported_actions":
-    [
+    "resource": "user",
+    "supported_actions": [
       "created",
       "modified",
       "destroyed"
-    ]
-  }
+      ]
+    }
 ]
 ```
 
 Details about our currently supported list of resources and actions:
 --------------------------------------------------------------------
 
-### Response
+###Response
 
 All Webhook POSTs will contain the following information in JSON format:
 
@@ -160,25 +150,25 @@ All Webhook POSTs will contain the following information in JSON format:
     "event": {
             "resource":"file",
             "action":"added_to_folder",
-            "resource_id":"<resource_id>",
-            "actor_id":"<user_id>",
-            "recipient_id":"<recipient_id>"
+            "resource_id":242694,
+            "actor_id":405,
+            "recipient_id":11285
     },
-    "data": { "id":"<file_id>" }
+    "data": { "id":1234 }
 }
 ```
 
-In the `event` section, `resource` is the type of resource triggering the event (e.g. file, folder...), `action` is the
-type of action that occurred (e.g. created, updated...), `resource_id` is the unique id in Image Relay for the resource
-that triggered this event. `actor_id` is the unique id of the user who caused the event to happen (i.e. uploaded the file,
-created the folder), and `recipient_id` is optionally present when necessary. For instance, in the case of a "File added to
-Folder" triggered, `recipient_id` would be the unique `folder_id` of the folder to which the file was added.
+In the "event" section, resource is the type of resource triggering the event (e.g. file, folder...), action is the
+type of action that occurred (e.g. created, updated...), resource_id is the unique id in Image Relay for the resource
+that triggered this event. actor_id is the unique id of the user who caused the event to happen (i.e. uploaded the file,
+created the folder), and recipient_id is optionally present when necessary. For instance, in the case of a "File added to
+Folder" triggered, recipient_id would be the unique folder id of the folder to which the file was added.
 
-The `data` section contains data specific to the resource being triggered. For a File, for instance it will contain details
-about the file, for a user, it will contain details about the user and so forth. The `event` section will always be present
+The data section contains data specific to the resource being triggered. For a File, for instance it will contain details
+about the file, for a user, it will contain details about the user and so forth. The "event" section will always be present
 for all webhook calls.
 
-### Resource: File
+###Resource: File
 
 * _Created:_ triggered when a file is created at Image Relay
 * _Processed:_ triggered when a file has been created or updated in Image Relay and is available for download
@@ -191,7 +181,7 @@ for all webhook calls.
 * _Removed from Folder:_ triggered when a file is removed from a folder
 * _File Updated_: triggered when the original file is updated in Image Relay
 
-#### Sample Data
+####Sample Data
 
 ```json
 {
@@ -224,7 +214,7 @@ for all webhook calls.
 }
 ```
 
-### Resource: Folder
+###Resource: Folder
 
 * _Created:_ triggered when a folder is created at Image Relay
 * _Renamed:_ triggered when a folder is renamed
@@ -234,7 +224,7 @@ for all webhook calls.
 * _Shared:_ triggered when a user shares a public link to a folder
 
 
-#### Sample Data
+####Sample Data
 
 ```json
 {
@@ -262,13 +252,13 @@ for all webhook calls.
 }
 ```
 
-### Resource: User
+###Resource: User
 
 * _Created:_ triggered when a user is created at Image Relay
 * _Modified:_ triggered when a user is modified
 * _Destroyed:_ triggered when a user is destroyed
 
-#### Sample Data
+####Sample Data
 
 ```json
 {
