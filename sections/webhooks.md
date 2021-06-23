@@ -2,37 +2,39 @@ Webhooks
 =========
 
 Webhooks allow you to receive notifications at an end-point of your choice for a myriad of events in Image Relay.
-Get notified when a file is uploaded, a new user is added, a folder is deleted...
+Get notified when a file is uploaded, a new user is added, a folder is deleted, etc.
 
 When there is a problem with a webhook, Image Relay will send an email to the user that created the webhook.
 The API also supports optionally adding additional notification_emails to the webhook if you wish to
 alert other email addresses if issues arise.
 
+
+Image Relay webhooks all include a `resource` and an `action`. Supported resources and their actions can be viewed [below](https://github.com/imagerelay/api/blob/master/sections/webhooks.md#supported-webhooks)
 Get Webhooks
 -----------
 
 * `GET /webhooks.json` returns a list of all of your webhooks
-* `GET /webhooks/51.json` returns details about the webhook with id 51.
+* `GET /webhooks/<webhook_id>.json` returns details about the specified webhook.
 
 ```json
 [
   {
-    "user_id":405,
-    "resource":"file",
-    "action":"created",
-    "url":"http://example.com",
-    "created_at":"2015-06-18T19:18:35Z",
+    "user_id":"<user_id>",
+    "resource":"<resource1>",
+    "action":"<supported_action1>",
+    "url":"<url_posting_to1>",
+    "created_at":"created",
     "state": "normal",
-    "notification_emails": ["email@example.com"]
+    "notification_emails": ["<notification_email>"]
   },
   {
-    "user_id":405,
-    "resource":"file",
-    "action":"expiration_date_set",
-    "url":"http://example.com",
-    "created_at":"2015-06-18T19:18:35Z",
-    "state": "paused",
-    "notification_emails": null
+    "user_id":"<user_id>",
+    "resource":"<resource2>",
+    "action":"<supported_action2>",
+    "url":"<url_posting_to2>",
+    "created_at":"created",
+    "state": "normal",
+    "notification_emails": ["<notification_email>"]
   }
 ]
 ```
@@ -42,18 +44,14 @@ Create Webhook
 
 * `POST /webhooks.json` will create a new webhook.
 
-When you create a webhook, when the event occurs that is specified in the webhook, Image Relay will POST
-the event details back to you at the URL specified in the webhook.
+When you create a webhook, when the event occurs that is specified in the webhook, Image Relay will POST the event details back to you at the URL specified in the webhook.
 
 ```json
 {
-  "resource": "file",
-  "action": "created",
-  "url": "https://example.com",
-  "notification_emails": [
-    "email1@example.com",
-    "email2@example.com"
-  ]
+  "resource": "<resource>",
+  "action": "<supported_action>",
+  "url": "<url_to_post_to>",
+  "notification_emails": ["<notification_emails>"]
 }
 ```
 
@@ -62,21 +60,20 @@ This will return `201 Created`, if successful.
 Update Webhook
 --------------
 
-
-* `PUT /webhooks/19.json` will update a webhook.
+* `PUT /webhooks/<webhook_id<.json` will update the specified webhook's state.
 ```json
 {
 	"state":"paused"
 }
 ```
 
-Will return `200 OK` and a representation of the webhook. Valid values for "state" are: normal, error, paused
+Will return `200 OK` and a representation of the webhook. Valid values for `state` are: `normal`, `error`, `paused`
 
 ```json
 {
-  "resource": "file",
-  "action": "created",
-  "url": "https://example.com",
+  "resource": "<resource>",
+  "action": "<supported_action",
+  "url": "<url_to_post_to",
   "state": "paused",
   "notification_emails": null
 }
@@ -85,7 +82,7 @@ Will return `200 OK` and a representation of the webhook. Valid values for "stat
 Delete Webhook
 --------------
 
-* `DELETE /webhooks/51.json` will delete the webhook where 51 represents the id of the webhook you wish to delete.
+* `DELETE /webhooks/<webhook_id>.json` will delete the specified webhook.
 
 This will return `204 No Content` if successful.
 
@@ -133,28 +130,55 @@ This will return `200 Ok`
       "created",
       "modified",
       "destroyed"
-      ]
-    }
+    ]
+  }
 ]
 ```
 
 Details about our currently supported list of resources and actions:
 --------------------------------------------------------------------
 
-###Response
+### Response
 
 All Webhook POSTs will contain the following information in JSON format:
 
 ```json
 {
-    "event": {
-            "resource":"file",
-            "action":"added_to_folder",
-            "resource_id":242694,
-            "actor_id":405,
-            "recipient_id":11285
-    },
-    "data": { "id":1234 }
+  "event": {
+    "resource": "<file/folder/user>",
+    "action": "<supported_action>",
+    "resource_id": "<resource_id>",
+    "actor_id": "<user_id>",
+    "recipient_id": "<potential_recipient_id>"
+  },
+  "data": {
+    "id": "<resource_id>",
+    "content_type": "application/octet-stream",
+    "size": "<size>",
+    "width": null,
+    "height": null,
+    "created_at": "<created>",
+    "updated_on": "<updated>",
+    "deleted": false,
+    "user_id": "<user_id>",
+    "expires_on": null,
+    "name": "<resource_name>",
+    "file_type_id": null,
+    "terms": [
+      {
+        "name": "<term>",
+        "value": "",
+        "metaterm_id": "<metaterm_id>"
+      },
+      {...}
+    ],
+    "folders": ["<folders>"],
+    "folder_ids": ["<folder_ids>"],
+    "webdav_paths": [
+      "/webdav/<path_to_resource>"
+    ],
+    "permission_ids": ["<permission_ids"]
+  }
 }
 ```
 
@@ -168,53 +192,55 @@ The data section contains data specific to the resource being triggered. For a F
 about the file, for a user, it will contain details about the user and so forth. The "event" section will always be present
 for all webhook calls.
 
-###Resource: File
+### Resource: File
 
 * _Created:_ triggered when a file is created at Image Relay
+* _Deleted:_ triggered when a file is deleted from Image Relay
 * _Processed:_ triggered when a file has been created or updated in Image Relay and is available for download
 * _Expiration Date Set:_ triggered when a user sets an expiration date on a file (NOT when the file expires)
 * _Expiration Date Removed:_ triggered when a user removes an expiration date from a file (NOT when the file expires)
 * _File Type Changed:_ triggered when a user changes the File Type of a file
+* _Keywords/Tags Updated:_ triggered when a file's tags are updated
 * _Name Changed:_ triggered when a user changes the name of a file
 * _Recovered:_ triggered when a file is recovered from the trash
 * _Added To Folder:_ triggered when a file is added to a folder
 * _Removed from Folder:_ triggered when a file is removed from a folder
 * _File Updated_: triggered when the original file is updated in Image Relay
 
-####Sample Data
+#### Sample Data
 
 ```json
 {
     "event": {
             "resource":"file",
-            "action":"added_to_folder",
-            "resource_id":242694,
-            "actor_id":405,
-            "recipient_id":11285
+            "action":"<file_action>",
+            "resource_id":"<file_id>",
+            "actor_id":"user_id>",
+            "recipient_id":"<potential_folder_id>"
     },
     "data": {
             "content_type":"image/png",
-            "created_at":"2015-06-18T15:20:00Z",
+            "created_at":"<created>",
             "delete_user_id":null,
             "deleted":null,
             "expires_on":null,
             "height":null,
-            "id":242694,
-            "size":360338,"
-            updated_on":"2015-06-18T15:20:00Z",
-            "user_id":405,
+            "id":"file_id",
+            "size":"<size>",
+            "updated_on":"<updated>",
+            "user_id":"<user_id>",
             "width":null,
-            "file_type_id":149,
+            "file_type_id":"<file_type_id>",
             "terms":[],
-            "folders":["Buffy"],
-            "folder_ids":[11285],
-            "webdav_paths":["/webdav/Buffy/IMG_0983.png"],
-            "permission_ids":[181,177,1,169,236,271,269,184,161]
+            "folders":["<folder>"],
+            "folder_ids":["<folder_id>"],
+            "webdav_paths":["/webdav/<folder>/<filename>"],
+            "permission_ids":["<permission_ids>"]
     }
 }
 ```
 
-###Resource: Folder
+### Resource: Folder
 
 * _Created:_ triggered when a folder is created at Image Relay
 * _Renamed:_ triggered when a folder is renamed
@@ -224,65 +250,65 @@ for all webhook calls.
 * _Shared:_ triggered when a user shares a public link to a folder
 
 
-####Sample Data
+#### Sample Data
 
 ```json
 {
     "event":
     {
         "resource":"folder",
-        "action":"created",
-        "resource_id":12449,
-        "actor_id":405
+        "action":"<folder_action>",
+        "resource_id":"<folder_id>",
+        "actor_id":"<user_id>"
     },
     "data":
     {
-        "created_on":"2015-06-23T16:55:11Z",
-        "id":12449,
-        "name":"My Folder",
-        "parent_id":6527,
-        "updated_on":"2015-06-23T16:55:11Z",
-        "user_id":405,
-        "full_path":"/My Folder",
+        "created_on":"<created>",
+        "id":"<folder_id>",
+        "name":"<folder>",
+        "parent_id":"<parent_folder_id>",
+        "updated_on":"<updated>",
+        "user_id":"<user_id>",
+        "full_path":"<path_from_root>",
         "child_count":0,
         "file_count":0,
-        "webdav_path":"/webdav/My Folder",
-        "permission_ids":[1]
+        "webdav_path":"/webdav/<folder>",
+        "permission_ids":["<permission_ids>"]
     }
 }
 ```
 
-###Resource: User
+### Resource: User
 
-* _Created:_ triggered when a user is created at Image Relay
+* _Created:_ triggered when a user is created at Image Relay (not just invited)
 * _Modified:_ triggered when a user is modified
 * _Destroyed:_ triggered when a user is destroyed
 
-####Sample Data
+#### Sample Data
 
 ```json
 {
     "event":{
         "resource":"user",
-        "action":"created",
-        "resource_id":1967,
-        "actor_id":405
+        "action":"<user_action>",
+        "resource_id":"new_user_id",
+        "actor_id":"<main_user_id>"
     },
     "data":{
-        "company":"Vampires R Us",
-        "created_on":"2015-06-23T17:03:03Z"
+        "company":"<new_user_company>",
+        "created_on":"<created>"
         ,"custom_field_four":null,
         "custom_field_one":null,
         "custom_field_three":null,
         "custom_field_two":null,
-        "email":"buffy_summers@example.com",
-        "first_name":"Buffy",
-        "id":1967,"
-        last_name":"Summers",
-        "login":"buffy_summers@example.com",
-        "updated_on":"2015-06-23T17:03:03Z",
+        "email":"<new_user_email>",
+        "first_name":"<first_name>",
+        "id":"<new_user_id>",
+        "last_name":"<last_name>",
+        "login":"<login>",
+        "updated_on":"<updated>",
         "portal_id":null,
-        "permission_id":236
+        "permission_id":"<permission_group_id>"
     }
 }
 ```
