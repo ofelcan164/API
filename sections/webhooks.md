@@ -9,7 +9,6 @@ The API also supports optionally adding additional notification_emails to the we
 alert other email addresses if issues arise.
 
 
-Image Relay webhooks all include a `resource` and an `action`. Supported resources and their actions can be viewed [below](https://github.com/imagerelay/api/blob/master/sections/webhooks.md#supported-webhooks)
 Get Webhooks
 -----------
 
@@ -42,9 +41,11 @@ Get Webhooks
 Create Webhook
 --------------
 
+Image Relay webhooks all include a `resource` and an `action`. Supported resources and their actions can be viewed [below](https://github.com/imagerelay/api/blob/master/sections/webhooks.md#supported-webhooks)
+
 * `POST /webhooks.json` will create a new webhook.
 
-When you create a webhook, when the event occurs that is specified in the webhook, Image Relay will POST the event details back to you at the URL specified in the webhook.
+After a webhooks has been created, if an event occurs that is specified in the webhook, Image Relay will POST the event details back to you at the `url` specified in the webhook.
 
 ```json
 {
@@ -60,20 +61,24 @@ This will return `201 Created`, if successful.
 Update Webhook
 --------------
 
-* `PUT /webhooks/<webhook_id<.json` will update the specified webhook's state.
+* `PUT /webhooks/<webhook_id>.json` will update the specified webhook's state.
+Valid `state` values are:
+* `normal`: normal functionality.
+* `paused`: user-initiated paused state, webhook will not be invoked
+* `error`: Image Relay encountered too many HTTP errors when invoking the webhook callback URL, callbacks have been temporarily suspended until the next day when it will be auto-resumed.
+
 ```json
 {
 	"state":"paused"
 }
 ```
 
-Will return `200 OK` and a representation of the webhook. Valid values for `state` are: `normal`, `error`, `paused`
-
+Will return `200 OK` and a representation of the webhook.
 ```json
 {
   "resource": "<resource>",
   "action": "<supported_action",
-  "url": "<url_to_post_to",
+  "url": "<url_to_post_to>",
   "state": "paused",
   "notification_emails": null
 }
