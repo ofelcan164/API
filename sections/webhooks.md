@@ -71,7 +71,7 @@ Valid `state` values are:
 
 ```json
 {
-	"state":"paused"
+	"state":"<new_state>"
 }
 ```
 
