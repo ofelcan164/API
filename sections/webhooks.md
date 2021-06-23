@@ -180,7 +180,7 @@ about the file such as name, id, parent folder, etc.
     "actor_id":"user_id>",
     "recipient_id":"<potential_folder_id>"
   },
-    "data": {
+  "data": {
     "id": "<file_id>",
     "content_type": "application/octet-stream",
     "size": "<size>",
