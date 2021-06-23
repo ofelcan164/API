@@ -173,41 +173,39 @@ about the file such as name, id, parent folder, etc.
 
 ```json
 {
-    "event": {
-            "resource":"file",
-            "action":"<file_action>",
-            "resource_id":"<file_id>",
-            "actor_id":"user_id>",
-            "recipient_id":"<potential_folder_id>"
-    },
+  "event": {
+    "resource":"file",
+    "action":"<file_action>",
+    "resource_id":"<file_id>",
+    "actor_id":"user_id>",
+    "recipient_id":"<potential_folder_id>"
+  },
     "data": {
-      "id": "<file_id>",
-      "content_type": "application/octet-stream",
-      "size": "<size>",
-      "width": null,
-      "height": null,
-      "created_at": "<created>",
-      "updated_on": "<updated>",
-      "deleted": true/false,
-      "user_id": "<user_id>",
-      "expires_on": null,
-      "name": "<filename>",
-      "file_type_id": "<file_type_id>",
-      "terms": [
-        {
-          "name": "<term>",
-          "value": "",
-          "metaterm_id": "<metaterm_id>"
-        },
-        {...}
-      ],
-      "folders": ["<folders>"],
-      "folder_ids": ["<folder_ids>"],
-      "webdav_paths": [
-        "/webdav/<path_to_resource>"
-      ],
-      "permission_ids": ["<permission_ids"]
-    }
+    "id": "<file_id>",
+    "content_type": "application/octet-stream",
+    "size": "<size>",
+    "width": null,
+    "height": null,
+    "created_at": "<created>",
+    "updated_on": "<updated>",
+    "deleted": true/false,
+    "user_id": "<user_id>",
+    "expires_on": null,
+    "name": "<filename>",
+    "file_type_id": "<file_type_id>",
+    "terms": [
+      {
+        "name": "<term>",
+        "value": "",
+        "metaterm_id": "<metaterm_id>"
+      },
+      {...}
+    ],
+    "folders": ["<folders>"],
+    "folder_ids": ["<folder_ids>"],
+    "webdav_paths": ["/webdav/<path_to_resource>"],
+    "permission_ids": ["<permission_ids"]
+  }
 }
 ```
 
