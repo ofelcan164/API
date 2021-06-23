@@ -147,57 +147,12 @@ Details about our currently supported list of resources and actions:
 
 ### Response
 
-All Webhook POSTs will contain the following information in JSON format:
+All Webhook POSTs will contain an `event` section which then has a `resource`, `action`, `resource_id`, `actor_id`, and potentially `recipient_id`. `resource` is the type of resource triggering the event (e.g. file, folder...), `action` is the type of action that occurred (e.g. created, updated...), `resource_id` is the unique id in Image Relay for the resource that triggered this event. `actor_id` is the unique id of the user who caused the event to happen (i.e. uploaded the file,
+created the folder), and `recipient_id` is optionally present when necessary. For instance, in the case of a "File added to
+Folder" triggered, `recipient_id` would be the unique folder id of the folder to which the file was added. The `event` section will always be present for all webhook calls.
 
-```json
-{
-  "event": {
-    "resource": "<file/folder/user>",
-    "action": "<supported_action>",
-    "resource_id": "<resource_id>",
-    "actor_id": "<user_id>",
-    "recipient_id": "<potential_recipient_id>"
-  },
-  "data": {
-    "id": "<resource_id>",
-    "content_type": "application/octet-stream",
-    "size": "<size>",
-    "width": null,
-    "height": null,
-    "created_at": "<created>",
-    "updated_on": "<updated>",
-    "deleted": false,
-    "user_id": "<user_id>",
-    "expires_on": null,
-    "name": "<resource_name>",
-    "file_type_id": null,
-    "terms": [
-      {
-        "name": "<term>",
-        "value": "",
-        "metaterm_id": "<metaterm_id>"
-      },
-      {...}
-    ],
-    "folders": ["<folders>"],
-    "folder_ids": ["<folder_ids>"],
-    "webdav_paths": [
-      "/webdav/<path_to_resource>"
-    ],
-    "permission_ids": ["<permission_ids"]
-  }
-}
-```
-
-In the "event" section, resource is the type of resource triggering the event (e.g. file, folder...), action is the
-type of action that occurred (e.g. created, updated...), resource_id is the unique id in Image Relay for the resource
-that triggered this event. actor_id is the unique id of the user who caused the event to happen (i.e. uploaded the file,
-created the folder), and recipient_id is optionally present when necessary. For instance, in the case of a "File added to
-Folder" triggered, recipient_id would be the unique folder id of the folder to which the file was added.
-
-The data section contains data specific to the resource being triggered. For a File, for instance it will contain details
-about the file, for a user, it will contain details about the user and so forth. The "event" section will always be present
-for all webhook calls.
+A `data` section is also included containing data specific to the resource being triggered. For a File, for instance, it will contain details
+about the file such as name, id, parent folder, etc.
 
 ### Resource: File
 
@@ -226,23 +181,32 @@ for all webhook calls.
             "recipient_id":"<potential_folder_id>"
     },
     "data": {
-            "content_type":"image/png",
-            "created_at":"<created>",
-            "delete_user_id":null,
-            "deleted":null,
-            "expires_on":null,
-            "height":null,
-            "id":"file_id",
-            "size":"<size>",
-            "updated_on":"<updated>",
-            "user_id":"<user_id>",
-            "width":null,
-            "file_type_id":"<file_type_id>",
-            "terms":[],
-            "folders":["<folder>"],
-            "folder_ids":["<folder_id>"],
-            "webdav_paths":["/webdav/<folder>/<filename>"],
-            "permission_ids":["<permission_ids>"]
+      "id": "<file_id>",
+      "content_type": "application/octet-stream",
+      "size": "<size>",
+      "width": null,
+      "height": null,
+      "created_at": "<created>",
+      "updated_on": "<updated>",
+      "deleted": true/false,
+      "user_id": "<user_id>",
+      "expires_on": null,
+      "name": "<filename>",
+      "file_type_id": "<file_type_id>",
+      "terms": [
+        {
+          "name": "<term>",
+          "value": "",
+          "metaterm_id": "<metaterm_id>"
+        },
+        {...}
+      ],
+      "folders": ["<folders>"],
+      "folder_ids": ["<folder_ids>"],
+      "webdav_paths": [
+        "/webdav/<path_to_resource>"
+      ],
+      "permission_ids": ["<permission_ids"]
     }
 }
 ```
