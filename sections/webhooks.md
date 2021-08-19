@@ -5,7 +5,7 @@ Webhooks allow you to receive notifications at an end-point of your choice for a
 Get notified when a file is uploaded, a new user is added, a folder is deleted, etc.
 
 When there is a problem with a webhook, Image Relay will send an email to the user that created the webhook.
-The API also supports optionally adding additional notification_emails to the webhook if you wish to
+The API also supports optionally adding additional notification emails to the webhook if you wish to
 alert other email addresses if issues arise.
 
 
@@ -24,7 +24,7 @@ Get Webhooks
     "url":"<url_posting_to1>",
     "created_at":"created",
     "state": "normal",
-    "notification_emails": ["<notification_email>"]
+    "notification_emails": ["<comma separated list of emails>"]
   },
   {
     "user_id":"<user_id>",
@@ -33,7 +33,7 @@ Get Webhooks
     "url":"<url_posting_to2>",
     "created_at":"created",
     "state": "normal",
-    "notification_emails": ["<notification_email>"]
+    "notification_emails": ["<comma separated list of emails>"]
   }
 ]
 ```
@@ -52,7 +52,7 @@ After a webhooks has been created, if an event occurs that is specified in the w
   "resource": "<resource>",
   "action": "<supported_action>",
   "url": "<url_to_post_to>",
-  "notification_emails": ["<notification_emails>"]
+  "notification_emails": ["<comma separated list of emails>"]
 }
 ```
 
@@ -79,10 +79,10 @@ Will return `200 OK` and a representation of the webhook.
 ```json
 {
   "resource": "<resource>",
-  "action": "<supported_action",
+  "action": "<supported_action>",
   "url": "<url_to_post_to>",
   "state": "paused",
-  "notification_emails": null
+  "notification_emails": "<comma separated list of emails>"
 }
 ```
 
@@ -147,12 +147,12 @@ Details about our currently supported list of resources and actions:
 
 ### Response
 
-All Webhook POSTs will contain an `event` section which then has a `resource`, `action`, `resource_id`, `actor_id`, and potentially `recipient_id`. `resource` is the type of resource triggering the event (e.g. file, folder...), `action` is the type of action that occurred (e.g. created, updated...), `resource_id` is the unique id in Image Relay for the resource that triggered this event. `actor_id` is the unique id of the user who caused the event to happen (i.e. uploaded the file,
+All Webhook POSTs will contain an `event` section which then has a `resource`, `action`, `resource_id`, `actor_id`, and potentially `recipient_id`. `resource` is the type of resource triggering the event (e.g. file, folder...), `action` is the type of action that occurred (e.g. created, updated...), `resource_id` is the unique ID in Image Relay for the resource that triggered this event. `actor_id` is the unique ID of the user who caused the event to happen (i.e. uploaded the file,
 created the folder), and `recipient_id` is optionally present when necessary. For instance, in the case of a "File added to
-Folder" triggered, `recipient_id` would be the unique folder id of the folder to which the file was added. The `event` section will always be present for all webhook calls.
+Folder" triggered, `recipient_id` would be the unique folder ID of the folder to which the file was added. The `event` section will always be present for all webhook calls.
 
 A `data` section is also included containing data specific to the resource being triggered. For a File, for instance, it will contain details
-about the file such as name, id, parent folder, etc.
+about the file such as name, ID, parent folder, etc.
 
 ### Resource: File
 
@@ -203,7 +203,6 @@ about the file such as name, id, parent folder, etc.
     ],
     "folders": ["<folders>"],
     "folder_ids": ["<folder_ids>"],
-    "webdav_paths": ["/webdav/<path_to_resource>"],
     "permission_ids": ["<permission_ids"]
   }
 }
@@ -241,7 +240,6 @@ about the file such as name, id, parent folder, etc.
         "full_path":"<path_from_root>",
         "child_count":0,
         "file_count":0,
-        "webdav_path":"/webdav/<folder>",
         "permission_ids":["<permission_ids>"]
     }
 }
